@@ -12,7 +12,8 @@ namespace Fighter403.Player
         internal override bool Anchored => anchored || PositionLocked;
         internal bool PositionLocked { get; set; }
 
-        internal void Initialize(string label, Sprite sprite, int health, float radius, SpriteRenderer bossBody, bool anchored)
+        internal void Initialize(string label, Sprite sprite, int health, float radius, SpriteRenderer bossBody,
+            bool anchored, float artRadius)
         {
             displayName = label;
             this.anchored = anchored;
@@ -20,7 +21,8 @@ namespace Fighter403.Player
             renderer.sprite = sprite;
             renderer.sortingLayerID = bossBody.sortingLayerID;
             renderer.sortingOrder = bossBody.sortingOrder;
-            float artRadius = sprite == null ? radius : Mathf.Max(sprite.bounds.extents.x, sprite.bounds.extents.y);
+            if (artRadius <= 0f)
+                artRadius = sprite == null ? radius : Mathf.Max(sprite.bounds.extents.x, sprite.bounds.extents.y);
             if (artRadius > 0f) transform.localScale = Vector3.one * (radius / artRadius);
             BodyCollider.radius = artRadius;
             BodyCollider.isTrigger = true;

@@ -6,6 +6,9 @@ namespace Fighter403.Player
 {
     internal abstract class DungeonBoss : CombatTarget
     {
+        // Swarm.png has a 36-pixel body inside a 112-pixel canvas. Allow two pixels around the body.
+        private const float SwarmBodyRadiusPixels = 20f;
+
         private readonly List<DungeonBossSummon> summons = new();
         private readonly Dictionary<GameObject, Mesh> telegraphs = new();
         private Material markMaterial;
@@ -109,7 +112,8 @@ namespace Fighter403.Player
             instance.transform.SetParent(transform.parent, false);
             instance.transform.position = position;
             var summon = instance.AddComponent<DungeonBossSummon>();
-            summon.Initialize(label, sprite, health, radius, Body, anchored);
+            float artRadius = sprite != null && sprite == SwarmSprite ? SwarmBodyRadiusPixels / sprite.pixelsPerUnit : 0f;
+            summon.Initialize(label, sprite, health, radius, Body, anchored, artRadius);
             summons.Add(summon);
             return summon;
         }
