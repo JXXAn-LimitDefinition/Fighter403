@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Fighter403.UI;
 using UnityEngine;
 using Fighter403.Audio;
+using Framework.FrameworkAudio;
 
 namespace Fighter403.Player
 {
@@ -19,6 +20,9 @@ namespace Fighter403.Player
         private const int FlurryFinisherHoldFrames = 12;
         private const int FlurryReturnTravelFrames = 9;
         private const float FlurryFinisherZoom = 1.14f;
+        private const string SandevistanMusicPath = "Fighter403/Music/Sandevistan";
+        private const float SandevistanMusicFadeIn = 0.15f;
+        private const float SandevistanMusicFadeOut = 0.3f;
 
         private RoundPlayerMovement movement;
         private readonly Cast[] casts = { new(), new() };
@@ -26,6 +30,10 @@ namespace Fighter403.Player
         private RoundPlayerMotion playerMotion;
         private ThousandSlashesGroundEffects flurryGround;
         private SandevistanAfterimages afterimages;
+        private AudioClip sandevistanMusic;
+        private AudioManager sandevistanMusicAudio;
+        private CombatVitals sandevistanMusicVitals;
+        private double sandevistanMusicStartedAt;
         private int blockTints;
         private Color savedTint;
         private const float BlackHoleArtRadius = 5f;
@@ -39,6 +47,7 @@ namespace Fighter403.Player
             movement = GetComponent<RoundPlayerMovement>();
             playerSprite = GetComponent<SpriteRenderer>();
             playerMotion = GetComponent<RoundPlayerMotion>();
+            sandevistanMusic = Resources.Load<AudioClip>(SandevistanMusicPath);
         }
 
         private Vector2 Origin => transform.position;
@@ -72,8 +81,40 @@ namespace Fighter403.Player
 
         private void LateUpdate()
         {
+            UpdateSandevistanMusic();
             // Freeze with each hit and keep fading once the hand slows combat time again.
             if (Time.deltaTime > 0f) flurryGround?.Advance(Time.unscaledDeltaTime);
+        }
+
+        private void StartSandevistanMusic(CombatVitals vitals)
+        {
+            if (!vitals.SandevistanActive || sandevistanMusic == null || sandevistanMusicVitals == vitals) return;
+            sandevistanMusicVitals = vitals;
+            sandevistanMusicAudio = AudioManager.Instance;
+            sandevistanMusicStartedAt = Time.unscaledTimeAsDouble;
+            sandevistanMusicAudio.SetBgmOverride(sandevistanMusic, 0f);
+        }
+
+        private void UpdateSandevistanMusic()
+        {
+            if (sandevistanMusicVitals == null) return;
+            double remaining = sandevistanMusicVitals.SandevistanRemaining;
+            if (remaining <= 0d || CombatTarget.BattleVitals != sandevistanMusicVitals || sandevistanMusicAudio == null)
+            {
+                StopSandevistanMusic();
+                return;
+            }
+
+            float elapsed = (float)(Time.unscaledTimeAsDouble - sandevistanMusicStartedAt);
+            float blend = Mathf.Clamp01(Mathf.Min(elapsed / SandevistanMusicFadeIn, (float)remaining / SandevistanMusicFadeOut));
+            sandevistanMusicAudio.SetBgmOverride(sandevistanMusic, blend);
+        }
+
+        private void StopSandevistanMusic()
+        {
+            if (sandevistanMusicAudio != null) sandevistanMusicAudio.SetBgmOverride(null);
+            sandevistanMusicAudio = null;
+            sandevistanMusicVitals = null;
         }
 
         internal CombatTarget Nearest(Predicate<CombatTarget> eligible = null)
@@ -271,6 +312,7 @@ namespace Fighter403.Player
                         {
                             GameSfx.Play(Sfx.SandevistanStart);
                             vitals.ActivateSandevistan(card.EffectSeconds);
+                            StartSandevistanMusic(vitals);
                             SandevistanVisuals = card.SandevistanVfx;
                             if (afterimages == null)
                                 afterimages = gameObject.AddComponent<SandevistanAfterimages>();
@@ -1065,6 +1107,7 @@ namespace Fighter403.Player
 
         private void OnDisable()
         {
+            StopSandevistanMusic();
             ResetMotion();
             afterimages?.Clear();
             flurryGround?.Clear();

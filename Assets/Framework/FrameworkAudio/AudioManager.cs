@@ -13,11 +13,14 @@ namespace Framework.FrameworkAudio
         // BGM 切换专用变量
         private AudioSource _bgmSourceA;
         private AudioSource _bgmSourceB;
+        private AudioSource _bgmOverrideSource;
         private bool _isUsingSourceA = true;
         private Coroutine _fadeCoroutine;
         private float _musicMixVolume = 1f;
         private float _bgmLevelA = 1f;
         private float _bgmLevelB = 1f;
+        private float _bgmOverrideBlend;
+        private float BaseMusicVolume => _musicMixVolume * (1f - _bgmOverrideBlend);
 
         protected override void OnInit()
         {
@@ -48,6 +51,10 @@ namespace Framework.FrameworkAudio
             _bgmSourceB = gameObject.AddComponent<AudioSource>();
             _bgmSourceB.loop = true;
             _bgmSourceB.playOnAwake = false;
+
+            _bgmOverrideSource = gameObject.AddComponent<AudioSource>();
+            _bgmOverrideSource.loop = true;
+            _bgmOverrideSource.playOnAwake = false;
         }
 
         /// <summary>
@@ -137,11 +144,35 @@ namespace Framework.FrameworkAudio
             else source.volume = volume;
         }
 
+        /// <summary>Blend in temporary music while the underlying BGM keeps its playback position.</summary>
+        public void SetBgmOverride(AudioClip clip, float blend = 1f)
+        {
+            blend = clip == null ? 0f : Mathf.Clamp01(blend);
+            bool clipChanged = _bgmOverrideSource.clip != clip;
+            if (!clipChanged && _bgmOverrideBlend == blend) return;
+
+            if (clipChanged)
+            {
+                _bgmOverrideSource.Stop();
+                _bgmOverrideSource.clip = clip;
+            }
+
+            _bgmOverrideBlend = blend;
+            ApplyMusicMix();
+            if (clipChanged && clip != null) _bgmOverrideSource.Play();
+        }
+
         public void SetMusicMixVolume(float volume)
         {
             _musicMixVolume = Mathf.Clamp01(volume);
-            _bgmSourceA.volume = _bgmLevelA * _musicMixVolume;
-            _bgmSourceB.volume = _bgmLevelB * _musicMixVolume;
+            ApplyMusicMix();
+        }
+
+        private void ApplyMusicMix()
+        {
+            _bgmSourceA.volume = _bgmLevelA * BaseMusicVolume;
+            _bgmSourceB.volume = _bgmLevelB * BaseMusicVolume;
+            _bgmOverrideSource.volume = _bgmOverrideBlend * _musicMixVolume;
         }
 
         private void SetBgmLevel(AudioSource source, float level)
@@ -149,7 +180,7 @@ namespace Framework.FrameworkAudio
             level = Mathf.Clamp01(level);
             if (source == _bgmSourceA) _bgmLevelA = level;
             else _bgmLevelB = level;
-            source.volume = level * _musicMixVolume;
+            source.volume = level * BaseMusicVolume;
         }
 
         public bool IsAudioPlaying(EAudioType audioType)
@@ -168,6 +199,7 @@ namespace Framework.FrameworkAudio
                 }
                 _bgmSourceA.Stop();
                 _bgmSourceB.Stop();
+                SetBgmOverride(null);
                 return;
             }
 
