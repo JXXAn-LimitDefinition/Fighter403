@@ -55,6 +55,7 @@ namespace Fighter403.Player
         internal int ShieldCapacity => HasShield ? shieldCapacity : 0;
         internal int CurrentShield => shield;
         internal override void SetWorldHealthVisible(bool visible) => overhead.SetMetersVisible(visible);
+        protected override Vector3 DamageNumberOrigin => overhead.DamageNumberOrigin;
 
         private string dungeonBossName;
         internal bool IsDungeonBoss => dungeonBossName != null;

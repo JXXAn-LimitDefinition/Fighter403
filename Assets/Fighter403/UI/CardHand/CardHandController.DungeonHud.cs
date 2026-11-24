@@ -259,7 +259,8 @@ namespace Fighter403.UI
         {
             float scale = Mathf.Min(root.rect.width / 820f, root.rect.height / 720f);
             var size = Vector3.one * scale;
-            dungeonPanel.localScale = size;
+            if (dungeonShade.gameObject.activeSelf)
+                LayoutTerminalPanel();
             dungeonPrompt.localScale = Vector3.one * Mathf.Max(.8f, scale);
             float hudScale = Mathf.Clamp(scale, .45f, 1.45f);
             dungeonHud.localScale = dungeonEntry.localScale = Vector3.one * hudScale;
@@ -377,7 +378,6 @@ namespace Fighter403.UI
             if (room.Kind == DungeonRoomKind.Shop)
             {
                 interactionTitle = "商店";
-                interactionCaption = $"碎片  {fragments}";
                 interactionSecondary = ("返回", BackFromDungeonInteraction);
                 foreach (var kind in OfferRoomCards(room).Except(batch.DeckKinds()).Where(kind => !room.Bought.Contains(kind)))
                 {
@@ -468,6 +468,7 @@ namespace Fighter403.UI
                 {
                     interactionTitle = "选择一张奖励卡牌";
                     interactionCaption = "选择后加入本局牌组";
+                    interactionKeyboardHint = "";
                 }
             }
         }
@@ -500,6 +501,7 @@ namespace Fighter403.UI
                 if (price == 0)
                 {
                     ClaimDungeonRoom();
+                    ShowTerminalReceipt($"已领取 {injector.DisplayName}");
                     return;
                 }
                 fragments -= price;
@@ -515,7 +517,7 @@ namespace Fighter403.UI
             {
                 GameSfx.Play(Sfx.PileOpen, .65f);
                 removingDungeonCards = true;
-                dungeonCardPage = 0;
+                terminalFirstCard = 0;
                 RenderDungeonInteraction();
             }, price);
         }
@@ -524,7 +526,7 @@ namespace Fighter403.UI
         {
             bool paid = dungeonRoom.Kind == DungeonRoomKind.Shop;
             interactionTitle = "选择要删除的牌";
-            interactionCaption = paid ? $"碎片  {fragments}" : "从本局牌组移除一张卡牌";
+            interactionCaption = "从本局牌组移除一张卡牌";
             interactionSecondary = ("返回", BackFromDungeonRemoval);
             var deck = batch.DeckKinds().ToArray();
             if (deck.Length < 2) return;
@@ -541,7 +543,7 @@ namespace Fighter403.UI
                     {
                         fragments -= 25;
                         removingDungeonCards = false;
-                        dungeonCardPage = 0;
+                        terminalFirstCard = 0;
                         RefreshDeckAndDungeon();
                         SetDungeonFeedback($"已删除 {card.DisplayName}", false);
                     }
@@ -554,7 +556,7 @@ namespace Fighter403.UI
         {
             GameSfx.Play(Sfx.PileClose, .65f);
             removingDungeonCards = false;
-            dungeonCardPage = 0;
+            terminalFirstCard = 0;
             RenderDungeonInteraction();
         }
 
@@ -563,6 +565,7 @@ namespace Fighter403.UI
             if (!batch.AddToDeck(card)) return;
             GameSfx.Play(Sfx.DungeonReward);
             ClaimDungeonRoom();
+            ShowTerminalReceipt($"已领取 {card.DisplayName} · 已加入牌组");
         }
 
         private void ClaimDungeonRoom()

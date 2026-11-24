@@ -17,6 +17,9 @@ namespace Fighter403.UI
         private const float DealDuration = 0.29f;
         internal const float RejectionDuration = 0.26f;
         private const float ShakeDistance = 7f;
+        private const int LockSheetColumns = 7, LockSheetRows = 6;
+        private const int LockInFrames = 10, LockHoldFrames = 20, LockOutFrames = 10;
+        private const float LockFrameRate = 30f;
         private static readonly Color SummaryColor = new(0.90f, 0.93f, 0.89f);
 
         [SerializeField] private RectTransform face, frame;
@@ -24,11 +27,15 @@ namespace Fighter403.UI
         [SerializeField, Min(0.01f)] private float transitionTime = 0.14f;
 
         private readonly List<(RectTransform rect, Vector2 position)> faceChildren = new();
+        private List<(UnityEngine.UI.Graphic graphic, Color color, Material material)> rootLockGraphics;
         private CardHandController owner;
         private HandCard card;
         private RectTransform rect, shadow;
         private Graphic rootGraphic, frameImage;
         private CardOutline outline;
+        private RawImage rootLockEffect;
+        private float rootLockEffectStarted;
+        private int rootLockEffectFrame = -1;
         private UnityEngine.UI.Text expandedText;
         private TMP_Text feeLabel;
         private int shownEnergyCost;
@@ -134,6 +141,8 @@ namespace Fighter403.UI
             var display = Instantiate(face, parent, false);
             display.name = face.name;
             display.anchoredPosition = Vector2.zero;
+            if (rootLockEffect != null)
+                display.Find(rootLockEffect.name)?.gameObject.SetActive(false);
             DressFace(display, definition, definition.EnergyCost);
             StyleSummary(display.Find(detail.name).gameObject);
             display.Find(frame.name)?.Find(focusBorder.name)?.gameObject.SetActive(false);
@@ -230,11 +239,87 @@ namespace Fighter403.UI
         {
             outline.SetReadiness(progress);
             if (state == selectionState) return;
+            if (state == CardSelectionState.Locked || selectionState == CardSelectionState.Locked)
+                SetRootLockVisual(state == CardSelectionState.Locked);
             bool flash = state == CardSelectionState.Ready && selectionState == CardSelectionState.InsufficientEnergy;
             readyFlashStart = flash ? Time.unscaledTime : float.NegativeInfinity;
             outline.SetReadyFlash(flash ? owner.EvaluateReadyFlash(0f) : Color.clear);
             selectionState = state;
             if (state != CardSelectionState.InsufficientEnergy) deniedUntil = 0f;
+        }
+
+        private void SetRootLockVisual(bool locked)
+        {
+            if (locked && rootLockEffect == null) CreateRootLockEffect();
+            outline.SetRootLocked(locked, locked && rootLockEffect == null);
+            if (rootLockEffect != null)
+            {
+                rootLockEffectStarted = Time.unscaledTime;
+                rootLockEffect.gameObject.SetActive(true);
+                UpdateRootLockEffect(rootLockEffectStarted, locked);
+            }
+            if (!locked)
+            {
+                foreach (var entry in rootLockGraphics)
+                {
+                    if (entry.graphic == null) continue;
+                    entry.graphic.color = entry.color;
+                    if (entry.graphic is UnityEngine.UI.Image) entry.graphic.material = entry.material;
+                }
+                rootLockGraphics.Clear();
+                return;
+            }
+
+            rootLockGraphics ??= new();
+            Material grayscale = owner.GetRootHandLockMaterial();
+            foreach (var graphic in face.GetComponentsInChildren<UnityEngine.UI.Graphic>(true))
+            {
+                if (graphic == outline || graphic == rootLockEffect) continue;
+                Color original = graphic.color;
+                rootLockGraphics.Add((graphic, original, graphic.material));
+                float gray = original.grayscale;
+                graphic.color = new Color(gray, gray, gray, original.a);
+                if (grayscale != null && graphic is UnityEngine.UI.Image) graphic.material = grayscale;
+            }
+        }
+
+        private void CreateRootLockEffect()
+        {
+            var sheet = Resources.Load<Texture2D>("Fighter403/Bosses/RootCardLock");
+            if (sheet == null) return;
+            var effect = new GameObject("Root card seal", typeof(RectTransform), typeof(CanvasRenderer));
+            effect.layer = gameObject.layer;
+            var effectRect = (RectTransform)effect.transform;
+            effectRect.SetParent(face, false);
+            effectRect.anchorMin = effectRect.anchorMax = new Vector2(.5f, .5f);
+            effectRect.anchoredPosition = Vector2.zero;
+            effectRect.sizeDelta = new Vector2(88f, 88f);
+            rootLockEffect = effect.AddComponent<RawImage>();
+            rootLockEffect.texture = sheet;
+            rootLockEffect.raycastTarget = false;
+        }
+
+        private void UpdateRootLockEffect(float now, bool locked)
+        {
+            if (rootLockEffect == null || !rootLockEffect.gameObject.activeSelf) return;
+            int frame = Mathf.Max(0, Mathf.FloorToInt((now - rootLockEffectStarted) * LockFrameRate));
+            if (locked && frame >= LockInFrames)
+                frame = LockInFrames + (frame - LockInFrames) % LockHoldFrames;
+            else if (!locked)
+            {
+                if (frame >= LockOutFrames)
+                {
+                    rootLockEffect.gameObject.SetActive(false);
+                    return;
+                }
+                frame += LockInFrames + LockHoldFrames;
+            }
+            if (rootLockEffectFrame == frame) return;
+            rootLockEffectFrame = frame;
+            rootLockEffect.uvRect = new Rect(
+                (frame % LockSheetColumns) / (float)LockSheetColumns,
+                (LockSheetRows - 1 - frame / LockSheetColumns) / (float)LockSheetRows,
+                1f / LockSheetColumns, 1f / LockSheetRows);
         }
 
         internal void ShowInsufficientEnergy(float until) => deniedUntil = until;
@@ -315,6 +400,7 @@ namespace Fighter403.UI
             if (owner == null) return;
 
             float now = Time.unscaledTime;
+            UpdateRootLockEffect(now, selectionState == CardSelectionState.Locked);
             float remainingFeedback = deniedUntil - now;
             bool denied = remainingFeedback > 0f;
             bool selected = selectionState == CardSelectionState.Selected;
@@ -334,7 +420,8 @@ namespace Fighter403.UI
                 UpdateDeal();
             }
 
-            float nextExpanded = Mathf.MoveTowards(expanded, hovered || selected ? 1f : 0f, dt / transitionTime);
+            bool showDescription = selectionState != CardSelectionState.Locked && (hovered || selected);
+            float nextExpanded = Mathf.MoveTowards(expanded, showDescription ? 1f : 0f, dt / transitionTime);
             float extra = expansionHeight * Mathf.SmoothStep(0f, 1f, nextExpanded);
             float shake = ShakeDistance * RejectionShake(RejectionProgress(remainingFeedback));
             var facePosition = restPosition + new Vector2(shake, extra * 0.5f);

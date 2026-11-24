@@ -53,26 +53,51 @@ Shader "Fighter403/FirewallWarning"
                 float diamond = abs(p.x) + abs(p.y);
                 float rimDistance = radial - radius;
                 float innerDistance = abs(diamond - _Shape.y) * inverseRootTwo;
+                float angle = atan2(p.y, p.x) * 0.159154943;
                 float ticks = step(min(abs(p.x), abs(p.y)), 1.5 * pixel) *
                     step(abs(rimDistance + 3.0 * pixel), 3.0 * pixel);
-                float solid = 0.0;
+                float accent = 0.0;
+                float pattern = 0.0;
 
-                if (style == 1.0)
+                if (style == 0.0)
+                {
+                    // The impact point stays fixed while four brackets dial in around it.
+                    float target = radius * lerp(0.83, 0.36, _Charge);
+                    float bracket = step(abs(max(abs(p.x), abs(p.y)) - target), pixel);
+                    bracket *= step(target - 0.24, min(abs(p.x), abs(p.y)));
+                    float dial = frac(angle + 0.5);
+                    float bearing = step(dial, _Charge) * step(abs(rimDistance + pixel * 5.0), pixel);
+                    accent = max(bracket * 0.75, bearing * 0.71);
+                    pattern = step(diamond, radius * 0.28) * 0.12;
+                }
+                else if (style == 1.0)
                 {
                     innerDistance = abs(radial - _Shape.y);
-                    solid = step(radial, _Shape.y);
+                    float arm = frac(angle * 3.0 + radial * 0.65 - _Charge * 8.0);
+                    float teeth = step(arm, 0.14) * step(_Shape.y, radial);
+                    float innerTick = step(0.83, frac(angle * 12.0)) *
+                        step(abs(radial - _Shape.y + pixel * 3.0), pixel * 3.0);
+                    accent = innerTick * 0.63;
+                    pattern = teeth * (0.08 + _Charge * 0.13);
                 }
                 else if (style == 2.0)
                 {
                     float side = (abs(p.y) - p.x) * inverseRootTwo;
                     rimDistance = max(rimDistance, side);
-                    innerDistance = abs(radial - radius + 7.0 * pixel) + step(-3.0 * pixel, side);
+                    innerDistance = abs(radial - radius + 7.0 * pixel) + step(0.0, side);
                     ticks = 0.0;
+                    float shutter = step(abs(frac(radial * 1.4 - _Charge * 2.0) - 0.5), pixel * 2.1);
+                    float direction = step(abs(abs(p.y) - p.x * 0.72), pixel * 1.35);
+                    accent = shutter * direction * step(p.x, radius * 0.76) * 0.73;
+                    pattern = shutter * (0.045 + _Charge * 0.1);
                 }
                 else if (style == 3.0)
                 {
                     rimDistance = (diamond - radius) * inverseRootTwo;
                     innerDistance = abs(rimDistance + 5.0 * pixel);
+                    float scan = step(abs(p.y - lerp(radius, -radius, _Charge)), pixel);
+                    accent = scan * step(diamond, radius - pixel * 2.0) * 0.65;
+                    pattern = step(frac(cell.y * 0.25), 0.10) * 0.11;
                 }
                 else if (style == 4.0)
                 {
@@ -89,10 +114,10 @@ Shader "Fighter403/FirewallWarning"
                 float echo = step(abs(rimDistance + pixel * 4.0), pixel * 0.67);
                 float inside = step(rimDistance, 0.0);
                 float dots = step(frac(cell.x * 0.25), 0.1) * step(frac(cell.y * 0.25), 0.1);
-                float hatch = step(frac((cell.x + cell.y) * 0.125), 0.14);
-                float fill = inside * (0.055 + _Charge * 0.06 + dots * (0.13 + _Charge * 0.07) + solid * hatch * 0.16);
-                float opacity = max(fill, max(echo * 0.31, max(inner * 0.64, max(ticks * 0.80, rim * (0.66 + _Charge * 0.34)))));
-                float gleam = saturate(rim * _Charge * 0.40 + ticks * 0.32 + inner * 0.34);
+                float fill = inside * (0.055 + _Charge * 0.05 + dots * (0.11 + _Charge * 0.05) + pattern);
+                float outline = max(echo * 0.31, max(inner * 0.59, max(ticks * 0.80, rim * (0.66 + _Charge * 0.34))));
+                float opacity = max(inside * accent, max(fill, outline));
+                float gleam = saturate(rim * _Charge * 0.40 + ticks * 0.32 + inner * 0.34 + accent * 0.29);
                 float3 color = lerp(_Tint.rgb, float3(1.0, 0.93, 0.82), gleam);
                 return fixed4(color, opacity * _Tint.a);
             }

@@ -14,9 +14,12 @@ namespace Fighter403.UI
         private static readonly Color Highlight = new(1f, 0.91f, 0.61f);
         private static readonly Color RewardHighlight = new(0.99f, 1f, 1f);
         private static readonly Color Denied = new(1f, 0.24f, 0.29f);
+        private static readonly Color32 LockPlate = new(18, 20, 26, 244);
+        private static readonly Color32 LockShade = new(13, 13, 13, 134);
+        private static readonly Color32 LockGlyph = new(228, 230, 239, 255);
         private float readiness = 1f;
         private Color readyFlash;
-        private bool flowing, rewardStyle;
+        private bool flowing, rewardStyle, rootLocked, drawLockGlyph;
         private float rewardStarted;
 
         internal void SetReadiness(float progress)
@@ -30,6 +33,14 @@ namespace Fighter403.UI
         {
             if (readyFlash == tint) return;
             readyFlash = tint;
+            SetVerticesDirty();
+        }
+
+        internal void SetRootLocked(bool locked, bool drawGlyph)
+        {
+            if (rootLocked == locked && drawLockGlyph == drawGlyph) return;
+            rootLocked = locked;
+            drawLockGlyph = drawGlyph;
             SetVerticesDirty();
         }
 
@@ -121,12 +132,35 @@ namespace Fighter403.UI
                 }
                 traversed += length;
             }
+            if (drawLockGlyph) DrawRootLock(mesh, face.center);
+        }
+
+        private static void DrawRootLock(VertexHelper mesh, Vector2 center)
+        {
+            DrawFaceFill(mesh, new Rect(center.x - 20f, center.y - 20f, 40f, 40f), center.y + 20f, LockPlate);
+            AddLockRectangle(mesh, center, -7f, 9f, 7f, 12f, LockGlyph);
+            AddLockRectangle(mesh, center, -8f, 2f, -4f, 10f, LockGlyph);
+            AddLockRectangle(mesh, center, 4f, 2f, 8f, 10f, LockGlyph);
+            AddLockRectangle(mesh, center, -11f, -10f, 11f, 3f, LockGlyph);
+            AddLockRectangle(mesh, center, -2f, -5f, 2f, -1f, LockPlate);
+        }
+
+        private static void AddLockRectangle(VertexHelper mesh, Vector2 center,
+            float left, float bottom, float right, float top, Color32 tint)
+        {
+            int start = mesh.currentVertCount;
+            mesh.AddVert(center + new Vector2(left, bottom), tint, Vector2.zero);
+            mesh.AddVert(center + new Vector2(left, top), tint, Vector2.zero);
+            mesh.AddVert(center + new Vector2(right, top), tint, Vector2.zero);
+            mesh.AddVert(center + new Vector2(right, bottom), tint, Vector2.zero);
+            mesh.AddTriangle(start, start + 1, start + 2);
+            mesh.AddTriangle(start, start + 2, start + 3);
         }
 
         private void DrawShade(VertexHelper mesh, Rect bounds)
         {
             float edge = Mathf.Lerp(bounds.yMax, bounds.yMin, readiness);
-            DrawFaceFill(mesh, bounds, edge, Shade);
+            DrawFaceFill(mesh, bounds, edge, rootLocked ? LockShade : Shade);
             if (readiness > 0f)
                 AddFaceStrip(mesh, bounds, Mathf.Max(bounds.yMin, edge - EdgeThickness), edge, ReadinessEdge);
         }

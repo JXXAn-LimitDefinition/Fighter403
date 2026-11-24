@@ -161,8 +161,6 @@ namespace Fighter403
 
         private static EnemyRole[] Encounter(Random random, int floor, DungeonRoomKind kind)
         {
-            if (kind == DungeonRoomKind.Boss)
-                return floor switch { 0 => new[] { EnemyRole.Melee }, 2 => new[] { EnemyRole.Shield }, _ => Array.Empty<EnemyRole>() };
             if (kind == DungeonRoomKind.Elite)
             {
                 if (floor == 0) return new[] { EnemyRole.Resonator, EnemyRole.Melee, EnemyRole.Melee };

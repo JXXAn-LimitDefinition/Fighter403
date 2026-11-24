@@ -13,13 +13,14 @@ namespace Fighter403.UI
         QuickSlash, SlashPreparation, LimitedRedBlackHole, DualThread, InfiniteBlueWhiteHole, BigBang
     }
     public enum CardClass { Attack, Defense, Ability, Unspecified }
-    internal enum CardSelectionState { Ready, Selected, InsufficientEnergy, Unavailable }
+    internal enum CardSelectionState { Ready, Selected, InsufficientEnergy, Unavailable, Locked }
 
     internal sealed class HandCard
     {
         public CardDefinition Definition { get; }
         public CardKind Kind => Definition.Kind;
         public CardClass Class => Definition.Class;
+        public bool LockedByRoot { get; set; }
         public HandCard(CardDefinition definition)
         {
             Definition = definition;
@@ -158,10 +159,14 @@ namespace Fighter403.UI
                 : 0;
         public bool IsQueued(HandCard card) => queue.Contains(card);
 
+        internal bool CanAffordWithoutQueue(HandCard card) =>
+            Vitals.CanSpendEnergy(CostAfterAttacks(card, ForecastSubmittedAttacks()));
+
         public CardSelectionState GetSelectionState(HandCard card)
         {
             if (!hand.Contains(card) || IsSubmitted(card))
                 return CardSelectionState.Unavailable;
+            if (card.LockedByRoot) return CardSelectionState.Locked;
             if (IsQueued(card)) return CardSelectionState.Selected;
             return Vitals.CanSpendEnergy(ReservedEnergy + PlannedEnergyCost(card))
                 ? CardSelectionState.Ready : CardSelectionState.InsufficientEnergy;
@@ -192,7 +197,7 @@ namespace Fighter403.UI
 
         public bool Submit()
         {
-            if (Busy || queue.Count == 0) return false;
+            if (Busy || queue.Count == 0 || queue.Exists(card => card.LockedByRoot)) return false;
             var costs = new int[queue.Count];
             if (!Vitals.SpendEnergy(TotalCost(queue, consecutiveAttacks, costs))) return false;
             submittedPair = Vitals.DualThreadRemaining > 0d && queue.Count >= 2;
@@ -206,7 +211,7 @@ namespace Fighter403.UI
 
         public bool SubmitSingle(HandCard card)
         {
-            if (Busy || GetSelectionState(card) == CardSelectionState.Unavailable || IsQueued(card))
+            if (Busy || IsQueued(card) || GetSelectionState(card) is CardSelectionState.Unavailable or CardSelectionState.Locked)
                 return false;
             int cost = CostAfterAttacks(card, consecutiveAttacks);
             int queuedCost = TotalCost(queue, AttackCountAfter(card, consecutiveAttacks));
@@ -227,7 +232,7 @@ namespace Fighter403.UI
             for (int i = 0; i < CurrentGroupSize; i++)
             {
                 var card = CurrentAt(i);
-                if (!hand.Contains(card)) return false;
+                if (!hand.Contains(card) || card.LockedByRoot) return false;
                 costs[i] = CostAfterAttacks(card, attacks);
                 attacks = AttackCountAfter(card, attacks);
                 adjustment += costs[i] - submittedCosts[next + i];

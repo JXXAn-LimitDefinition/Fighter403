@@ -16,18 +16,25 @@ internal static class Fighter403MainMenuVerification
     private const string Trigger = "Temp/Fighter403MainMenu.verify";
     private const string Report = "Temp/Fighter403MainMenu.result";
     private const string CapturePath = "Temp/Fighter403MainMenuAmbientCapture";
+    private const string EntryCapturePath = "Temp/Fighter403MainMenuEntryCapture";
+    private const string SimulatedFailure = "暂时无法开始游戏，请重试。";
     private const int CaptureFrames = 64;
     private const string Prefix = "Fighter403.MainMenu.";
     private const string Started = "Fighter403AmbientVerifyStarted";
     private static double next;
     private static double menuDeadline;
+    private static double entryDeadline;
+    private static double finishCaptureAt;
     private static int step;
     private static int captured;
+    private static int entryLoadAttempts;
     private static float oldEffects;
     private static Rect firstParticleFrame;
     private static Vector3[] firstAmbientVertices;
     private static bool hadEffects;
     private static bool changedEffects;
+    private static bool coveredAtLoad;
+    private static bool roomReadyUnderCover;
 
     static Fighter403MainMenuVerification()
     {
@@ -42,6 +49,19 @@ internal static class Fighter403MainMenuVerification
 
     private static Button Button(string name) => GameObject.Find(name)?.GetComponent<Button>();
     private static Graphic Ambient() => GameObject.Find("Fullscreen Particles")?.GetComponent<Graphic>();
+    private static RawImage Shutter() => GameObject.Find("PixelFX Shutter")?.GetComponent<RawImage>();
+
+    private static GameObject RaycastAt(Button button)
+    {
+        Canvas.ForceUpdateCanvases();
+        var rect = (RectTransform)button.transform;
+        var point = RectTransformUtility.WorldToScreenPoint(null, rect.TransformPoint(rect.rect.center));
+        var hits = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) { position = point }, hits);
+        if (hits.Count == 0)
+            throw new Exception($"No UI raycast hit at {point} for {button.name} on a {Screen.width}x{Screen.height} viewport");
+        return hits[0].gameObject;
+    }
 
     private static Vector3[] ParticleVertices(Graphic layer)
     {
@@ -69,7 +89,6 @@ internal static class Fighter403MainMenuVerification
             if (!File.Exists(Trigger) || EditorApplication.isPlayingOrWillChangePlaymode) return;
             if (AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/Resources/Fighter403/MainMenu/MenuPixelFont.asset") == null) return;
             if (SceneManager.GetActiveScene().path != "Assets/Scenes/SampleScene.unity") return;
-            File.Delete(Trigger);
             File.WriteAllText(Report, "");
             step = captured = 0;
             SessionState.SetBool(Started, true);
@@ -78,31 +97,39 @@ internal static class Fighter403MainMenuVerification
             EditorApplication.isPlaying = true;
             return;
         }
-        if (!EditorApplication.isPlaying) return;
+        if (!EditorApplication.isPlaying)
+        {
+            if (!EditorApplication.isPlayingOrWillChangePlaymode) SessionState.EraseBool(Started);
+            return;
+        }
+        if (File.Exists(Trigger)) File.Delete(Trigger);
+        EditorApplication.QueuePlayerLoopUpdate();
 
         try
         {
             if (step == 0)
             {
                 var menu = GameObject.Find("Fighter403 Main Menu");
-                if (menu == null && EditorApplication.timeSinceStartup < menuDeadline) return;
-                Check(menu != null && Button("Start Game") != null, "Startup menu and start button");
-                Check(Time.timeScale == 0 && EventSystem.current.currentSelectedGameObject == Button("Start Game").gameObject,
-                    "Gameplay is paused and Start is selected");
-                Check(Resources.Load<AudioClip>("Fighter403/Sfx/MenuStart") != null &&
-                    Resources.Load<Texture2D>("Fighter403/MainMenu/Iris").width == 2240, "Menu audio and unscaled transition atlas imported");
+                var button = Button("Start Game");
+                if (menuDeadline == 0) menuDeadline = EditorApplication.timeSinceStartup + 12;
+                bool ready = menu != null && button != null && Time.timeScale == 0 &&
+                    EventSystem.current?.currentSelectedGameObject == button.gameObject;
+                if (!ready && EditorApplication.timeSinceStartup < menuDeadline) return;
+                Check(menu != null && button != null, "Startup menu and start button");
+                Check(ready, "Gameplay is paused and Start is selected");
+                var entryAtlas = Resources.Load<Texture2D>("Fighter403/MainMenu/DungeonEntry");
+                Check(Resources.Load<AudioClip>("Fighter403/Sfx/MenuStart") != null && entryAtlas != null &&
+                    entryAtlas.width == 1920 && entryAtlas.height == 1440 && entryAtlas.filterMode == FilterMode.Point,
+                    "Menu audio and point-sampled transition atlas imported");
                 var titleArt = GameObject.Find("Fighter403").GetComponent<RawImage>();
                 var pixelFont = Resources.Load<TMP_FontAsset>("Fighter403/MainMenu/MenuPixelFont");
-                var button = Button("Start Game");
                 Check(titleArt.texture.filterMode == FilterMode.Point && titleArt.texture.height == 18 &&
                     pixelFont.atlasTexture.filterMode == FilterMode.Point && button.GetComponentInChildren<TextMeshProUGUI>().font == pixelFont &&
                     pixelFont.HasCharacters("\u5F00\u59CB\u6E38\u620F"), "Point-sampled title and pixel glyphs");
                 Check(button.transition == Selectable.Transition.SpriteSwap &&
                     button.spriteState.highlightedSprite != button.spriteState.pressedSprite, "Distinct button states");
-                var raycastAt = RectTransformUtility.WorldToScreenPoint(null, button.transform.TransformPoint(((RectTransform)button.transform).rect.center));
-                var hit = new System.Collections.Generic.List<RaycastResult>();
-                EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) { position = raycastAt }, hit);
-                Check(hit.Count > 0 && hit[0].gameObject == button.gameObject, "Styled button receives pointer raycasts");
+                var hit = RaycastAt(button);
+                Check(hit == button.gameObject, $"Styled button receives pointer raycasts (hit {hit.name})");
                 var particles = GameObject.Find("Firewall Particles").GetComponent<RawImage>();
                 Check(particles.texture != null && particles.texture.width == 1728, "Particle atlas imported");
                 firstParticleFrame = particles.uvRect;
@@ -196,16 +223,51 @@ internal static class Fighter403MainMenuVerification
             {
                 Click("Return");
                 Check(Mathf.Approximately(Ambient().color.a, 1f), "Returning home restores ambient particle brightness");
+                ObserveEntryAttempts();
                 Click("Start Game");
-                Check(GameObject.Find("PixelFX Iris") != null && Time.timeScale == 0, "Transition starts while player input is paused");
+                Check(Shutter() != null && Time.timeScale == 0, "Transition starts while gameplay is paused");
+                var hit = RaycastAt(Button("Open Settings"));
+                Check(hit.name == "Dungeon Entry Transition", $"Transition blocks menu clicks (hit {hit.name})");
+                Click("Start Game");
+                entryDeadline = EditorApplication.timeSinceStartup + 12;
                 step++;
-                next = EditorApplication.timeSinceStartup + 1.65;
+                return;
+            }
+            if (step == 4)
+            {
+                if (Shutter() != null && EditorApplication.timeSinceStartup < entryDeadline) return;
+                Check(entryLoadAttempts == 1 && coveredAtLoad, "Repeated start clicks trigger one load under the opaque shutter");
+                Check(Shutter() == null && Time.timeScale == 0 &&
+                    GameObject.Find("Start Error")?.GetComponent<TMP_Text>().text == SimulatedFailure &&
+                    EventSystem.current.currentSelectedGameObject == Button("Start Game").gameObject,
+                    "A failed load restores the menu and reselects Start");
+                Directory.CreateDirectory(EntryCapturePath);
+                captured = 0;
+                finishCaptureAt = 0;
+                roomReadyUnderCover = false;
+                Click("Start Game");
+                entryDeadline = EditorApplication.timeSinceStartup + 12;
+                step++;
                 return;
             }
 
             var type = Type.GetType("Fighter403.UI.CardHandController, Assembly-CSharp");
             var hud = UnityEngine.Object.FindAnyObjectByType(type);
             var field = type.GetField("dungeonRoom", BindingFlags.NonPublic | BindingFlags.Instance);
+            bool shutterActive = Shutter() != null;
+            if (shutterActive && hud != null && field.GetValue(hud) != null)
+                roomReadyUnderCover |= Time.timeScale == 0;
+            double now = EditorApplication.timeSinceStartup;
+            if (!shutterActive && finishCaptureAt == 0) finishCaptureAt = now + .50;
+            if (now < entryDeadline && (shutterActive || now < finishCaptureAt))
+            {
+                ScreenCapture.CaptureScreenshot(Path.GetFullPath(Path.Combine(EntryCapturePath, $"frame-{captured:D3}.png")));
+                captured++;
+                next = now + 1.0 / 24.0;
+                return;
+            }
+            Check(entryLoadAttempts == 2 && coveredAtLoad && roomReadyUnderCover,
+                "First room is built under the shutter while gameplay is paused");
             var floorField = type.GetField("dungeonFloor", BindingFlags.NonPublic | BindingFlags.Instance);
             Check(hud != null && field.GetValue(hud) != null && (int)floorField.GetValue(hud) == 0 &&
                 GameObject.Find("Fighter403 Main Menu") == null && Time.timeScale > 0, "Random dungeon first room loaded and gameplay resumed");
@@ -224,6 +286,24 @@ internal static class Fighter403MainMenuVerification
         }
         SessionState.EraseBool(Started);
         EditorApplication.isPlaying = false;
+    }
+
+    private static void ObserveEntryAttempts()
+    {
+        var menu = GameObject.Find("Fighter403 Main Menu").GetComponents<MonoBehaviour>()
+            .Single(component => component.GetType().Name == "Fighter403MainMenu");
+        var begin = menu.GetType().GetField("beginRun", BindingFlags.NonPublic | BindingFlags.Instance);
+        var load = (Func<string>)begin.GetValue(menu);
+        entryLoadAttempts = 0;
+        coveredAtLoad = true;
+        begin.SetValue(menu, (Func<string>)(() =>
+        {
+            var shutter = Shutter();
+            // Atlas frame 25 is fully opaque. The Start button runs on unscaled time.
+            coveredAtLoad &= shutter != null && Mathf.Approximately(shutter.uvRect.x, 1f / 6) &&
+                Mathf.Approximately(shutter.uvRect.y, 3f / 8) && Time.timeScale == 0;
+            return ++entryLoadAttempts == 1 ? SimulatedFailure : load();
+        }));
     }
 }
 

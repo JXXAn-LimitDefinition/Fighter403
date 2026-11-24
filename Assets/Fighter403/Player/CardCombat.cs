@@ -515,15 +515,15 @@ namespace Fighter403.Player
         private void ResolveBigBang(CombatVitals vitals, int damage)
         {
             var targets = CombatTarget.Active.ToArray();
-            // The Firewall boss despawns its summons on death, so resolve their hits first.
-            Array.Sort(targets, static (left, right) => (left is FirewallBoss).CompareTo(right is FirewallBoss));
+            // Resolve summons before their bosses can despawn them.
+            Array.Sort(targets, static (left, right) => (left is FirewallBoss or DungeonBoss).CompareTo(right is FirewallBoss or DungeonBoss));
             int healingPercent = 0;
             foreach (var enemy in targets)
             {
                 if (enemy == null || !enemy.Alive) continue;
                 var (threshold, healing) = enemy switch
                 {
-                    FirewallBoss or ProgramEnemy { IsDungeonBoss: true } => (10, 20),
+                    FirewallBoss or DungeonBoss or ProgramEnemy { IsDungeonBoss: true } => (10, 20),
                     ProgramEnemy { IsElite: true } => (25, 10),
                     _ => (50, 5)
                 };
@@ -547,6 +547,7 @@ namespace Fighter403.Player
         private void MoveTargetTowards(CombatTarget enemy, Vector2 destination, ContactFilter2D filter,
             bool passDisplacedEnemies = false)
         {
+            if (enemy.Anchored) return;
             enemy.GetHurtCircle(out Vector2 center, out float radius);
             Vector2 offset = destination - center;
             float distance = offset.magnitude;

@@ -78,6 +78,7 @@ namespace Fighter403.Player
             }
             rotor = AddSprite("Reactor flywheel", center, frames[12, 0], 1);
             chargeGlass = AddSprite("Core energy filaments", center, frames[13, 0], 2);
+            LoadPixelEffects();
         }
 
         private void CreateArena()
@@ -137,6 +138,7 @@ namespace Fighter403.Player
         protected override void LateUpdate()
         {
             TickFeedback();
+            TickPixelEffects();
             if (!Alive)
             {
                 deathAge += Time.deltaTime;
@@ -430,6 +432,7 @@ namespace Fighter403.Player
             if (overlay != null) overlay.enabled = false;
             foreach (var burst in bursts) RemoveBurst(burst);
             bursts.Clear();
+            ClearPixelEffects();
         }
 
         private LineRenderer Stroke(string label, Vector2[] points, bool loop, int order, Transform parent = null)
@@ -491,6 +494,7 @@ namespace Fighter403.Player
         private void OnDestroy()
         {
             overhead?.Dispose();
+            DisposePixelEffects();
             Remove(overlay);
             if (screenMaterial != null) Destroy(screenMaterial);
             if (lineMaterial != null) Destroy(lineMaterial);

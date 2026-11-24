@@ -69,6 +69,7 @@ namespace Fighter403.Player
         private bool phaseTwo, groupHadHeavyAttack;
         public override string DisplayName => "CstonF0x1";
         internal override bool Anchored => true;
+        protected override Vector3 DamageNumberOrigin => overhead.DamageNumberOrigin;
         internal bool PhaseTwo => phaseTwo;
         internal int ActiveSkillCount => casts.Count;
 
@@ -89,6 +90,7 @@ namespace Fighter403.Player
             shotCamera = cameraFollow;
             if (overlayParent != null) CreateScreenEffect(overlayParent);
             if (encloseTrial) CreateArena();
+            PlayPixels(PixelEffect.Arrival, "Firewall startup sequence", center, .82f, 2.40f, 2);
         }
 
         protected override void OnHitResolved(int damage)
@@ -101,9 +103,11 @@ namespace Fighter403.Player
             delay = 0.18f;
             recovery = 0f;
             CancelCasts();
+            ClearPixelEffects();
             GameSfx.Play(Sfx.BossPhase);
             Punch(0.62f, 0.70f, Overload, 0.64f);
             Shock(center, ArenaHalfSize.magnitude, Overload, 0.70f);
+            PlayPixels(PixelEffect.Overload, "Overload heat burst", center, TransitionTime, 2.85f, 4);
         }
 
         private void FixedUpdate()
@@ -120,6 +124,7 @@ namespace Fighter403.Player
             if (transition > 0f) { transition -= dt; return; }
             if (Stunned)
             {
+                if (casts.Count > 0) ClearPixelEffects();
                 CancelCasts();
                 delay = Mathf.Max(delay, 0.45f);
                 return;
@@ -199,11 +204,7 @@ namespace Fighter403.Player
                     {
                         if (gate == cast.SafeGate) continue;
                         float angle = GateAngle(gate);
-                        var mark = NewMark("Seal sector", center, WarningShape.Sector, SealRadius, 1.08f, angle);
-                        mark.Accent = AddSprite("Seal shutter discharge", center + Polar(angle, 3.62f), frames[10, 0], 1);
-                        mark.Accent.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
-                        mark.Accent.transform.localScale = Vector3.one * 1.24f;
-                        cast.Marks.Add(mark);
+                        cast.Marks.Add(NewMark("Seal sector", center, WarningShape.Sector, SealRadius, 1.08f, angle));
                     }
                     break;
                 case Skill.Vortex:
@@ -215,7 +216,7 @@ namespace Fighter403.Player
                     cast.Center = ClampToArena(center + direction * distance, VortexRadius + 0.18f);
                     cast.Marks.Add(NewMark("Vortex radius", cast.Center, WarningShape.Vortex,
                         VortexRadius, 2.46f, innerRadius: CollapseRadius));
-                    cast.Effect = AddSprite("Code vortex", cast.Center, frames[9, 0], -2);
+                    cast.Effect = AddSprite("Code vortex", cast.Center, SpriteAt(PixelEffect.Vortex, 0f, frames[9, 0]), -2);
                     break;
             }
             return cast;
@@ -247,7 +248,8 @@ namespace Fighter403.Player
                 var mark = NewMark("Packet launch", point + direction * 0.20f, WarningShape.Launch,
                     0.48f, FirstVolley + VolleyInterval * row, angle);
                 mark.Position = point;
-                mark.Accent = AddSprite("Packet charger", point + direction * 0.11f, frames[6, 0], 0);
+                mark.Accent = AddSprite("Packet charger", point + direction * 0.11f,
+                    SpriteAt(PixelEffect.PacketCharge, 0f, frames[6, 0]), 0);
                 mark.Accent.transform.rotation = Quaternion.Euler(0f, 0f, angle);
                 cast.Marks.Add(mark);
             }
@@ -262,10 +264,13 @@ namespace Fighter403.Player
                 for (int lane = 0; lane < cast.Marks.Count; lane++)
                 {
                     Mark mark = cast.Marks[lane];
-                    int offset = (lane * 3 + cast.Step) % Columns;
-                    var renderer = AddSprite("Data packet", mark.Position, frames[11, offset], 5);
+                    int offset = (lane * 3 + cast.Step) % PixelColumns;
+                    var renderer = AddSprite("Data packet", mark.Position,
+                        SpriteAt(PixelEffect.Packet, (float)offset / PixelColumns, frames[11, offset % Columns]), 5);
                     renderer.transform.rotation = mark.Accent.transform.rotation;
-                    renderer.transform.localScale = Vector3.one * 1.25f;
+                    renderer.transform.localScale = Vector3.one * (pixelSprites != null ? 1.12f : 1.25f);
+                    PlayPixels(PixelEffect.PacketLaunch, "Packet muzzle flare", mark.Position, .20f, 1.1f, 4,
+                        mark.Accent.transform.eulerAngles.z);
                     cast.Packets.Add(new Packet { Direction = direction, Effect = renderer,
                         AnimationStart = cast.Age - offset / PacketAnimationFps });
                 }
@@ -279,7 +284,8 @@ namespace Fighter403.Player
             foreach (Mark mark in cast.Marks)
             {
                 PaintMark(mark, Amber, cast.Age, VolleyInterval);
-                mark.Accent.sprite = frames[6, Frame(1f - (mark.Impact - cast.Age) / VolleyInterval)];
+                float charge = 1f - Mathf.Clamp01((mark.Impact - cast.Age) / VolleyInterval);
+                mark.Accent.sprite = SpriteAt(PixelEffect.PacketCharge, charge, frames[6, Frame(charge)]);
             }
             for (int i = cast.Packets.Count - 1; i >= 0; i--)
             {
@@ -294,6 +300,9 @@ namespace Fighter403.Player
                 if (hit)
                 {
                     vitals.TakeDamageFrom(7, packet.Direction, Sfx.BossRainHit);
+                    float angle = Mathf.Atan2(packet.Direction.y, packet.Direction.x) * Mathf.Rad2Deg;
+                    PlayPixels(PixelEffect.PacketHit, "Packet contact spark", from + travel * Mathf.Clamp01(projection),
+                        .27f, 1.20f, 6, angle);
                 }
                 else if (!packet.PassPlayed && projection is >= 0f and <= 1f &&
                     closestDistanceSquared <= (reach + PacketPassClearance) * (reach + PacketPassClearance))
@@ -309,8 +318,9 @@ namespace Fighter403.Player
                 else
                 {
                     packet.Effect.transform.position = to;
-                    int frame = (int)((cast.Age - packet.AnimationStart) * PacketAnimationFps) % Columns;
-                    packet.Effect.sprite = frames[11, frame];
+                    float animation = (cast.Age - packet.AnimationStart) * PacketAnimationFps;
+                    float progress = Mathf.Repeat(animation, PixelColumns) / PixelColumns;
+                    packet.Effect.sprite = SpriteAt(PixelEffect.Packet, progress, frames[11, (int)animation % Columns]);
                 }
             }
         }
@@ -344,10 +354,14 @@ namespace Fighter403.Player
                 float impact = 1.14f + group * 0.52f;
                 var mark = NewMark("Code meteor target", point, WarningShape.Meteor,
                     MeteorRadius, impact, innerRadius: MeteorRadius * 0.57f);
-                mark.Effect = AddSprite("Incoming code meteor", point, frames[5, 3], 7);
+                mark.Effect = AddSprite("Incoming code meteor", point,
+                    SpriteAt(PixelEffect.MeteorFall, 0f, frames[5, 3]), 7);
+                if (pixelSprites != null)
+                    mark.Effect.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(-3.95f, 1.61f) * Mathf.Rad2Deg);
                 mark.Effect.enabled = false;
-                mark.Accent = AddSprite("Code meteor impact", point, frames[7, 0], 3);
-                mark.Accent.transform.localScale = Vector3.one * 1.12f;
+                mark.Accent = AddSprite("Code meteor impact", point,
+                    SpriteAt(PixelEffect.MeteorBurst, 0f, frames[7, 0]), 3);
+                mark.Accent.transform.localScale = Vector3.one * (pixelSprites != null ? 1.30f : 1.12f);
                 mark.Accent.enabled = false;
                 cast.Marks.Add(mark);
             }
@@ -367,6 +381,7 @@ namespace Fighter403.Player
                     float descent = Mathf.Clamp01(until / 0.36f);
                     mark.Effect.transform.position = mark.Position + new Vector2(-1.61f, 3.95f) * Mathf.Sqrt(descent);
                     mark.Effect.transform.localScale = Vector3.one * Mathf.Lerp(1.42f, 1.83f, descent);
+                    mark.Effect.sprite = SpriteAt(PixelEffect.MeteorFall, 1f - descent, frames[5, 3]);
                     continue;
                 }
 
@@ -379,7 +394,8 @@ namespace Fighter403.Player
                 }
                 float aftermath = -until / 0.54f;
                 mark.Accent.enabled = aftermath < 1f;
-                if (mark.Accent.enabled) mark.Accent.sprite = frames[7, Frame(aftermath)];
+                if (mark.Accent.enabled)
+                    mark.Accent.sprite = SpriteAt(PixelEffect.MeteorBurst, aftermath, frames[7, Frame(aftermath)]);
                 mark.Warning.enabled = false;
             }
             if (impacted)
@@ -403,8 +419,8 @@ namespace Fighter403.Player
         private void AddPortal(Cast cast, Vector2 point)
         {
             var mark = NewMark("Deployment gate", point, WarningShape.Portal, 1.27f, 0.92f);
-            mark.Effect = AddSprite("Deployment aperture", point, frames[8, 0], 1);
-            mark.Effect.transform.localScale = Vector3.one * 1.24f;
+            mark.Effect = AddSprite("Deployment aperture", point, SpriteAt(PixelEffect.DeployOpen, 0f, frames[8, 0]), 1);
+            mark.Effect.transform.localScale = Vector3.one * (pixelSprites != null ? 1.55f : 1.24f);
             cast.Marks.Add(mark);
         }
 
@@ -424,7 +440,13 @@ namespace Fighter403.Player
             {
                 Mark mark = cast.Marks[i];
                 PaintMark(mark, PortalColor, cast.Age, 0.92f);
-                mark.Effect.sprite = frames[8, Frame(cast.Age / cast.Duration)];
+                if (cast.Age < mark.Impact)
+                {
+                    float progress = cast.Age / mark.Impact;
+                    mark.Effect.sprite = SpriteAt(PixelEffect.DeployOpen, progress, frames[8, Frame(progress)]);
+                }
+                else if (pixelSprites != null) mark.Effect.enabled = false;
+                else mark.Effect.sprite = frames[8, Frame(cast.Age / cast.Duration)];
                 if (cast.Step != 0 || cast.Age < mark.Impact) continue;
                 ProgramEnemy prefab = i == 2 ? elite : i == 0 ? melee : swarm;
                 if (prefab != null && CanSummon(prefab) && IsPortalClear(mark.Position))
@@ -434,7 +456,9 @@ namespace Fighter403.Player
                     summons.Add(add);
                     GameSfx.Play(Sfx.BossDeploy);
                 }
-                Shock(mark.Position, 1.35f, PortalColor, 0.38f);
+                if (pixelSprites == null) Shock(mark.Position, 1.35f, PortalColor, 0.38f);
+                else PlayPixels(PixelEffect.DeployClose, "Deployment aperture closing", mark.Position,
+                    .46f / cast.Speed, 1.6f, 2);
             }
             if (cast.Step == 0 && cast.Age >= 0.92f)
             {
@@ -467,17 +491,19 @@ namespace Fighter403.Player
 
         private void StepSeal(Cast cast)
         {
-            foreach (var mark in cast.Marks)
-            {
-                PaintMark(mark, Overload, cast.Age, mark.Impact);
-                mark.Accent.sprite = frames[10, Frame(cast.Age / cast.Duration)];
-            }
+            foreach (var mark in cast.Marks) PaintMark(mark, Overload, cast.Age, mark.Impact);
             if (cast.Step != 0 || cast.Age < cast.Marks[0].Impact) return;
             cast.Step++;
             cast.LastRelease = cast.Age;
             Vector2 delta = player.Position - center;
             if (delta.sqrMagnitude <= SealRadius * SealRadius && ClosestGate(delta) != cast.SafeGate)
                 vitals.TakeDamageFrom(20, delta);
+            for (int gate = 0; gate < 4; gate++)
+            {
+                if (gate == cast.SafeGate) continue;
+                PlayPixels(PixelEffect.Seal, "Sector shutter discharge", center, .54f / cast.Speed,
+                    SealRadius * 32f / 48f, 1, GateAngle(gate));
+            }
             GameSfx.Play(Sfx.BossSealRelease);
             Punch(0.50f, 0.39f, Overload, 0.43f, -Polar(GateAngle(cast.SafeGate), 1f));
         }
@@ -486,13 +512,14 @@ namespace Fighter403.Player
         {
             var mark = cast.Marks[0];
             PaintMark(mark, VortexColor, cast.Age, 2.46f);
-            cast.Effect.sprite = frames[9, (int)(cast.Age * 14f) % Columns];
-            cast.Effect.transform.rotation = Quaternion.Euler(0f, 0f, -cast.Age * 56f);
+            cast.Effect.sprite = SpriteAt(PixelEffect.Vortex, Mathf.Repeat(cast.Age * 1.2f, 1f),
+                frames[9, (int)(cast.Age * 14f) % Columns]);
+            cast.Effect.transform.rotation = Quaternion.Euler(0f, 0f, cast.Age * 18f);
             float size = cast.Age < 2.46f ? Mathf.Lerp(0.7f, 1.95f, cast.Age / 2.46f)
                 : Mathf.Lerp(1.95f, 0.05f, (cast.Age - 2.46f) / 0.30f);
             size = Mathf.Max(0.01f, size);
             cast.Effect.transform.localScale = Vector3.one * size;
-            UpdateVortexSpirals(cast);
+            if (pixelSprites == null) UpdateVortexSpirals(cast);
             if (cast.Age < 0.56f || cast.Step > 0) return;
             Vector2 offset = cast.Center - player.Position;
             if (cast.Age < 2.46f)
@@ -510,7 +537,9 @@ namespace Fighter403.Player
             GameSfx.Play(Sfx.BossVortexEnd);
             if (offset.sqrMagnitude <= CollapseRadius * CollapseRadius) vitals.TakeDamageFrom(18, -offset);
             Punch(0.43f, 0.40f, VortexColor, 0.40f);
-            Shock(cast.Center, VortexRadius, VortexColor, 0.36f);
+            if (pixelSprites == null) Shock(cast.Center, VortexRadius, VortexColor, 0.36f);
+            else PlayPixels(PixelEffect.Collapse, "Code vortex collapse", cast.Center,
+                .36f / cast.Speed, CollapseRadius * 32f / 18f, 1);
         }
 
         private static float GateAngle(int gate) => 90f + gate * 90f;
@@ -578,11 +607,13 @@ namespace Fighter403.Player
             body.enabled = false;
             deathAge = 0f;
             CancelCasts();
+            ClearPixelEffects();
             ClearSummons();
             overhead.Hide();
             GameSfx.Play(Sfx.BossDown);
             Punch(0.72f, 0.82f, Amber, 0.69f);
             Shock(center, ArenaHalfSize.magnitude, Amber, 0.82f);
+            PlayPixels(PixelEffect.Defeat, "Firewall core break", center, .78f, 3.2f, 4);
         }
 
         public override void ResetTarget()

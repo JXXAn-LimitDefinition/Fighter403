@@ -68,6 +68,8 @@ namespace Fighter403.Player
 
         internal void Hide() => root.gameObject.SetActive(false);
 
+        internal Vector3 DamageNumberOrigin => body.transform.position + Vector3.up * (height + 0.16f);
+
         internal void SetMetersVisible(bool visible) => meters.gameObject.SetActive(visible);
 
         internal void Reset()

@@ -25,8 +25,6 @@ namespace Fighter403.UI
         private DungeonRoomActor dungeonActor;
         private Transform dungeonEnemies;
         private DungeonGate[] roomGates;
-        private ProgramEnemy rootBoss;
-        private float rootSummonAt;
         private CardBatch trainingBatch;
         private DebuggerDefinition[] trainingDebuggers;
         private Vector2 beforeDungeon, roomHalfSize;
@@ -75,6 +73,12 @@ namespace Fighter403.UI
                 !available.Contains(EnemyRole.Swarm))
             {
                 dungeonMenuText.text = "地牢缺少已配置的卡牌或敌人预制体。";
+                GameSfx.Play(Sfx.DungeonDenied);
+                return false;
+            }
+            if (Resources.Load<Sprite>(GarbageCollectorBoss.SpritePath) == null || Resources.Load<Sprite>(RootBoss.SpritePath) == null)
+            {
+                dungeonMenuText.text = "地牢首领图像导入尚未完成。";
                 GameSfx.Play(Sfx.DungeonDenied);
                 return false;
             }
@@ -131,6 +135,7 @@ namespace Fighter403.UI
 
         private void ClearBetweenDungeonRooms()
         {
+            ClearRootHandLocks();
             CancelDungeonActorAnimation();
             CancelCardDrag();
             queueDrag = null;
@@ -185,7 +190,6 @@ namespace Fighter403.UI
             dungeonRoomObject.SetActive(false);
             Destroy(dungeonRoomObject);
             dungeonRoomObject = null;
-            rootBoss = null;
         }
 
         private void EnterDungeonRoom(DungeonRoom room, int entrance)
@@ -325,16 +329,22 @@ namespace Fighter403.UI
                     SetBossHudTarget(boss);
                     return;
                 }
-                var sentinel = SpawnDungeonEnemy(dungeonRoom.Enemies[0], Vector2.zero);
-                if (dungeonFloor == 0)
-                    sentinel.ConfigureDungeonBoss("防火墙守卫", Mathf.RoundToInt(batch.Vitals.MaxHealth * 1.5f), 30);
+                var instance = new GameObject(dungeonFloor == 0 ? "GC-0" : "Root");
+                instance.transform.SetParent(dungeonEnemies, false);
+                instance.transform.position = DungeonCenter;
+                DungeonBoss dungeonBoss;
+                if (dungeonFloor == 0) dungeonBoss = instance.AddComponent<GarbageCollectorBoss>();
                 else
                 {
-                    rootBoss = sentinel;
-                    rootBoss.ConfigureDungeonBoss("Root", 420, 100);
-                    rootSummonAt = Time.time + 3.5f;
+                    var boss = instance.AddComponent<RootBoss>();
+                    boss.LockHand = ApplyRootHandLocks;
+                    boss.ClearHandLocks = ClearRootHandLocks;
+                    dungeonBoss = boss;
                 }
-                SetBossHudTarget(sentinel);
+                var swarm = DungeonPrefabs().First(prefab => prefab.Role == EnemyRole.Swarm).GetComponent<SpriteRenderer>();
+                dungeonBoss.Initialize(movement, batch.Vitals, DungeonCenter, roomHalfSize, dungeonRoom.ArtSeed,
+                    swarm.sprite, cameraFollow, root, Status);
+                SetBossHudTarget(dungeonBoss);
                 return;
             }
 
@@ -371,16 +381,6 @@ namespace Fighter403.UI
             {
                 if (!batch.Busy) movement.SetPlanningLock(true);
                 return true;
-            }
-            if (rootBoss != null && rootBoss.Alive && Time.time >= rootSummonAt)
-            {
-                rootSummonAt = Time.time + 4f;
-                if (CombatTarget.Active.Count(target => target.Alive && target is ProgramEnemy enemy && enemy.Role == EnemyRole.Swarm) < 4)
-                {
-                    float side = movement.Position.x < DungeonCenter.x ? 1f : -1f;
-                    SpawnDungeonEnemy(EnemyRole.Swarm, new Vector2(5f * side, 2f));
-                    GameSfx.Play(Sfx.BossDeploy, .8f);
-                }
             }
             if (!dungeonRoom.Cleared && !CombatTarget.Active.Any(target => target.Alive))
             {

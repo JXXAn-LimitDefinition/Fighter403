@@ -21,7 +21,8 @@ namespace Fighter403.Player
         private SpriteRenderer display;
         private CircleCollider2D hitbox;
         private Color baseColor;
-        private float flashUntil;
+        private float flashUntil, lastDamageNumberAt;
+        private int damageNumberLane;
         private int fractureBonus;
         private double behaviorTime, fractureUntil, slowUntil, stunUntil;
         internal bool Stunned => behaviorTime < stunUntil;
@@ -71,6 +72,15 @@ namespace Fighter403.Player
             radius = hitbox.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.y));
         }
 
+        protected virtual Vector3 DamageNumberOrigin
+        {
+            get
+            {
+                GetHurtCircle(out Vector2 center, out float radius);
+                return new Vector3(center.x, center.y + radius + 0.16f, transform.position.z);
+            }
+        }
+
         internal bool Contains(Vector2 worldPoint)
         {
             var local = (Vector2)transform.InverseTransformPoint(new Vector3(worldPoint.x, worldPoint.y, transform.position.z));
@@ -91,7 +101,7 @@ namespace Fighter403.Player
 
         internal bool ExecuteBelowHealth(int percent)
         {
-            if (!Alive || Health * 100L >= MaxHealth * (long)percent) return false;
+            if (!Alive || !CanExecute || Health * 100L >= MaxHealth * (long)percent) return false;
             ResolveDamage(Health, playBodyImpact: false);
             return true;
         }
@@ -103,7 +113,15 @@ namespace Fighter403.Player
             bool lethal = Health == 0;
             if (LastDamage > 0)
             {
-                flashUntil = Time.unscaledTime + 0.22f;
+                float now = Time.unscaledTime;
+                flashUntil = now + 0.22f;
+                if (Application.isPlaying)
+                {
+                    damageNumberLane = now - lastDamageNumberAt >= EnemyDamageNumber.Duration
+                        ? 0 : (damageNumberLane + 1) % EnemyDamageNumber.LaneCount;
+                    lastDamageNumberAt = now;
+                    EnemyDamageNumber.Show(display, DamageNumberOrigin, LastDamage, damageNumberLane);
+                }
                 if (playBodyImpact) GameSfx.Play(this is TestDummy ? Sfx.DummyHit : Sfx.EnemyHit);
             }
             OnHitResolved(damage);
@@ -113,7 +131,7 @@ namespace Fighter403.Player
                     GameSfx.Play(this switch
                     {
                         TestDummy => Sfx.DummyDown,
-                        ProgramEnemy { IsDungeonBoss: true } => Sfx.BossDown,
+                        DungeonBoss or ProgramEnemy { IsDungeonBoss: true } => Sfx.BossDown,
                         _ => Sfx.EnemyDown,
                     });
                 OnDefeated();
@@ -138,6 +156,7 @@ namespace Fighter403.Player
         public virtual string DisplayName => "\u6728\u6869";
         protected virtual Color StateColor => baseColor;
         protected virtual int MitigateDamage(int amount) => amount;
+        protected virtual bool CanExecute => true;
         protected virtual void OnHitResolved(int damage) { }
         protected virtual void OnDefeated() { }
 
@@ -152,6 +171,7 @@ namespace Fighter403.Player
             Health = maxHealth;
             LastDamage = 0;
             flashUntil = 0f;
+            lastDamageNumberAt = float.NegativeInfinity;
             behaviorTime = fractureUntil = slowUntil = stunUntil = 0d;
         }
 

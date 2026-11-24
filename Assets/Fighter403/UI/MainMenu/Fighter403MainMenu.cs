@@ -14,16 +14,25 @@ namespace Fighter403.UI
     {
         private const string AssetsPath = "Fighter403/MainMenu/";
         private const string SettingsKey = "Fighter403.MainMenu.";
+        private const int EntryFramesPerSecond = 30;
+        private const int EntryColumns = 6;
+        private const int EntryRows = 8;
+        private const int EntryCoverFrame = 18;
+        private const int EntryLoadFrame = 25;
+        private const int EntryReleaseFrame = 30;
+        private const int EntryLastFrame = 45;
         private static readonly Color Ink = new Color32(8, 13, 19, 255);
         private static readonly Color Paper = new Color32(227, 236, 235, 255);
         private static readonly Color Cyan = new Color32(146, 219, 216, 255);
         private static readonly Color Muted = new Color32(160, 178, 189, 255);
         private static readonly Color Line = new Color32(53, 75, 86, 255);
+        private static readonly Vector2[] GateLeafDirections = { new(.27f, .16f), new(0, -.31f), new(-.27f, .16f) };
 
         private enum ButtonIcon { None = -1, Start, Settings, Credits, Back, Chevron }
 
-        private RectTransform screen, backdrop, content, gate, irisFrame, hints;
-        private UnityEngine.UI.RawImage firewall, iris, focusSpark, firewallParticles;
+        private RectTransform screen, backdrop, content, gate, hints;
+        private UnityEngine.UI.Image entryBlocker;
+        private UnityEngine.UI.RawImage firewall, entryShutter, focusSpark, firewallParticles;
         private Fighter403MenuParticles ambientParticles;
         private Texture2D buttonIcons;
         private readonly Sprite[,] buttonPlates = new Sprite[3, 3];
@@ -151,9 +160,17 @@ namespace Fighter403.UI
                 Vector2.zero, new Vector2(82, 82)), Resources.Load<Texture2D>(AssetsPath + "FocusSpark"));
             focusSpark.gameObject.SetActive(false);
 
-            irisFrame = Stretch(screen, "PixelFX Iris");
-            iris = Texture(Stretch(irisFrame, "Curtain"), Resources.Load<Texture2D>(AssetsPath + "Iris"));
-            irisFrame.gameObject.SetActive(false);
+            entryBlocker = Plate(Stretch(screen, "Dungeon Entry Transition"), Color.clear, true);
+            var entryAtlas = Resources.Load<Texture2D>(AssetsPath + "DungeonEntry");
+            if (entryAtlas != null)
+            {
+                entryShutter = Texture(Stretch(entryBlocker.rectTransform, "PixelFX Shutter"), entryAtlas);
+                entryShutter.rectTransform.pivot = new Vector2(.5f, .5f);
+                var fit = entryShutter.gameObject.AddComponent<AspectRatioFitter>();
+                fit.aspectRatio = 320f / 180f;
+                fit.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+            }
+            entryBlocker.gameObject.SetActive(false);
             if (PlayerPrefs.HasKey(SettingsKey + "Fullscreen"))
                 ApplyFullScreen(PlayerPrefs.GetInt(SettingsKey + "Fullscreen") != 0);
             ShowPage(0);
@@ -264,6 +281,7 @@ namespace Fighter403.UI
 
         private void OpenPage(int target)
         {
+            if (openingRun) return;
             lastHomeChoice = entries[target];
             GameSfx.Play(Sfx.MenuConfirm);
             ShowPage(target);
@@ -386,47 +404,26 @@ namespace Fighter403.UI
         private IEnumerator PlayEntry()
         {
             opening.gameObject.SetActive(true);
-            bool useIris = iris.texture != null;
-            if (useIris) irisFrame.gameObject.SetActive(true);
-            var fallback = irisFrame.GetComponent<UnityEngine.UI.Image>();
-            if (!useIris)
+            if (entryShutter != null) SheetFrame(entryShutter, 0, EntryColumns, EntryRows);
+            entryBlocker.gameObject.SetActive(true);
+            yield return PlayEntryFrames(0, EntryLoadFrame, openGate: true);
+
+            // Render the opaque shutter frame before generating and moving the player into the first room.
+            yield return null;
+            string failure = beginRun();
+            restoredRun = failure == null;
+            if (restoredRun) backdrop.gameObject.SetActive(false);
+            else
             {
-                if (fallback == null) fallback = Plate(irisFrame, Color.clear);
-                fallback.color = Color.clear;
-                iris.gameObject.SetActive(false);
-                irisFrame.gameObject.SetActive(true);
+                for (int i = 0; i < leaves.Length; i++) leaves[i].rectTransform.anchoredPosition = Vector2.zero;
+                opening.gameObject.SetActive(false);
+                warning.text = string.IsNullOrWhiteSpace(failure) ? "暂时无法开始游戏，请重试。" : failure;
             }
 
-            const float framesPerSecond = 46f;
-            float start = Time.unscaledTime;
-            Vector2[] directions = { new(.27f, .16f), new(0, -.31f), new(-.27f, .16f) };
-            string failure = null;
-            while (true)
-            {
-                int frame = Mathf.Min(53, (int)((Time.unscaledTime - start) * framesPerSecond));
-                if (useIris) SheetFrame(iris, frame, 7, 10);
-                else
-                {
-                    float amount = frame < 30 ? frame / 30f : (54 - frame) / 24f;
-                    fallback.color = new Color(Ink.r, Ink.g, Ink.b, amount);
-                }
-                float slide = Mathf.SmoothStep(0, 1, (frame - 3) / 25f);
-                for (int i = 0; i < leaves.Length; i++)
-                    leaves[i].rectTransform.anchoredPosition = directions[i] * (opening.rect.width * slide);
-
-                if (!restoredRun && failure == null && frame >= 30)
-                {
-                    failure = beginRun();
-                    if (failure == null)
-                    {
-                        restoredRun = true;
-                        backdrop.gameObject.SetActive(false);
-                    }
-                }
-
-                if (frame == 53) break;
-                yield return null;
-            }
+            // Let the room update behind the shutter and start the reveal on a fresh unscaled clock.
+            yield return null;
+            yield return PlayEntryFrames(EntryLoadFrame, EntryLastFrame, openGate: false);
+            entryBlocker.gameObject.SetActive(false);
 
             if (restoredRun)
             {
@@ -435,13 +432,36 @@ namespace Fighter403.UI
                 yield break;
             }
 
-            for (int i = 0; i < leaves.Length; i++) leaves[i].rectTransform.anchoredPosition = Vector2.zero;
-            opening.gameObject.SetActive(false);
-            irisFrame.gameObject.SetActive(false);
             openingRun = false;
-            warning.text = failure ?? "暂时无法开始游戏，请重试。";
             lastHomeChoice = entries[0];
             ShowPage(0);
+        }
+
+        private IEnumerator PlayEntryFrames(int firstFrame, int lastFrame, bool openGate)
+        {
+            double started = Time.unscaledTimeAsDouble;
+            while (true)
+            {
+                float position = Mathf.Min(lastFrame, firstFrame + (float)(Time.unscaledTimeAsDouble - started) * EntryFramesPerSecond);
+                if (entryShutter != null) SheetFrame(entryShutter, (int)position, EntryColumns, EntryRows);
+                else
+                {
+                    var tint = Ink;
+                    tint.a = position < EntryCoverFrame
+                        ? Mathf.InverseLerp(4, EntryCoverFrame, position)
+                        : 1f - Mathf.InverseLerp(EntryReleaseFrame, EntryLastFrame, position);
+                    entryBlocker.color = tint;
+                }
+
+                if (openGate)
+                {
+                    float slide = Mathf.SmoothStep(0, 1, Mathf.InverseLerp(2, 14, position));
+                    for (int i = 0; i < leaves.Length; i++)
+                        leaves[i].rectTransform.anchoredPosition = GateLeafDirections[i] * (opening.rect.width * slide);
+                }
+                if (position >= lastFrame) yield break;
+                yield return null;
+            }
         }
 
         private void OnDestroy()

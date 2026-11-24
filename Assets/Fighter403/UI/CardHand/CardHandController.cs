@@ -352,6 +352,7 @@ namespace Fighter403.UI
         private void Update()
         {
             if (mainMenu != null || batch == null || DungeonRoomTransitioning) return;
+            StepRootHandLocks();
             flurryScreen?.StepColorRestore();
             batch.Vitals.StepBlock(Time.deltaTime);
             float beforeRecovery = batch.Energy;
@@ -728,7 +729,7 @@ namespace Fighter403.UI
             if (batch == null || card == null || card.Kind != CardKind.PhaseDash
                 || dashDrag != null || dashPlans.Exists(plan => plan.Card == card)) return false;
             var state = batch.GetSelectionState(card);
-            if (state == CardSelectionState.Unavailable) return false;
+            if (state is CardSelectionState.Unavailable or CardSelectionState.Locked) return false;
             if (state == CardSelectionState.InsufficientEnergy)
             {
                 ShowEnergyDenied(card);
@@ -1182,7 +1183,7 @@ namespace Fighter403.UI
                 float progress = state switch
                 {
                     CardSelectionState.InsufficientEnergy => cost > 0 ? Mathf.Clamp01(freeEnergy / cost) : 0f,
-                    CardSelectionState.Unavailable => 0f,
+                    CardSelectionState.Unavailable or CardSelectionState.Locked => 0f,
                     _ => 1f
                 };
                 entry.Value.SetEnergyCost(cost);
@@ -1290,6 +1291,7 @@ namespace Fighter403.UI
 
         private void PrepareTestEncounter()
         {
+            ClearRootHandLocks();
             playerImpact?.Clear();
             CancelCardDrag();
             queueDrag = null;
@@ -1360,6 +1362,7 @@ namespace Fighter403.UI
         private void ResetDummies()
         {
             if (batch.Busy || dungeonFloors != null) return;
+            ClearRootHandLocks();
             playerImpact?.Clear();
             GameSfx.Play(Sfx.TrialReset);
             ExpireTemporaryCards();
@@ -1418,6 +1421,7 @@ namespace Fighter403.UI
 
         private void OnDisable()
         {
+            ClearRootHandLocks();
             StopMusic();
             if (mainMenu != null)
             {
@@ -1491,6 +1495,7 @@ namespace Fighter403.UI
         }
         private void OnDestroy()
         {
+            if (rootHandLockMaterial != null) Destroy(rootHandLockMaterial);
             DestroyDungeonRoom();
             CloseFirewallTrial(restorePosition: false);
             if (createdDummy != null) Destroy(createdDummy.gameObject);

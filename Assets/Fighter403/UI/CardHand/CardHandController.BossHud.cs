@@ -17,7 +17,7 @@ namespace Fighter403.UI
         private CombatTarget bossHudTarget;
         private RectTransform bossHudPanel, bossHealthTrack, bossHealthFill, bossHealthTrail;
         private RectTransform bossShieldTrack, bossShieldFill;
-        private Text bossName, bossHealthAmount;
+        private Text bossName, bossHealthAmount, bossAttackWarning;
         private HudMeterAccent bossImpact, bossShieldImpact;
         private int displayedBossHealth, displayedBossMaximum, displayedBossShield;
         private float bossTrailFrom, bossTrailStarted;
@@ -38,6 +38,15 @@ namespace Fighter403.UI
             bossName.alignment = TextAnchor.MiddleLeft;
             bossName.color = InterfaceText;
             bossName.fontStyle = FontStyle.Bold;
+
+            bossAttackWarning = Label("Boss attack warning", bossHudPanel, new Vector2(0f, 1f),
+                new Vector2(500f, -19f), new Vector2(226f, 28f), 22);
+            bossAttackWarning.rectTransform.pivot = new Vector2(1f, .5f);
+            bossAttackWarning.alignment = TextAnchor.MiddleRight;
+            bossAttackWarning.color = new Color32(255, 193, 109, 255);
+            bossAttackWarning.fontStyle = FontStyle.Bold;
+            bossAttackWarning.text = "Stop-the-World";
+            bossAttackWarning.gameObject.SetActive(false);
 
             bossHealthAmount = Label("Boss health amount", bossHudPanel, Vector2.one, new Vector2(-43f, -19f),
                 new Vector2(155f, 30f), 24);
@@ -121,6 +130,7 @@ namespace Fighter403.UI
                 bossHudPanel.gameObject.SetActive(true);
             }
 
+            bossAttackWarning.gameObject.SetActive(boss is GarbageCollectorBoss { StopWarningActive: true });
             float fraction = (float)boss.Health / boss.MaxHealth;
             float settle = Mathf.SmoothStep(0f, 1f, (Time.unscaledTime - bossTrailStarted - .07f) / .25f);
             float trail = Mathf.Lerp(Mathf.Max(fraction, bossTrailFrom), fraction, settle);
