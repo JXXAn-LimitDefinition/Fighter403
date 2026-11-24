@@ -36,7 +36,8 @@ namespace Fighter403.Player
         private const float WallStaggerSeconds = 1.5f;
         private const float StopInterval = 20f;
         private const float StopWarningSeconds = 0.8f;
-        private const int FragmentHealth = 20;
+        private const int FragmentHealth = 1;
+        private const int FragmentHeal = 5;
         private const float FragmentRadius = 0.35f;
         private const float FragmentSpeed = 2.85f;
         private const float ConsumeFlashSeconds = 0.35f;
@@ -515,7 +516,7 @@ namespace Fighter403.Player
                 fragments.RemoveAt(i);
                 ForgetFragmentEffect(fragment);
                 fragment.Dismiss();
-                Heal(phaseTwo ? 50 : 40);
+                Heal(FragmentHeal);
                 ShowConsumeFlash(center, position - center);
             }
         }
