@@ -19,10 +19,13 @@ namespace Fighter403.UI
         private const float HandHiddenOffset = -430f, HandRevealDuration = 0.22f;
         private const string MenuMusicPath = "Fighter403/Music/MainMenu";
         private const string CombatMusicPath = "Fighter403/Music/Combat";
+        private const string BossMusicPath = "Fighter403/Music/Boss";
         [SerializeField] private RectTransform hand, drawPile, discardPile;
         private Fighter403MainMenu mainMenu, dungeonPauseMenu;
         private Coroutine execution;
         private AudioManager musicAudio;
+        private string musicPath;
+        private string musicBeforeBoss;
         [SerializeField] private CardDefinition[] cardPrefabs;
         [SerializeField] private TestDummy dummyPrefab;
         [SerializeField] private ProgramEnemy meleePrefab;
@@ -212,12 +215,36 @@ namespace Fighter403.UI
 
             musicAudio = AudioManager.Instance;
             musicAudio.ChangeBgm(clip, fadeTime: .45f);
+            musicPath = resourcePath;
+        }
+
+        private void UpdateBossMusic()
+        {
+            if (mainMenu != null) return;
+            bool bossActive = bossHudTarget != null && bossHudTarget.Alive && batch.Vitals.Health > 0;
+            if (bossActive)
+            {
+                if (musicPath == BossMusicPath) return;
+                musicBeforeBoss = musicPath;
+                PlayMusic(BossMusicPath);
+            }
+            else if (musicPath == BossMusicPath)
+            {
+                if (musicBeforeBoss != null) PlayMusic(musicBeforeBoss);
+                else
+                {
+                    musicAudio.StopBaseBgm();
+                    musicPath = null;
+                }
+                musicBeforeBoss = null;
+            }
         }
 
         private void StopMusic()
         {
             if (musicAudio != null) musicAudio.StopAudio(EAudioType.Bgm);
             musicAudio = null;
+            musicPath = musicBeforeBoss = null;
         }
 
         private void CompleteMenuEntry()
@@ -463,6 +490,7 @@ namespace Fighter403.UI
                 batch.Vitals.SandevistanElapsed, batch.Vitals.SandevistanRemaining);
             UpdateMeters();
             LayoutDungeonUi();
+            UpdateBossMusic();
             UpdateBossHud();
             UpdateDungeonInteractionMotion();
             UpdateHandReveal();

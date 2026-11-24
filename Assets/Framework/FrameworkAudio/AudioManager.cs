@@ -91,28 +91,30 @@ namespace Framework.FrameworkAudio
         {
             if (clip == null) return;
             
-            // 如果新老音频相同且正在播放，则跳过
             AudioSource current = _isUsingSourceA ? _bgmSourceA : _bgmSourceB;
-            if (current.clip == clip && current.isPlaying) return;
+            AudioSource other = _isUsingSourceA ? _bgmSourceB : _bgmSourceA;
+            if (_fadeCoroutine == null && current.clip == clip && current.isPlaying) return;
 
             if (_fadeCoroutine != null) StopCoroutine(_fadeCoroutine);
-            _fadeCoroutine = StartCoroutine(CrossFadeBgmCoroutine(clip, fadeTime, startTime));
+            AudioSource next = current.clip == clip && current.isPlaying ? current : other;
+            AudioSource previous = next == current ? other : current;
+            _fadeCoroutine = StartCoroutine(CrossFadeBgmCoroutine(previous, next, clip, fadeTime, startTime));
         }
 
-        private IEnumerator CrossFadeBgmCoroutine(AudioClip clip, float duration, float startTime)
+        private IEnumerator CrossFadeBgmCoroutine(AudioSource previousSource, AudioSource nextSource,
+            AudioClip clip, float duration, float startTime)
         {
-            // 识别当前活跃通道和待切通道
-            AudioSource activeSource = _isUsingSourceA ? _bgmSourceA : _bgmSourceB;
-            AudioSource nextSource = _isUsingSourceA ? _bgmSourceB : _bgmSourceA;
+            if (nextSource.clip != clip || !nextSource.isPlaying)
+            {
+                nextSource.clip = clip;
+                nextSource.time = startTime;
+                SetBgmLevel(nextSource, 0f);
+                nextSource.Play();
+            }
 
-            // 初始化新通道
-            nextSource.clip = clip;
-            nextSource.time = startTime;
-            SetBgmLevel(nextSource, 0f);
-            nextSource.Play();
-
-            float elapsed = 0;
-            float initialActiveVol = _isUsingSourceA ? _bgmLevelA : _bgmLevelB;
+            float elapsed = 0f;
+            float previousLevel = previousSource == _bgmSourceA ? _bgmLevelA : _bgmLevelB;
+            float nextLevel = nextSource == _bgmSourceA ? _bgmLevelA : _bgmLevelB;
 
             // 交叉淡化
             while (elapsed < duration)
@@ -120,19 +122,19 @@ namespace Framework.FrameworkAudio
                 elapsed += Time.unscaledDeltaTime;
                 float t = elapsed / duration;
 
-                SetBgmLevel(activeSource, Mathf.Lerp(initialActiveVol, 0, t));
-                SetBgmLevel(nextSource, Mathf.Lerp(0, 1f, t));
+                SetBgmLevel(previousSource, Mathf.Lerp(previousLevel, 0f, t));
+                SetBgmLevel(nextSource, Mathf.Lerp(nextLevel, 1f, t));
 
                 yield return null;
             }
 
             // 状态清理
-            activeSource.Stop();
-            SetBgmLevel(activeSource, 0f);
+            previousSource.Stop();
+            SetBgmLevel(previousSource, 0f);
             SetBgmLevel(nextSource, 1f);
 
             // 关键：更新状态和字典引用，确保 AudioSettings 依然有效
-            _isUsingSourceA = !_isUsingSourceA;
+            _isUsingSourceA = nextSource == _bgmSourceA;
             _audioSources[EAudioType.Bgm] = nextSource;
             _fadeCoroutine = null;
         }
@@ -188,17 +190,22 @@ namespace Framework.FrameworkAudio
             return _audioSources.ContainsKey(audioType) && _audioSources[audioType].isPlaying;
         }
         
+        public void StopBaseBgm()
+        {
+            if (_fadeCoroutine != null)
+            {
+                StopCoroutine(_fadeCoroutine);
+                _fadeCoroutine = null;
+            }
+            _bgmSourceA.Stop();
+            _bgmSourceB.Stop();
+        }
+
         public void StopAudio(EAudioType audioType)
         {
             if (audioType == EAudioType.Bgm)
             {
-                if (_fadeCoroutine != null)
-                {
-                    StopCoroutine(_fadeCoroutine);
-                    _fadeCoroutine = null;
-                }
-                _bgmSourceA.Stop();
-                _bgmSourceB.Stop();
+                StopBaseBgm();
                 SetBgmOverride(null);
                 return;
             }
