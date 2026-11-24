@@ -270,14 +270,16 @@ namespace Fighter403.UI
 
             drawPile.SetParent(hand, false);
             discardPile.SetParent(hand, false);
-            drawPile.anchoredPosition = new Vector2(-573f, 58f);
-            discardPile.anchoredPosition = new Vector2(526f, 78f);
+            drawPile.anchoredPosition = new Vector2(DeckPreviewX - 49f, 62f);
+            discardPile.anchoredPosition = new Vector2(DeckPreviewX + 49f, 62f);
             drawText = WirePile(drawPile, false);
             discardText = WirePile(discardPile, true);
             BuildPreview();
             BuildBuffDisplay();
             spentCards = Box("Consumed cards", hand, center, Vector2.zero, Vector2.zero);
-            pilePanel = Box("Pile contents", hand, center, new Vector2(-573f, 309f), new Vector2(194, 168));
+            const float pileWidth = 194f;
+            pilePanel = Box("Pile contents", hand, center,
+                new Vector2(DeckPreviewX + (DeckPreviewWidth + pileWidth) * .5f + 12f, PilePanelY), new Vector2(pileWidth, 168f));
             PaintInterfacePlate(pilePanel, InterfaceSurface, QueueFrame, true);
             pileFade = pilePanel.gameObject.AddComponent<CanvasGroup>();
             pileText = Label("Contents", pilePanel, center, new Vector2(-6f, 0f), new Vector2(160, 152), 17);
@@ -298,15 +300,14 @@ namespace Fighter403.UI
         private void BuildPreview()
         {
             var center = new Vector2(0.5f, 0.5f);
-            const float previewX = 580f;
             const float slotPitch = 65f;
-            var heading = Label("Upcoming cards", hand, center, new Vector2(previewX, 195f), new Vector2(198f, 25f), 17);
+            var heading = Label("Upcoming cards", hand, center, new Vector2(DeckPreviewX, 195f), new Vector2(DeckPreviewWidth, 25f), 17);
             heading.text = "下三张";
             heading.color = InterfaceCyan;
             heading.fontStyle = FontStyle.Bold;
             for (int i = 0; i < previewSlots.Length; ++i)
             {
-                float x = previewX + (i - (previewSlots.Length - 1) * 0.5f) * slotPitch;
+                float x = DeckPreviewX + (i - (previewSlots.Length - 1) * 0.5f) * slotPitch;
                 var slot = previewSlots[i] = Box("Upcoming card " + (i + 1), hand, center, new Vector2(x, 144f), new Vector2(61f, 71f));
                 PaintInterfacePlate(slot, InterfaceSurface, i == 0 ? OccupiedSocket : QueueFrame);
                 previewIcons[i] = Paint(Box("Card art", slot, center, new Vector2(0f, 8f), new Vector2(49f, 39f)), Color.white, false);
@@ -337,8 +338,6 @@ namespace Fighter403.UI
             shownPile = id;
             pilePanel.gameObject.SetActive(id >= 0);
             if (id < 0) return;
-            var source = id == 0 ? drawPile : discardPile;
-            pilePanel.anchoredPosition = new Vector2(source.anchoredPosition.x, 325f);
             var lines = new List<string> { id == 0 ? "\u62bd\u724c\u5806" : "\u5f03\u724c\u5806" };
             foreach (var definition in cardPrefabs)
             {
@@ -460,7 +459,7 @@ namespace Fighter403.UI
             float scale = Mathf.Min(1.35f, Mathf.Min(root.rect.width / 1580f, root.rect.height / 1010f));
             hand.localScale = Vector3.one * scale;
             buffDisplay.localScale = hand.localScale;
-            buffDisplay.anchoredPosition = handRestPosition + BuffDisplayOffset * scale;
+            buffDisplay.anchoredPosition = new Vector2(-HudSideMargin, BuffDisplayY * scale);
             UpdateBuffDisplay();
             var dummy = createdDummy;
             if (dummy == null)

@@ -174,13 +174,6 @@ namespace Fighter403.UI
             float sideGap = (width - BossHudWidth * scale) * .5f;
             float top = clearance;
 
-            float vitalsRight = vitalsPanel.anchoredPosition.x + vitalsPanel.rect.width * vitalsPanel.localScale.x;
-            if (sideGap < vitalsRight + clearance)
-            {
-                float vitalsBottom = -vitalsPanel.anchoredPosition.y + vitalsPanel.rect.height * vitalsPanel.localScale.y;
-                top = vitalsBottom + clearance;
-            }
-
             bool dungeonHudVisible = dungeonHud.gameObject.activeSelf;
             RectTransform rightHud = dungeonHudVisible ? dungeonHud : dungeonEntry;
             float rightHudWidth = rightHud.rect.width * rightHud.pivot.x * rightHud.localScale.x

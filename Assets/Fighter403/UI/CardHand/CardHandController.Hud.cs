@@ -13,7 +13,8 @@ namespace Fighter403.UI
         private const int HudFrameWidth = 48, HudFrameHeight = 28, HudBurstFrames = 12, HudBurstFps = 30;
         private const int BuffColumns = 4;
         private const float BuffColumnPitch = 48f, BuffRowPitch = 58f;
-        private static readonly Vector2 BuffDisplayOffset = new(-580f, 144f);
+        private const float BuffDisplayY = 247f, HudSideMargin = 40f;
+        private const float DeckPreviewX = 580f, DeckPreviewWidth = 198f, PilePanelY = 120f;
         private static readonly Color InterfaceSurface = new Color32(13, 23, 38, 248);
         private static readonly Color InterfaceInset = new Color32(19, 34, 51, 255);
         private static readonly Color InterfaceCyan = new Color32(109, 225, 240, 255);
@@ -91,7 +92,8 @@ namespace Fighter403.UI
         private void BuildBuffDisplay()
         {
             var center = Vector2.one * 0.5f;
-            buffDisplay = Box("Buff display", root, hand.anchorMin, Vector2.zero, new Vector2(192f, 54f));
+            buffDisplay = Box("Buff display", root, Vector2.right, Vector2.zero, new Vector2(192f, 54f));
+            buffDisplay.pivot = new Vector2(1f, .5f);
             var heading = Label("Buff heading", buffDisplay, center, Vector2.up * 43f, new Vector2(192f, 25f), 17);
             heading.text = "增益状态";
             heading.fontStyle = FontStyle.Bold;
@@ -214,7 +216,8 @@ namespace Fighter403.UI
                 {
                     float tooltipReveal = Mathf.SmoothStep(0f, 1f, (now - buff.TooltipShownAt) / .12f);
                     buff.TooltipFade.alpha = tooltipReveal;
-                    buff.Tooltip.anchoredPosition = position + Vector2.up * Mathf.Lerp(57f, 62f, tooltipReveal);
+                    float tooltipX = Mathf.Min(position.x, (buffDisplay.rect.width - buff.Tooltip.rect.width) * .5f);
+                    buff.Tooltip.anchoredPosition = new Vector2(tooltipX, position.y + Mathf.Lerp(57f, 62f, tooltipReveal));
                 }
                 ++index;
             }
@@ -291,12 +294,13 @@ namespace Fighter403.UI
             damageVignette = new PlayerDamageVignette(root);
             var topLeft = new Vector2(0f, 1f);
             var center = Vector2.one * 0.5f;
-            vitalsPanel = Box("Player vitals", root, topLeft, new Vector2(40f, -38f), new Vector2(690f, 152f));
-            vitalsPanel.pivot = topLeft;
-            healthMeter = BuildMeter("Player health", "生命", vitalsPanel, topLeft, new Vector2(345f, -35f),
-                new Vector2(690f, 70f), 1, new Color32(192, 114, 116, 255), new Color32(180, 63, 72, 255), 10);
-            blockMeter = BuildMeter("Player block", "格挡", vitalsPanel, topLeft, new Vector2(345f, -119f),
-                new Vector2(690f, 66f), 2, new Color32(154, 180, 200, 255), new Color32(118, 150, 175, 255), 6);
+            const float width = 388f;
+            vitalsPanel = Box("Player vitals", root, Vector2.zero, new Vector2(HudSideMargin, 30f), new Vector2(width, 126f));
+            vitalsPanel.pivot = Vector2.zero;
+            healthMeter = BuildMeter("Player health", "生命", vitalsPanel, topLeft, new Vector2(width * .5f, -29f),
+                new Vector2(width, 58f), 1, new Color32(192, 114, 116, 255), new Color32(180, 63, 72, 255), 10);
+            blockMeter = BuildMeter("Player block", "格挡", vitalsPanel, topLeft, new Vector2(width * .5f, -98f),
+                new Vector2(width, 56f), 2, new Color32(154, 180, 200, 255), new Color32(118, 150, 175, 255), 6);
             BuildEnergyGauge(center);
             queueBurst = BuildHudBurst(row);
             previousHealth = batch.Vitals.Health;
@@ -589,7 +593,7 @@ namespace Fighter403.UI
             {
                 float reveal = Mathf.SmoothStep(0f, 1f, (now - pileOpenedAt) / .14f);
                 pilePanel.localScale = Vector3.one * Mathf.Lerp(.94f, 1f, reveal);
-                pilePanel.anchoredPosition = new Vector2(pilePanel.anchoredPosition.x, Mathf.Lerp(319f, 325f, reveal));
+                pilePanel.anchoredPosition = new Vector2(pilePanel.anchoredPosition.x, PilePanelY - 6f * (1f - reveal));
                 pileFade.alpha = reveal;
             }
 
