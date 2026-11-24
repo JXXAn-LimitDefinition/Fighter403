@@ -15,9 +15,8 @@ namespace Fighter403.UI
     public sealed partial class CardHandController
     {
         private static readonly Vector2 DungeonCenter = new(80f, 0f);
-        private static readonly CardKind[] InitialDeck =
-            { CardKind.QuickSlash, CardKind.QuickSlash, CardKind.PhaseDash, CardKind.PhaseDash, CardKind.MatrixGuard };
 
+        [SerializeField, InspectorName("玩家初始卡组")] private PlayerInitialDeck initialDeck;
         [SerializeField, InspectorName("数据注入器")] private DebuggerDefinition dungeonDebugger;
         private DungeonRoom[][] dungeonFloors;
         private DungeonRoom dungeonRoom;
@@ -64,15 +63,21 @@ namespace Fighter403.UI
         private bool BeginDungeonRun(string seedText, bool playTraverseCue)
         {
             if (batch.Busy || dungeonFloors != null) return false;
+            string deckError = "请在 CardHandHUD 上指定玩家初始卡组。";
+            if (initialDeck == null || !initialDeck.TryBuild(cardPrefabs, out var deck, out deckError))
+            {
+                dungeonMenuText.text = deckError;
+                GameSfx.Play(Sfx.DungeonDenied);
+                return false;
+            }
             int seed = string.IsNullOrWhiteSpace(seedText) ? Environment.TickCount : DungeonGenerator.ParseSeed(seedText);
             var layout = Enumerable.Range(0, DungeonGenerator.FloorCount).Select(i => DungeonGenerator.Generate(seed, i)).ToArray();
-            var deck = InitialDeck.Select(DefinitionFor).ToArray();
             var available = DungeonPrefabs().Select(prefab => prefab.Role).ToHashSet();
-            if (deck.Any(card => card == null) || firewallBossPrefab == null ||
+            if (firewallBossPrefab == null ||
                 layout.SelectMany(floor => floor).SelectMany(room => room.Enemies).Any(role => !available.Contains(role)) ||
                 !available.Contains(EnemyRole.Swarm))
             {
-                dungeonMenuText.text = "地牢缺少已配置的卡牌或敌人预制体。";
+                dungeonMenuText.text = "地牢缺少已配置的敌人预制体。";
                 GameSfx.Play(Sfx.DungeonDenied);
                 return false;
             }

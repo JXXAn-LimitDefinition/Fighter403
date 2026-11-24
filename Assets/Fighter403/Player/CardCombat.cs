@@ -239,7 +239,8 @@ namespace Fighter403.Player
                     {
                         movementSoundStarted = true;
                         if (kind == CardKind.TriangleRift) GameSfx.Play(Sfx.RiftSlash);
-                        if (kind is CardKind.QuickSlash or CardKind.SlashPreparation) GameSfx.Play(Sfx.LightSlash);
+                        if (kind is CardKind.QuickSlash or CardKind.SlashPreparation or CardKind.Slash)
+                            GameSfx.Play(Sfx.LightSlash);
                     }
                     // Process each pulse even when a rendered frame passes several timeline ticks.
                     while (nextPulse < card.Pulses &&

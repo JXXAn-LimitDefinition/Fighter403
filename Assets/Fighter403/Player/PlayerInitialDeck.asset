@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c34302d248c04488c2a85a73a3aa59, type: 3}
+  m_Name: PlayerInitialDeck
+  m_EditorClassIdentifier: Assembly-CSharp::Fighter403.UI.PlayerInitialDeck
+  entries:
+  - card: {fileID: 6773012729095849048, guid: f989a1360319aad4681b4f9f0d96da28, type: 3}
+    copies: 1
+  - card: {fileID: 5818524168041436474, guid: 03048f6102bb0354ea05fefce97f6206, type: 3}
+    copies: 1
+  - card: {fileID: 2406493152832372606, guid: 3c1bdd1efe92f6144bdcc2aba774edaa, type: 3}
+    copies: 2
+  - card: {fileID: 256220262257077031, guid: b3ada8c9065c245459d3fc8f228dc5d1, type: 3}
+    copies: 1

@@ -1054,6 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4855472ff65544aa92a55d51601e2a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fighter403.UI.CardHandController
+  initialDeck: {fileID: 11400000, guid: 498e88d7a35f3c548b51239895512274, type: 2}
   dungeonDebugger: {fileID: 11400000, guid: 8516ec22a9eb29f43815b81a005e575a, type: 2}
   hand: {fileID: 168911867336429883}
   drawPile: {fileID: 2194910693181658241}
@@ -1072,6 +1073,7 @@ MonoBehaviour:
   - {fileID: 5883658987259543425, guid: d1de1650250f32047a790559fddf1cb3, type: 3}
   - {fileID: 5818524168041436474, guid: bd0df6b8cf814ed2932a286312658944, type: 3}
   - {fileID: 5818524168041436474, guid: 510aa094c1e44c0d9dd04426ceb4b7d7, type: 3}
+  - {fileID: 6773012729095849048, guid: f989a1360319aad4681b4f9f0d96da28, type: 3}
   dummyPrefab: {fileID: 1559693171945088114, guid: 5b3ae6aede1b8ee4eb9cb8d4ce427446, type: 3}
   meleePrefab: {fileID: 3388653782561308894, guid: 0161748a4c2260640afaf208938b740a, type: 3}
   additionalEnemyPrefabs:

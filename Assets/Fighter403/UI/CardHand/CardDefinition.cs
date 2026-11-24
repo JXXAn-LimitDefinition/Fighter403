@@ -85,7 +85,7 @@ namespace Fighter403.UI
                 (kind == CardKind.InfiniteBlueWhiteHole && attribute == CardClass.Defense) ||
                 (countMinorAttributesForCombo && (minorAttribute == attribute || secondMinorAttribute == attribute)));
         internal bool IsDirectional => kind is CardKind.TriangleRift or CardKind.PhaseDash
-            or CardKind.QuickSlash or CardKind.SlashPreparation;
+            or CardKind.QuickSlash or CardKind.SlashPreparation or CardKind.Slash;
         internal bool IsTargeted => kind is CardKind.Starfall or CardKind.ThousandSlashes;
         internal float Distance => distance;
         internal float PushDistance => pushDistance;
@@ -155,7 +155,7 @@ namespace Fighter403.UI
 
         private static CardHitShape DefaultHitShape(CardKind value) => value switch
         {
-            CardKind.TriangleRift or CardKind.QuickSlash or CardKind.SlashPreparation => CardHitShape.Arc,
+            CardKind.TriangleRift or CardKind.QuickSlash or CardKind.SlashPreparation or CardKind.Slash => CardHitShape.Arc,
             CardKind.PhaseDash => CardHitShape.Dash,
             CardKind.OrbitSpin or CardKind.LimitedRedBlackHole or CardKind.InfiniteBlueWhiteHole => CardHitShape.Circle,
             CardKind.MatrixGuard => CardHitShape.None,
@@ -173,6 +173,7 @@ namespace Fighter403.UI
                     $"前方 {units}，伤害 {damage}\n{seconds} 秒内下次受击 +{fractureBonus}",
                 CardKind.TriangleRift => $"前方 {sweepDegrees:0.#}°，半径 {units}\n伤害 {damage}",
                 CardKind.QuickSlash => $"对前方小范围造成 {damage} 点伤害",
+                CardKind.Slash => $"斩击前方敌人，造成 {damage} 点伤害",
                 CardKind.SlashPreparation => $"对前方小范围造成 {damage} 点伤害\n此牌视为打出 {ComboCount} 张三角攻击牌",
                 CardKind.PhaseDash => $"点选朝敌人突进，拖放指定落点\n最远 {units}，沿途造成 {damage} 点伤害",
                 CardKind.OrbitSpin when Pulses > 1 => $"半径 {units}，{damage} 伤害 × {Pulses}\n减速 40%，持续 {seconds} 秒",

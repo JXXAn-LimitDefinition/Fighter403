@@ -10,7 +10,7 @@ namespace Fighter403.UI
     internal enum CardKind
     {
         TriangleRift, PhaseDash, OrbitSpin, MatrixGuard, Starfall, Sandevistan, ThousandSlashes,
-        QuickSlash, SlashPreparation, LimitedRedBlackHole, DualThread, InfiniteBlueWhiteHole, BigBang
+        QuickSlash, SlashPreparation, LimitedRedBlackHole, DualThread, InfiniteBlueWhiteHole, BigBang, Slash
     }
     public enum CardClass { Attack, Defense, Ability, Unspecified }
     internal enum CardSelectionState { Ready, Selected, InsufficientEnergy, Unavailable, Locked }
