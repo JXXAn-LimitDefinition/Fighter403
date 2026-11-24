@@ -164,10 +164,6 @@ namespace Fighter403.Player
     {
         public const int SameClassCardsForMaxMultiplier = 3;
 
-        public static float TimeScale(bool executing, bool targetLocked, bool moving) =>
-            executing ? 1f : targetLocked ? 0.1f : moving ? 1f : 0.2f;
-        public static float TimeScale(bool executing, bool targetLocked) => TimeScale(executing, targetLocked, false);
-        public static float TimeScale(bool executing) => TimeScale(executing, false, false);
         public static bool InRange(float squaredDistance, float range) => squaredDistance <= range * range;
         public static bool InArc(float squaredDistance, float angle, float range, float halfAngle) =>
             InRange(squaredDistance, range) && angle <= halfAngle;

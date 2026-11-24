@@ -618,7 +618,7 @@ namespace Fighter403.UI
 
         private void UpdateCombatClock() =>
             SetClock(mainMenu != null || DungeonRoomTransitioning || FreezeForDashPlan || DungeonMenuOpen && !batch.Busy ? 0f
-                : CombatRules.TimeScale(batch.Busy, selectedTarget != null, movement.MoveAmount > 0.01f));
+                : 1f);
 
         private void SetClock(float scale)
         {
