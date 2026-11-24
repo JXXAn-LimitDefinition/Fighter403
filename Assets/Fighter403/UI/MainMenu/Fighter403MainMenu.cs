@@ -10,10 +10,13 @@ using UnityEngine.UI;
 
 namespace Fighter403.UI
 {
-    internal sealed class Fighter403MainMenu : MonoBehaviour
+    internal sealed partial class Fighter403MainMenu : MonoBehaviour
     {
         private const string AssetsPath = "Fighter403/MainMenu/";
         private const string SettingsKey = "Fighter403.MainMenu.";
+        private const int FocusSparkGridSize = 4;
+        private const int FocusSparkFrameCount = FocusSparkGridSize * FocusSparkGridSize;
+        private const float FocusSparkFramesPerSecond = 43f;
         private const int EntryFramesPerSecond = 30;
         private const int EntryColumns = 6;
         private const int EntryRows = 8;
@@ -69,6 +72,7 @@ namespace Fighter403.UI
 
             var menu = Create("Fighter403 Main Menu", menuFont);
             if (menu == null) return null;
+            menu.introFont = menuFont != null ? menuFont : menu.font;
             menu.beginRun = start;
             menu.handOff = finish;
             menu.Build(gateArt, title);
@@ -171,14 +175,19 @@ namespace Fighter403.UI
 
             Texture(Place(pages[0], "Fighter403", 0, 326, 550, 550f * title.height / title.width), title);
             Rule(pages[0], 308);
-            entries[0] = Button(pages[0], "Start Game", "开始游戏", new Vector2(0, 212), new Vector2(328, 64),
+            tutorialEntry = Button(pages[0], "Open Tutorial", "", new Vector2(0, 241), new Vector2(328, 54),
+                () => OpenIntro(fromStart: false));
+            var tutorialLabel = tutorialEntry.GetComponentInChildren<TextMeshProUGUI>();
+            tutorialLabel.font = introFont;
+            tutorialLabel.text = "游戏教程";
+            entries[0] = Button(pages[0], "Start Game", "开始游戏", new Vector2(0, 169), new Vector2(328, 64),
                 StartGame, ButtonIcon.Start);
-            entries[1] = Button(pages[0], "Open Settings", "设置", new Vector2(0, 138), new Vector2(328, 64),
+            entries[1] = Button(pages[0], "Open Settings", "设置", new Vector2(0, 95), new Vector2(328, 64),
                 () => OpenPage(1), ButtonIcon.Settings);
-            entries[2] = Button(pages[0], "Open Credits", "制作人", new Vector2(0, 64), new Vector2(328, 64),
+            entries[2] = Button(pages[0], "Open Credits", "制作人", new Vector2(0, 21), new Vector2(328, 64),
                 () => OpenPage(2), ButtonIcon.Credits);
-            SetVerticalNavigation(entries);
-            warning = Label(Place(pages[0], "Start Error", 1, 7, 490, 45), "", 19, Cyan);
+            SetVerticalNavigation(new Selectable[] { tutorialEntry, entries[0], entries[1], entries[2] });
+            warning = Label(Place(pages[0], "Start Error", 1, -36, 490, 45), "", 19, Cyan);
             firstChoices[0] = entries[0];
             BuildSettings(pages[1]);
 
@@ -357,6 +366,11 @@ namespace Fighter403.UI
         private void Update()
         {
             if (openingRun || restoredRun) return;
+            if (introRoot != null)
+            {
+                UpdateIntro();
+                return;
+            }
             if (page == 1) fullScreenLabel.text = Screen.fullScreen ? "开启" : "关闭";
             if (page != 0 && Keyboard.current?.escapeKey.wasPressedThisFrame == true)
             {
@@ -409,6 +423,7 @@ namespace Fighter403.UI
             content.localScale = Vector3.one * scale;
             content.anchoredPosition = new Vector2(left, narrow ? size.y * .12f : size.y * .50f - 225 * scale);
             hints.anchoredPosition = new Vector2(left, size.y * .055f);
+            if (introRoot != null) ArrangeIntro(size);
         }
 
         private void CueFocus(RectTransform item)
@@ -416,7 +431,7 @@ namespace Fighter403.UI
             if (openingRun || item == null || Time.unscaledTime - lastFocusCue < .085f) return;
             lastFocusCue = Time.unscaledTime;
             GameSfx.Play(Sfx.MenuFocus);
-            if (page != 0 || focusSpark.texture == null) return;
+            if (introRoot != null || page != 0 || focusSpark.texture == null) return;
             if (sparkAnimation != null) StopCoroutine(sparkAnimation);
             Vector3 edge = item.TransformPoint(new Vector3(item.rect.xMax - 33, item.rect.center.y));
             Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(null, edge);
@@ -429,9 +444,10 @@ namespace Fighter403.UI
         {
             focusSpark.gameObject.SetActive(true);
             float started = Time.unscaledTime;
-            for (int frame = 0; frame < 16; frame = (int)((Time.unscaledTime - started) * 43f))
+            for (int frame = 0; frame < FocusSparkFrameCount;
+                frame = (int)((Time.unscaledTime - started) * FocusSparkFramesPerSecond))
             {
-                SheetFrame(focusSpark, frame, 4, 4);
+                SheetFrame(focusSpark, frame, FocusSparkGridSize, FocusSparkGridSize);
                 yield return null;
             }
             focusSpark.gameObject.SetActive(false);
@@ -440,7 +456,17 @@ namespace Fighter403.UI
 
         private void StartGame()
         {
-            if (openingRun) return;
+            if (openingRun || introRoot != null) return;
+            if (PlayerPrefs.GetInt(IntroSeenKey) == 0)
+            {
+                OpenIntro(fromStart: true);
+                return;
+            }
+            BeginEntry();
+        }
+
+        private void BeginEntry()
+        {
             openingRun = true;
             warning.text = "";
             PlayerPrefs.Save();
@@ -460,6 +486,7 @@ namespace Fighter403.UI
 
             // Render the opaque shutter frame before generating and moving the player into the first room.
             yield return null;
+            if (introRoot != null) CloseIntro();
             string failure = beginRun();
             restoredRun = failure == null;
             if (restoredRun) backdrop.gameObject.SetActive(false);
