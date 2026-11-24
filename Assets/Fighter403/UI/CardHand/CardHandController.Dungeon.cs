@@ -29,7 +29,7 @@ namespace Fighter403.UI
         private Vector2 beforeDungeon, roomHalfSize;
         private readonly List<GameObject> hiddenTrainingTargets = new();
         private readonly HashSet<int> floorsWithShopCardRemoval = new();
-        private int dungeonSeed, dungeonFloor, fragments;
+        private int dungeonFloor, fragments;
         private bool dungeonFinished, dungeonLost, dungeonFreeHand;
         private Image dungeonRoomCurtain;
 
@@ -63,7 +63,7 @@ namespace Fighter403.UI
 
         private bool BeginDungeonRun(string seedText, bool playTraverseCue)
         {
-            if (batch.Busy || dungeonFloors != null) return false;
+            if (batch.Busy || dungeonFloors != null && !dungeonFinished) return false;
             string deckError = "请在 CardHandHUD 上指定玩家初始卡组。";
             if (initialDeck == null || !initialDeck.TryBuild(cardPrefabs, out var deck, out deckError))
             {
@@ -97,6 +97,7 @@ namespace Fighter403.UI
                 return false;
             }
 
+            if (dungeonFloors != null) EndDungeonRun();
             ClearBetweenDungeonRooms();
             CloseFirewallTrial(restorePosition: true);
             beforeDungeon = movement.Position;
@@ -111,7 +112,6 @@ namespace Fighter403.UI
             var vitals = new CombatVitals(movement.BaseStats);
             ChangeBatch(new CardBatch(new System.Random(seed), cardPrefabs, vitals, deck));
             DebuggersManager.BeginRun();
-            dungeonSeed = seed;
             dungeonFloor = fragments = 0;
             floorsWithShopCardRemoval.Clear();
             dungeonFinished = dungeonLost = dungeonFreeHand = false;
@@ -164,14 +164,81 @@ namespace Fighter403.UI
             Physics2D.SyncTransforms();
         }
 
-        private void EndDungeon()
+        private void PauseDungeon()
         {
-            if (dungeonFloors == null || batch.Busy) return;
-            StopMusic();
+            dungeonPauseMenu = Fighter403MainMenu.OpenPause(MenuFont, ResumeDungeon, ReturnToMainMenu);
+            if (dungeonPauseMenu == null) return;
+            batch.Vitals.PauseEffects();
+            CancelCardDrag();
+            queueDrag = null;
+            UpdatePlanningState();
+            SetClock(0f);
+            GameSfx.Play(Sfx.MenuConfirm);
+        }
+
+        private void ResumeDungeon()
+        {
+            CloseDungeonPauseMenu();
+            UpdatePlanningState();
+            UpdateCombatClock();
+            GameSfx.Play(Sfx.MenuBack);
+        }
+
+        private void CloseDungeonPauseMenu()
+        {
+            if (dungeonPauseMenu == null) return;
+            batch.Vitals.ResumeEffects();
+            PlayerPrefs.Save();
+            dungeonPauseMenu.gameObject.SetActive(false);
+            Destroy(dungeonPauseMenu.gameObject);
+            dungeonPauseMenu = null;
+        }
+
+        private void ReturnToMainMenu()
+        {
+            if (dungeonRoom == null || mainMenu != null || DungeonRoomTransitioning) return;
+            if (!OpenMainMenu())
+            {
+                if (dungeonFinished) SetDungeonFeedback("暂时无法打开主界面");
+                return;
+            }
+            CloseDungeonPauseMenu();
+            EndDungeonRun();
+            UpdateCombatClock();
+        }
+
+        private void RestartDungeon()
+        {
+            if (!BeginDungeonRun(null, playTraverseCue: true))
+                SetDungeonFeedback(dungeonMenuText.text);
+            else
+                UpdateCombatClock();
+        }
+
+        private void EndDungeonRun()
+        {
+            if (execution != null)
+            {
+                StopCoroutine(execution);
+                execution = null;
+            }
+            if (batch.Busy)
+            {
+                combat.ResetMotion();
+                while (batch.Busy) batch.CompleteCurrent(false);
+            }
+            bigBangTimeStop = flurryHitStop = false;
+            hitStopUntil = 0f;
+            flurryScreen?.End();
+            ClearCastCards();
+            executingDashPlans.Clear();
+            GameSfx.StopLoop(ref sandevistanLoop);
+            dualThreadWasActive = false;
             ClearBetweenDungeonRooms();
             DestroyDungeonRoom();
             dungeonFloors = null;
             dungeonRoom = null;
+            dungeonFinished = dungeonLost = dungeonFreeHand = false;
             ChangeBatch(trainingBatch);
             trainingBatch = null;
             DebuggersManager.Restore(trainingDebuggers);
@@ -183,7 +250,6 @@ namespace Fighter403.UI
             resetButton.gameObject.SetActive(true);
             CloseDungeonMenu();
             RefreshDungeonUi();
-            GameSfx.Play(Sfx.DungeonTraverse, .70f);
         }
 
         private void DestroyDungeonRoom()

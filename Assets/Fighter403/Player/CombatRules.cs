@@ -15,6 +15,8 @@ namespace Fighter403.Player
         private double sandevistanUntil;
         private double dualThreadUntil;
         private double counterattackUntil, counterattackMomentUntil;
+        private double pausedEffectTime = -1d, pausedEffectSeconds;
+        private double EffectTime => (pausedEffectTime >= 0d ? pausedEffectTime : Time.unscaledTimeAsDouble) - pausedEffectSeconds;
         private readonly Queue<(CombatTarget Source, int Points)> counterattacks = new();
         public int MaxHealth { get; }
         public int MaxEnergy { get; }
@@ -24,22 +26,34 @@ namespace Fighter403.Player
         internal float DungeonDamageMultiplier { get; set; } = 1f;
         public double Block { get; private set; }
         public float Energy { get; private set; }
-        public double SandevistanRemaining => Math.Max(0d, sandevistanUntil - Time.unscaledTimeAsDouble);
-        public float SandevistanElapsed => (float)(Time.unscaledTimeAsDouble - sandevistanStartedAt);
+        public double SandevistanRemaining => Math.Max(0d, sandevistanUntil - EffectTime);
+        public float SandevistanElapsed => (float)(EffectTime - sandevistanStartedAt);
         public bool SandevistanActive => SandevistanRemaining > 0d;
-        internal double KillSlowMotionUntil { get; set; }
-        internal bool KillSlowMotionActive => Time.unscaledTimeAsDouble < KillSlowMotionUntil;
-        public double DualThreadRemaining => Math.Max(0d, dualThreadUntil - Time.unscaledTimeAsDouble);
-        internal double CounterattackRemaining => Math.Max(0d, counterattackUntil - Time.unscaledTimeAsDouble);
-        internal double CounterattackMomentRemaining => Math.Max(0d, counterattackMomentUntil - Time.unscaledTimeAsDouble);
+        private double killSlowMotionUntil;
+        internal bool KillSlowMotionActive => EffectTime < killSlowMotionUntil;
+        public double DualThreadRemaining => Math.Max(0d, dualThreadUntil - EffectTime);
+        internal double CounterattackRemaining => Math.Max(0d, counterattackUntil - EffectTime);
+        internal double CounterattackMomentRemaining => Math.Max(0d, counterattackMomentUntil - EffectTime);
         internal int CounterattackBonus => CounterattackMomentRemaining > 0d ? (int)Math.Floor(Block * 0.5d + 0.5d) : 0;
         internal event Action<Vector2, bool> Impact;
 
-        public void ActivateDualThread(float realSeconds) => dualThreadUntil = Time.unscaledTimeAsDouble + realSeconds;
+        internal void PauseEffects() => pausedEffectTime = Time.unscaledTimeAsDouble;
+
+        internal void ResumeEffects()
+        {
+            if (pausedEffectTime < 0d) return;
+            pausedEffectSeconds += Time.unscaledTimeAsDouble - pausedEffectTime;
+            pausedEffectTime = -1d;
+        }
+
+        internal void ActivateKillSlowMotion(float seconds) => killSlowMotionUntil = EffectTime + seconds;
+        internal void ClearKillSlowMotion() => killSlowMotionUntil = 0d;
+
+        public void ActivateDualThread(float realSeconds) => dualThreadUntil = EffectTime + realSeconds;
         public void ClearDualThread() => dualThreadUntil = 0d;
 
-        internal void ActivateCounterattack(float realSeconds) => counterattackUntil = Time.unscaledTimeAsDouble + realSeconds;
-        internal void ActivateCounterattackMoment(float realSeconds) => counterattackMomentUntil = Time.unscaledTimeAsDouble + realSeconds;
+        internal void ActivateCounterattack(float realSeconds) => counterattackUntil = EffectTime + realSeconds;
+        internal void ActivateCounterattackMoment(float realSeconds) => counterattackMomentUntil = EffectTime + realSeconds;
         internal bool TryTakeCounterattack(out (CombatTarget Source, int Points) hit) => counterattacks.TryDequeue(out hit);
 
         internal void ClearCounterattacks()
@@ -50,7 +64,7 @@ namespace Fighter403.Player
 
         public void ActivateSandevistan(float realSeconds)
         {
-            sandevistanStartedAt = Time.unscaledTimeAsDouble;
+            sandevistanStartedAt = EffectTime;
             sandevistanUntil = sandevistanStartedAt + realSeconds;
         }
         public void ClearSandevistan() => sandevistanUntil = 0d;

@@ -20,7 +20,8 @@ namespace Fighter403.UI
         private const string MenuMusicPath = "Fighter403/Music/MainMenu";
         private const string CombatMusicPath = "Fighter403/Music/Combat";
         [SerializeField] private RectTransform hand, drawPile, discardPile;
-        private Fighter403MainMenu mainMenu;
+        private Fighter403MainMenu mainMenu, dungeonPauseMenu;
+        private Coroutine execution;
         private AudioManager musicAudio;
         [SerializeField] private CardDefinition[] cardPrefabs;
         [SerializeField] private TestDummy dummyPrefab;
@@ -178,16 +179,20 @@ namespace Fighter403.UI
             oldFixed = Time.fixedDeltaTime;
             ownsClock = true;
             if (gameObject.scene.buildIndex == 0 && gameObject.scene == SceneManager.GetActiveScene())
-            {
-                var menuFont = cardPrefabs[0].GetComponentInChildren<TMPro.TMP_Text>(true)?.font;
-                mainMenu = Fighter403MainMenu.Open(menuFont, BeginFromMainMenu, CompleteMenuEntry);
-                if (mainMenu != null)
-                {
-                    movement.SetPlanningLock(true);
-                    SetClock(0f);
-                    PlayMusic(MenuMusicPath);
-                }
-            }
+                OpenMainMenu();
+        }
+
+        private TMPro.TMP_FontAsset MenuFont =>
+            cardPrefabs[0].GetComponentInChildren<TMPro.TMP_Text>(true)?.font;
+
+        private bool OpenMainMenu()
+        {
+            mainMenu = Fighter403MainMenu.Open(MenuFont, BeginFromMainMenu, CompleteMenuEntry);
+            if (mainMenu == null) return false;
+            UpdatePlanningState();
+            SetClock(0f);
+            PlayMusic(MenuMusicPath);
+            return true;
         }
 
         private string BeginFromMainMenu()
@@ -351,6 +356,18 @@ namespace Fighter403.UI
         private void Update()
         {
             if (mainMenu != null || batch == null || DungeonRoomTransitioning) return;
+            var keys = Keyboard.current;
+            if (dungeonPauseMenu != null)
+            {
+                if (keys?.escapeKey.wasPressedThisFrame == true) ResumeDungeon();
+                return;
+            }
+            if (dungeonRoom != null && !dungeonFinished && batch.Vitals.Health > 0 &&
+                keys?.escapeKey.wasPressedThisFrame == true)
+            {
+                PauseDungeon();
+                return;
+            }
             StepRootHandLocks();
             flurryScreen?.StepColorRestore();
             batch.Vitals.StepBlock(Time.deltaTime);
@@ -379,7 +396,6 @@ namespace Fighter403.UI
             bool dualThreadActive = batch.Vitals.DualThreadRemaining > 0d;
             if (dualThreadWasActive && !dualThreadActive) GameSfx.Play(Sfx.DualEnd);
             dualThreadWasActive = dualThreadActive;
-            var keys = Keyboard.current;
             var mouse = Mouse.current;
             if (UpdateDungeon(keys)) return;
             UpdateTargetSelection();
@@ -439,7 +455,7 @@ namespace Fighter403.UI
 
         private void LateUpdate()
         {
-            if (batch == null || movement == null || root == null || energyGauge == null) return;
+            if (dungeonPauseMenu != null || batch == null || movement == null || root == null || energyGauge == null) return;
             combat.ResolveCounterattacks(batch.Vitals);
             playerImpact.Tick();
             UpdateCombatClock();
@@ -617,14 +633,13 @@ namespace Fighter403.UI
         }
 
         private void UpdateCombatClock() =>
-            SetClock(mainMenu != null || DungeonRoomTransitioning || FreezeForDashPlan || DungeonMenuOpen && !batch.Busy ? 0f
-                : 1f);
+            SetClock(DungeonRoomTransitioning || FreezeForDashPlan || DungeonMenuOpen && !batch.Busy ? 0f : 1f);
 
         private void SetClock(float scale)
         {
             if (!ownsClock) return;
             bool sandevistanActive = batch.Vitals.SandevistanActive;
-            if (bigBangTimeStop)
+            if (mainMenu != null || dungeonPauseMenu != null || bigBangTimeStop)
                 scale = 0f;
             else if (scale > 0f && batch.Vitals.KillSlowMotionActive)
                 scale = killSlowMotionScale;
@@ -638,7 +653,7 @@ namespace Fighter403.UI
         private void PlayKillSlowMotion()
         {
             if (!ownsClock || killSlowMotionSeconds <= 0f) return;
-            batch.Vitals.KillSlowMotionUntil = Time.unscaledTimeAsDouble + killSlowMotionSeconds;
+            batch.Vitals.ActivateKillSlowMotion(killSlowMotionSeconds);
             UpdateCombatClock();
         }
 
@@ -850,7 +865,7 @@ namespace Fighter403.UI
         private void UpdatePlanningState()
         {
             if (batch == null || batch.Busy) return;
-            movement.SetPlanningLock(mainMenu != null || DungeonRoomTransitioning || FreezeForDashPlan || DungeonInteractionOpen ||
+            movement.SetPlanningLock(mainMenu != null || dungeonPauseMenu != null || DungeonRoomTransitioning || FreezeForDashPlan || DungeonInteractionOpen ||
                 DungeonMenuOpen || DungeonActorAnimating || dungeonFinished && dungeonRoom != null);
             timeStopPostProcess?.SetDashActive(FreezeForDashPlan);
         }
@@ -924,7 +939,7 @@ namespace Fighter403.UI
             GameSfx.Play(Sfx.CardSubmit);
             SetPile(-1);
             SetClock(1f);
-            StartCoroutine(Execute());
+            execution = StartCoroutine(Execute());
         }
 
         private IEnumerator Execute()
@@ -980,7 +995,12 @@ namespace Fighter403.UI
                     timeStopPostProcess.PlayBigBang(movement.Position);
                     GameSfx.Play(Sfx.BigBangCharge);
                     Status("大爆炸  ·  时停");
-                    yield return new WaitForSecondsRealtime(CombatTimeStopPostProcess.BigBangInversionSeconds);
+                    float remaining = CombatTimeStopPostProcess.BigBangInversionSeconds;
+                    while (remaining > 0f)
+                    {
+                        yield return null;
+                        if (dungeonPauseMenu == null) remaining -= Time.unscaledDeltaTime;
+                    }
                     bigBangTimeStop = false;
                     timeStopPostProcess.RestoreBigBangColors();
                     SetClock(1f);
@@ -1043,6 +1063,7 @@ namespace Fighter403.UI
                 // Advance both timelines on the same rendered frame, even during hit stop.
                 while (true)
                 {
+                    while (dungeonPauseMenu != null) yield return null;
                     bool running = false;
                     for (int i = 0; i < count; i++)
                     {
@@ -1057,6 +1078,7 @@ namespace Fighter403.UI
                 batch.CompleteCurrent(true);
                 if (batch.Busy) Refresh();
             }
+            execution = null;
             executingDashPlans.Clear();
             RebuildDashPath(0);
             Refresh();
@@ -1423,6 +1445,7 @@ namespace Fighter403.UI
         {
             ClearRootHandLocks();
             StopMusic();
+            CloseDungeonPauseMenu();
             if (mainMenu != null)
             {
                 Destroy(mainMenu.gameObject);
@@ -1439,13 +1462,14 @@ namespace Fighter403.UI
             if (batch != null)
             {
                 batch.Vitals.Impact -= playerImpact.Play;
-                batch.Vitals.KillSlowMotionUntil = 0d;
+                batch.Vitals.ClearKillSlowMotion();
                 batch.Vitals.ClearSandevistan();
                 batch.Vitals.ClearDualThread();
                 batch.Vitals.ClearCounterattacks();
                 if (CombatTarget.BattleVitals == batch.Vitals) CombatTarget.BattleVitals = null;
             }
             StopAllCoroutines();
+            execution = null;
             bigBangTimeStop = false;
             HideDungeonRoomCurtain();
             flurryHitStop = false;

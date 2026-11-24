@@ -61,15 +61,40 @@ namespace Fighter403.UI
         {
             var gateArt = Resources.Load<Texture2D>(AssetsPath + "Firewall");
             var title = Resources.Load<Texture2D>(AssetsPath + "Wordmark");
-            var pixelFont = Resources.Load<TMP_FontAsset>(AssetsPath + "MenuPixelFont");
-            if (pixelFont != null) menuFont = pixelFont;
-            if (gateArt == null || title == null || menuFont == null)
+            if (gateArt == null || title == null)
             {
-                Debug.LogError("Fighter403 main menu is missing its gate, title, or font.");
+                Debug.LogError("Fighter403 main menu is missing its gate or title.");
                 return null;
             }
 
-            var root = new GameObject("Fighter403 Main Menu", typeof(RectTransform), typeof(Canvas),
+            var menu = Create("Fighter403 Main Menu", menuFont);
+            if (menu == null) return null;
+            menu.beginRun = start;
+            menu.handOff = finish;
+            menu.Build(gateArt, title);
+            return menu;
+        }
+
+        internal static Fighter403MainMenu OpenPause(TMP_FontAsset menuFont, Action resume, Action returnToMainMenu)
+        {
+            var gateArt = Resources.Load<Texture2D>(AssetsPath + "Firewall");
+            if (gateArt == null) return null;
+            var menu = Create("Fighter403 Pause Menu", menuFont);
+            if (menu != null) menu.BuildPause(gateArt, resume, returnToMainMenu);
+            return menu;
+        }
+
+        private static Fighter403MainMenu Create(string name, TMP_FontAsset menuFont)
+        {
+            var pixelFont = Resources.Load<TMP_FontAsset>(AssetsPath + "MenuPixelFont");
+            if (pixelFont != null) menuFont = pixelFont;
+            if (menuFont == null)
+            {
+                Debug.LogError("Fighter403 menu is missing its font.");
+                return null;
+            }
+
+            var root = new GameObject(name, typeof(RectTransform), typeof(Canvas),
                 typeof(CanvasScaler), typeof(GraphicRaycaster));
             var canvas = root.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -81,13 +106,10 @@ namespace Fighter403.UI
             scaler.matchWidthOrHeight = 1;
             var menu = root.AddComponent<Fighter403MainMenu>();
             menu.font = menuFont;
-            menu.beginRun = start;
-            menu.handOff = finish;
-            menu.Build(gateArt, title);
             return menu;
         }
 
-        private void Build(Texture2D gateArt, Texture2D title)
+        private void BuildBackdrop(Texture2D gateArt)
         {
             screen = (RectTransform)transform;
             backdrop = Stretch(screen, "Backdrop");
@@ -132,6 +154,16 @@ namespace Fighter403.UI
 
             CreateFrame(backdrop);
             content = Rect(backdrop, "Pages", Vector2.zero, Vector2.zero, Vector2.zero, new Vector2(620, 450));
+            hints = Place(backdrop, "Controls", 0, 0, 420, 30);
+            controlsHint = Label(Stretch(hints, "Keys"), "", 18, Muted);
+            focusSpark = Texture(Rect(backdrop, "Focus Spark", Vector2.zero, new Vector2(.5f, .5f),
+                Vector2.zero, new Vector2(82, 82)), Resources.Load<Texture2D>(AssetsPath + "FocusSpark"));
+            focusSpark.gameObject.SetActive(false);
+        }
+
+        private void Build(Texture2D gateArt, Texture2D title)
+        {
+            BuildBackdrop(gateArt);
             for (int i = 0; i < pages.Length; i++) pages[i] = Stretch(content, "Page " + (i + 1));
             pages[0].name = "Main";
             pages[1].name = "Settings";
@@ -154,12 +186,6 @@ namespace Fighter403.UI
             Label(Place(pages[2], "Producer", 0, 203, 530, 75), "魏旻顾（季闲）", 48, Paper);
             firstChoices[2] = BackButton(pages[2], 132);
 
-            hints = Place(backdrop, "Controls", 0, 0, 420, 30);
-            controlsHint = Label(Stretch(hints, "Keys"), "", 18, Muted);
-            focusSpark = Texture(Rect(backdrop, "Focus Spark", Vector2.zero, new Vector2(.5f,.5f),
-                Vector2.zero, new Vector2(82, 82)), Resources.Load<Texture2D>(AssetsPath + "FocusSpark"));
-            focusSpark.gameObject.SetActive(false);
-
             entryBlocker = Plate(Stretch(screen, "Dungeon Entry Transition"), Color.clear, true);
             var entryAtlas = Resources.Load<Texture2D>(AssetsPath + "DungeonEntry");
             if (entryAtlas != null)
@@ -176,14 +202,38 @@ namespace Fighter403.UI
             ShowPage(0);
         }
 
-        private void BuildSettings(RectTransform panel)
+        private void BuildPause(Texture2D gateArt, Action resume, Action returnToMainMenu)
         {
-            Header(panel, "设置");
+            BuildBackdrop(gateArt);
+            var panel = pages[0] = Stretch(content, "Pause");
+            Header(panel, "游戏暂停");
+            BuildVolumeRows(panel);
+            Divider(panel, 127);
+            settingsRows[3] = Button(panel, "Resume Game", "继续游戏", new Vector2(0, 59), new Vector2(236, 50),
+                resume, ButtonIcon.Start);
+            settingsRows[4] = Button(panel, "Return to Main Menu", "返回主界面", new Vector2(251, 59),
+                new Vector2(239, 50), returnToMainMenu);
+            SetVerticalNavigation(settingsRows);
+            firewall.color = new Color(.49f, .53f, .56f);
+            firewallParticles.color = idleSweep.color = new Color(1f, 1f, 1f, .32f);
+            controlsHint.text = "Esc  继续游戏";
+            lastFocus = settingsRows[3].gameObject;
+            EventSystem.current?.SetSelectedGameObject(lastFocus);
+        }
+
+        private void BuildVolumeRows(RectTransform panel)
+        {
             settingsRows[0] = SliderRow(panel, "总音量", "Master", .80f, 251, value => AudioListener.volume = value);
             settingsRows[1] = SliderRow(panel, "音乐音量", "Music", .70f, 191,
                 value => AudioManager.Instance.SetMusicMixVolume(value));
             settingsRows[2] = SliderRow(panel, "音效音量", "Effects", .75f, 131,
                 value => AudioManager.Instance.AudioSettings(EAudioType.Sfx, value));
+        }
+
+        private void BuildSettings(RectTransform panel)
+        {
+            Header(panel, "设置");
+            BuildVolumeRows(panel);
             Divider(panel, 127);
             Label(Place(panel, "Fullscreen Label", 0, 75, 190, 52), "全屏", 24, Paper);
             var button = Button(panel, "Fullscreen", "", new Vector2(393, 81), new Vector2(97, 42), ToggleFullScreen);

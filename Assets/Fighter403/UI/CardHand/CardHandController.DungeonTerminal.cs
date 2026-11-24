@@ -49,7 +49,8 @@ namespace Fighter403.UI
             else BuildRoomChoices();
 
             InteractionChoice[] cards = interactionChoices.Where(choice => choice.Card != null).ToArray();
-            InteractionChoice[] services = interactionChoices.Where(choice => choice.Card == null).ToArray();
+            InteractionChoice[] services = dungeonFinished ? Array.Empty<InteractionChoice>() :
+                interactionChoices.Where(choice => choice.Card == null).ToArray();
             terminalCompact = WantsCompactTerminal;
             int pageSize = terminalCompact ? 3 : CardsPerPage;
             int keptIndex = Array.FindIndex(cards, choice => choice.Card == keepCard);
@@ -96,7 +97,8 @@ namespace Fighter403.UI
                 BuildInteractionService(services[i], servicesLeft, servicesTop + i * TerminalServiceStep, servicesWidth);
 
             BuildInteractionFooter(width);
-            var selected = page.FirstOrDefault(choice => choice.Card == keepCard) ??
+            var selected = dungeonFinished ? interactionChoices[0] :
+                page.FirstOrDefault(choice => choice.Card == keepCard) ??
                 services.FirstOrDefault(choice => choice.Title == keepService) ??
                 page.FirstOrDefault() ?? services.FirstOrDefault();
             SelectDungeonChoice(selected);
@@ -285,16 +287,18 @@ namespace Fighter403.UI
                 ConfirmDungeonChoice, primary: true);
             dungeonConfirmLabel = dungeonConfirm.GetComponentInChildren<TMP_Text>();
             bool hasSecondary = interactionSecondary.Apply != null;
+            float secondaryWidth = dungeonFinished ? 120f : 86f;
+            float actionLeft = confirmLeft - (hasSecondary ? secondaryWidth + 10f : 0f);
             if (hasSecondary)
-                TerminalButton("Secondary action", interactionSecondary.Label, dungeonChoices, confirmLeft - 96,
-                    top + 9, 86, 44, () => interactionSecondary.Apply());
+                TerminalButton("Secondary action", interactionSecondary.Label, dungeonChoices, actionLeft,
+                    top + 9, secondaryWidth, 44, () => interactionSecondary.Apply());
 
-            float statusWidth = confirmLeft - TerminalInset - (hasSecondary ? 110f : 14f);
+            float statusWidth = actionLeft - TerminalInset - 14f;
             terminalHint = TerminalLabel(interactionKeyboardHint, dungeonChoices, TerminalInset, top + 9, statusWidth, 44, 14);
             terminalHint.color = DungeonMuted;
             dungeonFeedback = TerminalLabel("", dungeonChoices, TerminalInset, top + 9, statusWidth, 44, 16);
             terminalFooterSpark = CreateTerminalSpark(dungeonChoices, new Vector2(0, 0),
-                new Vector2(confirmLeft - (hasSecondary ? 103f : 12f), 32));
+                new Vector2(actionLeft - (hasSecondary ? 7f : 12f), 32));
         }
 
         private Button TerminalButton(string name, string title, RectTransform parent, float left, float top,

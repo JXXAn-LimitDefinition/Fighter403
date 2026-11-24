@@ -14,7 +14,7 @@ namespace Fighter403.UI
         private static readonly Color MapAccent = new Color32(107, 220, 236, 255);
         private const float MapPanelTop = -72f, MapGraphWidth = 204f, MapGraphHeight = 124f;
         private RectTransform dungeonSetup, dungeonMenu, dungeonHud, dungeonMap, mapTiles, dungeonEntry;
-        private Text dungeonMenuTitle, dungeonMenuText, dungeonFloorText, dungeonMapText, dungeonFragmentText;
+        private Text dungeonMenuText, dungeonFloorText, dungeonMapText, dungeonFragmentText;
         private InputField dungeonSeedInput;
         private CanvasGroup dungeonSetupFade, dungeonHudFade, dungeonMapFade;
         private RectTransform dungeonCurrentRoomNode;
@@ -30,11 +30,11 @@ namespace Fighter403.UI
         private void BuildDungeonUi()
         {
             var entryButton = ButtonAt("Dungeon mode", root, TopRight, new Vector2(-80, -71), new Vector2(134, 34),
-                ToggleDungeonMenu, out var entry);
+                OpenDungeonSetup, out var entry);
             dungeonEntry = (RectTransform)entryButton.transform;
             StyleInterfaceButton(entryButton, MapPanel, OccupiedSocket);
             AddCircuitBand(dungeonEntry, new Vector2(0.5f, 0f), Vector2.up * 5f, new Vector2(112f, 8f), .24f);
-            entry.text = "地牢探索   F11";
+            entry.text = "地牢探索";
 
             dungeonHud = Box("Dungeon status", root, TopRight, Vector2.zero, new Vector2(226, 68));
             dungeonHud.pivot = TopRight;
@@ -58,11 +58,7 @@ namespace Fighter403.UI
             dungeonFragmentText = Label("Fragments", dungeonHud, left, new Vector2(69, -47), new Vector2(88, 23), 15);
             dungeonFragmentText.alignment = TextAnchor.MiddleLeft;
             dungeonFragmentText.color = DungeonMuted;
-            var menuButton = ButtonAt("Run menu", dungeonHud, top, new Vector2(34, -47), new Vector2(62, 23),
-                ToggleDungeonMenu, out var menuLabel);
-            StyleInterfaceButton(menuButton, InterfaceInset, QueueFrame);
-            menuLabel.text = "菜单 F11";
-            menuLabel.resizeTextMaxSize = 13;
+
             var mapButton = ButtonAt("Toggle map", dungeonHud, top, new Vector2(86, -47), new Vector2(42, 23),
                 ToggleDungeonMap, out var mapLabel);
             StyleInterfaceButton(mapButton, InterfaceInset, QueueFrame);
@@ -102,10 +98,11 @@ namespace Fighter403.UI
             dungeonMenu = Box("Dungeon setup", dungeonSetup, DungeonMiddle, Vector2.zero, new Vector2(460, 214));
             PaintInterfacePlate(dungeonMenu, MapPanel, OccupiedSocket, true);
             AddCircuitMargins(dungeonMenu, 18f, 12f, .08f);
-            dungeonMenuTitle = Label("Dungeon setup title", dungeonMenu, top, new Vector2(0, -37), new Vector2(414, 35), 25);
-            dungeonMenuTitle.color = InterfaceText;
-            dungeonMenuTitle.fontStyle = FontStyle.Bold;
-            dungeonMenuTitle.alignment = TextAnchor.MiddleLeft;
+            var title = Label("Dungeon setup title", dungeonMenu, top, new Vector2(0, -37), new Vector2(414, 35), 25);
+            title.text = "地牢探索";
+            title.color = InterfaceText;
+            title.fontStyle = FontStyle.Bold;
+            title.alignment = TextAnchor.MiddleLeft;
             dungeonMenuText = Label("Seed instructions", dungeonMenu, top, new Vector2(0, -65), new Vector2(414, 25), 16);
             dungeonMenuText.color = InterfaceMuted;
             dungeonMenuText.alignment = TextAnchor.MiddleLeft;
@@ -132,12 +129,7 @@ namespace Fighter403.UI
                 () => BeginDungeon(dungeonSeedInput.text), out var start);
             start.text = "生成并进入";
             StyleInterfaceButton(startButton, new Color32(24, 66, 88, 255), InterfaceCyan);
-            dungeonStartButton = startButton.gameObject;
-            var leaveButton = ButtonAt("Return to training", dungeonMenu, bottom, new Vector2(118, 41), new Vector2(178, 39),
-                EndDungeon, out var leave);
-            leave.text = "结束本局";
-            StyleInterfaceButton(leaveButton, InterfaceInset, OccupiedSocket);
-            dungeonLeaveButton = leaveButton.gameObject;
+
             var closeButton = ButtonAt("Close dungeon menu", dungeonMenu, bottom, new Vector2(-150, 41), new Vector2(112, 39),
                 DismissDungeonMenu, out var close);
             close.text = "关闭";
@@ -145,7 +137,6 @@ namespace Fighter403.UI
             dungeonSetup.gameObject.SetActive(false);
         }
 
-        private GameObject dungeonStartButton, dungeonLeaveButton;
 
         private static void AddCircuitBand(RectTransform panel, Vector2 anchor, Vector2 position, Vector2 size,
             float phase)
@@ -168,19 +159,10 @@ namespace Fighter403.UI
             }
         }
 
-        private void ToggleDungeonMenu()
+        private void OpenDungeonSetup()
         {
-            if (DungeonMenuOpen)
-            {
-                DismissDungeonMenu();
-                return;
-            }
-            bool running = dungeonFloors != null;
-            dungeonMenuTitle.text = running ? "本局探索" : "地牢探索";
-            dungeonMenuText.text = running ? $"第 {dungeonFloor + 1} 层   /   种子 {dungeonSeed}" : "设置本局种子";
-            dungeonSeedInput.gameObject.SetActive(!running);
-            dungeonStartButton.SetActive(!running);
-            dungeonLeaveButton.SetActive(running);
+            if (DungeonMenuOpen || dungeonFloors != null || mainMenu != null) return;
+            dungeonMenuText.text = "设置本局种子";
             dungeonMenuOpen = true;
             dungeonSetupFade.interactable = dungeonSetupFade.blocksRaycasts = true;
             dungeonSetup.SetAsLastSibling();
@@ -373,7 +355,9 @@ namespace Fighter403.UI
             if (dungeonFinished)
             {
                 interactionTitle = dungeonLost ? "本局失败" : "探索完成";
-                AddRoomChoice("返回训练场", "", EndDungeon);
+                interactionKeyboardHint = "Enter 重新开始\nEsc 返回主界面";
+                interactionSecondary = ("返回主界面", ReturnToMainMenu);
+                AddRoomChoice("重新开始", "", RestartDungeon);
                 return;
             }
             if (room.Kind == DungeonRoomKind.Shop)

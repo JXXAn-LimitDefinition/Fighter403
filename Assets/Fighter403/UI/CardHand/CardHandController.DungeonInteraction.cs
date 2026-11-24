@@ -289,7 +289,11 @@ namespace Fighter403.UI
                 BackFromDungeonRemoval();
                 return;
             }
-            if (dungeonFinished) return;
+            if (dungeonFinished)
+            {
+                ReturnToMainMenu();
+                return;
+            }
             GameSfx.Play(Sfx.PileClose, .65f);
             SetDungeonInteractionOpen(false);
             if (DungeonInteractionLabel() != null) ShowDungeonPrompt();
@@ -298,13 +302,6 @@ namespace Fighter403.UI
         private bool UpdateDungeonInteractionInput(Keyboard keyboard)
         {
             if (DungeonActorAnimating) return true;
-            if (keyboard?.f11Key.wasPressedThisFrame == true)
-            {
-                ToggleDungeonMenu();
-                if (!DungeonMenuOpen && dungeonInteractionPending && !batch.Busy)
-                    RefreshDungeonInteraction();
-                return true;
-            }
             if (DungeonMenuOpen)
             {
                 if (keyboard?.escapeKey.wasPressedThisFrame == true) DismissDungeonMenu();
