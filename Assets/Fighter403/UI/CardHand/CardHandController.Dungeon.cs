@@ -28,6 +28,7 @@ namespace Fighter403.UI
         private DebuggerDefinition[] trainingDebuggers;
         private Vector2 beforeDungeon, roomHalfSize;
         private readonly List<GameObject> hiddenTrainingTargets = new();
+        private readonly HashSet<int> floorsWithShopCardRemoval = new();
         private int dungeonSeed, dungeonFloor, fragments;
         private bool dungeonFinished, dungeonLost, dungeonFreeHand;
         private Image dungeonRoomCurtain;
@@ -112,6 +113,7 @@ namespace Fighter403.UI
             DebuggersManager.BeginRun();
             dungeonSeed = seed;
             dungeonFloor = fragments = 0;
+            floorsWithShopCardRemoval.Clear();
             dungeonFinished = dungeonLost = dungeonFreeHand = false;
             dungeonFloors = layout;
             resetButton.gameObject.SetActive(false);

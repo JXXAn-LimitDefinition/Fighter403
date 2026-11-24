@@ -25,6 +25,7 @@ namespace Fighter403.UI
         private float dungeonHudReveal, dungeonMapReveal, dungeonSetupReveal;
         private bool dungeonMapVisible, dungeonMenuOpen;
         private bool DungeonMenuOpen => dungeonMenuOpen;
+        private int ShopCardRemovalPrice => 200 + 100 * dungeonFloor;
 
         private void BuildDungeonUi()
         {
@@ -395,7 +396,10 @@ namespace Fighter403.UI
                 }
                 AddDungeonInjector(price: 100);
                 AddRoomChoice("回复 30% 生命", "", () => HealInRoom(.30f, 100), 100);
-                AddRemoveChoice(25);
+                if (floorsWithShopCardRemoval.Contains(dungeonFloor))
+                    interactionCaption = "本层商人删牌次数已用完";
+                else
+                    AddRemoveChoice(ShopCardRemovalPrice);
                 return;
             }
 
@@ -525,6 +529,8 @@ namespace Fighter403.UI
         private void BuildRemoveChoices()
         {
             bool paid = dungeonRoom.Kind == DungeonRoomKind.Shop;
+            int floor = dungeonFloor;
+            int price = paid ? ShopCardRemovalPrice : 0;
             interactionTitle = "选择要删除的牌";
             interactionCaption = "从本局牌组移除一张卡牌";
             interactionSecondary = ("返回", BackFromDungeonRemoval);
@@ -536,19 +542,24 @@ namespace Fighter403.UI
                 if (card == null) continue;
                 AddCardChoice(card, () =>
                 {
+                    if (paid && (dungeonFloor != floor || floorsWithShopCardRemoval.Contains(floor) || fragments < price)) return;
                     if (!batch.RemoveFromDeck(card.Kind)) return;
+                    if (paid)
+                    {
+                        fragments -= price;
+                        floorsWithShopCardRemoval.Add(floor);
+                    }
                     GameSfx.Play(Sfx.DungeonCardRemoved);
                     if (dashPlans.RemoveAll(plan => !batch.Queue.Contains(plan.Card)) > 0) RebuildDashPath(0);
                     if (paid)
                     {
-                        fragments -= 25;
                         removingDungeonCards = false;
                         terminalFirstCard = 0;
                         RefreshDeckAndDungeon();
                         SetDungeonFeedback($"已删除 {card.DisplayName}", false);
                     }
                     else ClaimDungeonRoom();
-                }, paid ? 25 : 0, group.Count());
+                }, price, group.Count());
             }
         }
 
