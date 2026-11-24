@@ -1,0 +1,199 @@
+{
+  "fps": 60,
+  "cell": [
+    128,
+    116
+  ],
+  "pivotFromTopLeft": [
+    57,
+    62
+  ],
+  "normalizedUnityPivot": [
+    0.4453125,
+    0.4655172413793104
+  ],
+  "moves": [
+    {
+      "id": "01-sweep",
+      "label": "弧扫",
+      "wind": 5,
+      "hit": 9,
+      "endSwing": 12,
+      "link": 17,
+      "end": 28,
+      "stop": 2,
+      "step": 7,
+      "strafe": 2,
+      "push": 6,
+      "arc": [
+        4,
+        -1,
+        30,
+        0.98,
+        0,
+        -1.65,
+        2.96
+      ],
+      "at": 0.57,
+      "width": 8,
+      "trail": 13,
+      "tint": 0,
+      "sheets": [
+        {
+          "file": "01-sweep-front.png",
+          "layer": "front",
+          "firstTick": 5,
+          "columns": 7,
+          "frames": 23
+        }
+      ]
+    },
+    {
+      "id": "02-return",
+      "label": "回斩",
+      "wind": 3,
+      "hit": 7,
+      "endSwing": 10,
+      "link": 15,
+      "end": 25,
+      "stop": 2,
+      "step": 6,
+      "strafe": 3,
+      "push": 5,
+      "arc": [
+        8,
+        5,
+        26,
+        0.83,
+        -0.09,
+        1.74,
+        -2.72
+      ],
+      "at": 0.69,
+      "width": 6,
+      "trail": 13,
+      "tint": 0,
+      "sheets": [
+        {
+          "file": "02-return-front.png",
+          "layer": "front",
+          "firstTick": 3,
+          "columns": 7,
+          "frames": 21
+        }
+      ]
+    },
+    {
+      "id": "03-cross",
+      "label": "斜切",
+      "wind": 4,
+      "hit": 9,
+      "endSwing": 13,
+      "link": 19,
+      "end": 30,
+      "stop": 3,
+      "step": 6,
+      "strafe": -8,
+      "push": 5,
+      "arc": [
+        7,
+        -10,
+        28,
+        1,
+        -0.24,
+        -2.06,
+        3.65
+      ],
+      "at": 0.73,
+      "width": 9,
+      "trail": 15,
+      "tint": 1,
+      "sheets": [
+        {
+          "file": "03-cross-front.png",
+          "layer": "front",
+          "firstTick": 4,
+          "columns": 7,
+          "frames": 28
+        }
+      ]
+    },
+    {
+      "id": "04-spin",
+      "label": "回旋",
+      "wind": 4,
+      "hit": 14,
+      "endSwing": 16,
+      "link": 24,
+      "end": 37,
+      "stop": 3,
+      "step": 4,
+      "strafe": 1,
+      "push": 5,
+      "arc": [
+        2,
+        0,
+        35,
+        0.99,
+        0,
+        -0.81,
+        -6.17
+      ],
+      "at": 0.885,
+      "width": 9,
+      "trail": 17,
+      "tint": 0,
+      "sheets": [
+        {
+          "file": "04-spin-front.png",
+          "layer": "front",
+          "firstTick": 4,
+          "columns": 7,
+          "frames": 33
+        },
+        {
+          "file": "04-spin-back.png",
+          "layer": "back",
+          "firstTick": 4,
+          "columns": 7,
+          "frames": 33
+        }
+      ]
+    },
+    {
+      "id": "05-finish",
+      "label": "重弧",
+      "wind": 10,
+      "hit": 19,
+      "endSwing": 23,
+      "link": null,
+      "end": 49,
+      "stop": 6,
+      "step": 9,
+      "strafe": 3,
+      "push": 20,
+      "arc": [
+        2,
+        0,
+        39,
+        1,
+        0,
+        -1.91,
+        3.62
+      ],
+      "at": 0.53,
+      "width": 15,
+      "trail": 23,
+      "tint": 2,
+      "sheets": [
+        {
+          "file": "05-finish-front.png",
+          "layer": "front",
+          "firstTick": 10,
+          "columns": 7,
+          "frames": 40
+        }
+      ]
+    }
+  ]
+}

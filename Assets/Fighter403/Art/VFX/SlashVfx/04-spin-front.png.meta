@@ -1,0 +1,1016 @@
+fileFormatVersion: 2
+guid: 67acc185069729249b21a63451010326
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6723771512692888571
+    second: 04-spin-front_0
+  - first:
+      213: 5999082709889812139
+    second: 04-spin-front_1
+  - first:
+      213: 7757952261090050927
+    second: 04-spin-front_2
+  - first:
+      213: 698188992433612276
+    second: 04-spin-front_3
+  - first:
+      213: -4524732851417148389
+    second: 04-spin-front_4
+  - first:
+      213: -339348377310746002
+    second: 04-spin-front_5
+  - first:
+      213: -3640383753251963088
+    second: 04-spin-front_6
+  - first:
+      213: -5331557117098147378
+    second: 04-spin-front_7
+  - first:
+      213: 9010686686139274084
+    second: 04-spin-front_8
+  - first:
+      213: 1682837421402365502
+    second: 04-spin-front_9
+  - first:
+      213: 7961973737863382198
+    second: 04-spin-front_10
+  - first:
+      213: -1234652459640444911
+    second: 04-spin-front_11
+  - first:
+      213: -8618678505856554595
+    second: 04-spin-front_12
+  - first:
+      213: 3435980610013987759
+    second: 04-spin-front_13
+  - first:
+      213: -3679904258450522555
+    second: 04-spin-front_14
+  - first:
+      213: -4195113788109482925
+    second: 04-spin-front_15
+  - first:
+      213: -6364041413541359467
+    second: 04-spin-front_16
+  - first:
+      213: 3694618897421840156
+    second: 04-spin-front_17
+  - first:
+      213: -3810659138755658563
+    second: 04-spin-front_18
+  - first:
+      213: -7021882123657671544
+    second: 04-spin-front_19
+  - first:
+      213: -5604785535949174464
+    second: 04-spin-front_20
+  - first:
+      213: 1794379086810858643
+    second: 04-spin-front_21
+  - first:
+      213: 245199106672480753
+    second: 04-spin-front_22
+  - first:
+      213: -1086727785292817988
+    second: 04-spin-front_23
+  - first:
+      213: -2888214413084204316
+    second: 04-spin-front_24
+  - first:
+      213: -6702979773262938362
+    second: 04-spin-front_25
+  - first:
+      213: 3283960727907438686
+    second: 04-spin-front_26
+  - first:
+      213: 4498911689666211580
+    second: 04-spin-front_27
+  - first:
+      213: 7998893140010744212
+    second: 04-spin-front_28
+  - first:
+      213: -6998871345260209435
+    second: 04-spin-front_29
+  - first:
+      213: 1535857447927693494
+    second: 04-spin-front_30
+  - first:
+      213: 9202521986990778232
+    second: 04-spin-front_31
+  - first:
+      213: 3249846892836560498
+    second: 04-spin-front_32
+  - first:
+      213: 204110496300330705
+    second: 04-spin-front_33
+  - first:
+      213: -8369531641041619033
+    second: 04-spin-front_34
+  - first:
+      213: -1925795669500280772
+    second: 04-spin-front_35
+  - first:
+      213: 2899452032123062018
+    second: 04-spin-front_36
+  - first:
+      213: 6143718089130438995
+    second: 04-spin-front_37
+  - first:
+      213: 6231383567520604644
+    second: 04-spin-front_38
+  - first:
+      213: -8037195746049316432
+    second: 04-spin-front_39
+  - first:
+      213: 6355636779524354598
+    second: 04-spin-front_40
+  - first:
+      213: 2056949378510821111
+    second: 04-spin-front_41
+  - first:
+      213: -3721039922138788033
+    second: 04-spin-front_42
+  - first:
+      213: -7870614760844917902
+    second: 04-spin-front_43
+  - first:
+      213: -233197711086757800
+    second: 04-spin-front_44
+  - first:
+      213: 43133678160838665
+    second: 04-spin-front_45
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 04-spin-front_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b406542eec9e7e60800000000000000
+      internalID: 7961973737863382198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 118a1122122addee0800000000000000
+      internalID: -1234652459640444911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d992029009d446880800000000000000
+      internalID: -8618678505856554595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa38303092e0faf20800000000000000
+      internalID: 3435980610013987759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54efb9be29a5eecc0800000000000000
+      internalID: -3679904258450522555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35414638c36f7c5c0800000000000000
+      internalID: -4195113788109482925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5901ef17d026ea7a0800000000000000
+      internalID: -6364041413541359467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f2641ff4ce54330800000000000000
+      internalID: 3694618897421840156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbc7f5af3b1dd1bc0800000000000000
+      internalID: -3810659138755658563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c08bc79634d8e90800000000000000
+      internalID: -7021882123657671544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 049808f104dc732b0800000000000000
+      internalID: -5604785535949174464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39440cdb54ae6e810800000000000000
+      internalID: 1794379086810858643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f1d474d94f176300800000000000000
+      internalID: 245199106672480753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb9131646da2be0f0800000000000000
+      internalID: -1086727785292817988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e2e3f03b400be7d0800000000000000
+      internalID: -2888214413084204316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60fb80ef86b3af2a0800000000000000
+      internalID: -6702979773262938362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_26
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e50914302e8f29d20800000000000000
+      internalID: 3283960727907438686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe286278585f6e30800000000000000
+      internalID: 4498911689666211580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49936ae4ee6c10f60800000000000000
+      internalID: 7998893140010744212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_29
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eada15d7930fde90800000000000000
+      internalID: -6998871345260209435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_30
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b04e592636705510800000000000000
+      internalID: 1535857447927693494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_31
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 877ae487dfce5bf70800000000000000
+      internalID: 9202521986990778232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e1ee5d786c91d20800000000000000
+      internalID: 3249846892836560498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 464
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4f8389840a8834e91efbed44f9a7cd
+      internalID: -1235855569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_01
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 464
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a46628c7587834d418437fe9bdf0499f
+      internalID: 57124873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_02
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 464
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12907e6ee7bba154d89f9acc630fbf65
+      internalID: -1365409852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_03
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 464
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 116018ea5357b74439a92b3202eaca67
+      internalID: -233177665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 464
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e58278178b7284b4ead2b492d7e720db
+      internalID: -2018519979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_05
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 464
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e8c6b1b8889f04f86393683af66643
+      internalID: 1301758698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_06
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 464
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b04ed96dffa7704a9626c2b3ebfe6f1
+      internalID: -1396904137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_07
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4f85dd8efd7d84cbd73998e27424fa
+      internalID: -1874718209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_08
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea8fd6997454fd24cb7640b848e23244
+      internalID: 82919401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 04-spin-front_09
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa44c8883cec7e0478665b6ed4c06ddf
+      internalID: -2133995082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b8f696e83c5e0b64fbf85232c3cc69f6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      04-spin-front_00: -1235855569
+      04-spin-front_01: 57124873
+      04-spin-front_02: -1365409852
+      04-spin-front_03: -233177665
+      04-spin-front_04: -2018519979
+      04-spin-front_05: 1301758698
+      04-spin-front_06: -1396904137
+      04-spin-front_07: -1874718209
+      04-spin-front_08: 82919401
+      04-spin-front_09: -2133995082
+      04-spin-front_10: 7961973737863382198
+      04-spin-front_11: -1234652459640444911
+      04-spin-front_12: -8618678505856554595
+      04-spin-front_13: 3435980610013987759
+      04-spin-front_14: -3679904258450522555
+      04-spin-front_15: -4195113788109482925
+      04-spin-front_16: -6364041413541359467
+      04-spin-front_17: 3694618897421840156
+      04-spin-front_18: -3810659138755658563
+      04-spin-front_19: -7021882123657671544
+      04-spin-front_20: -5604785535949174464
+      04-spin-front_21: 1794379086810858643
+      04-spin-front_22: 245199106672480753
+      04-spin-front_23: -1086727785292817988
+      04-spin-front_24: -2888214413084204316
+      04-spin-front_25: -6702979773262938362
+      04-spin-front_26: 3283960727907438686
+      04-spin-front_27: 4498911689666211580
+      04-spin-front_28: 7998893140010744212
+      04-spin-front_29: -6998871345260209435
+      04-spin-front_30: 1535857447927693494
+      04-spin-front_31: 9202521986990778232
+      04-spin-front_32: 3249846892836560498
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

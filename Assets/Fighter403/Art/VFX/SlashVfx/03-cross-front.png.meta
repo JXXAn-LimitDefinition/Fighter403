@@ -1,0 +1,904 @@
+fileFormatVersion: 2
+guid: 83a937fa57b19564eb128acf44f06d89
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4074321098109439534
+    second: 03-cross-front_0
+  - first:
+      213: -7362296168951600198
+    second: 03-cross-front_1
+  - first:
+      213: -2110523294743594920
+    second: 03-cross-front_2
+  - first:
+      213: 406669236824317204
+    second: 03-cross-front_3
+  - first:
+      213: -1938222188642126348
+    second: 03-cross-front_4
+  - first:
+      213: -1712535122725365175
+    second: 03-cross-front_5
+  - first:
+      213: 2820045490345581263
+    second: 03-cross-front_6
+  - first:
+      213: 2238732288491871687
+    second: 03-cross-front_7
+  - first:
+      213: 6926281552374022559
+    second: 03-cross-front_8
+  - first:
+      213: -589808309167113436
+    second: 03-cross-front_9
+  - first:
+      213: 9199624630836323547
+    second: 03-cross-front_10
+  - first:
+      213: -1613820419354176766
+    second: 03-cross-front_11
+  - first:
+      213: 750861077295770875
+    second: 03-cross-front_12
+  - first:
+      213: 6003474781768253145
+    second: 03-cross-front_13
+  - first:
+      213: 8136231811411287077
+    second: 03-cross-front_14
+  - first:
+      213: -5194585214835540665
+    second: 03-cross-front_15
+  - first:
+      213: 6003808937021852986
+    second: 03-cross-front_16
+  - first:
+      213: 811793854985855027
+    second: 03-cross-front_17
+  - first:
+      213: 7812930493879441551
+    second: 03-cross-front_18
+  - first:
+      213: -7334107479298733650
+    second: 03-cross-front_19
+  - first:
+      213: 3544437935887811299
+    second: 03-cross-front_20
+  - first:
+      213: 7091849833762664820
+    second: 03-cross-front_21
+  - first:
+      213: 8650758364826056313
+    second: 03-cross-front_22
+  - first:
+      213: -6295132468337991851
+    second: 03-cross-front_23
+  - first:
+      213: -4700846647526387356
+    second: 03-cross-front_24
+  - first:
+      213: -8528955076628293058
+    second: 03-cross-front_25
+  - first:
+      213: -4781570138404024090
+    second: 03-cross-front_26
+  - first:
+      213: 8451270944734280982
+    second: 03-cross-front_27
+  - first:
+      213: -281540525201280467
+    second: 03-cross-front_28
+  - first:
+      213: 3081557515629025267
+    second: 03-cross-front_29
+  - first:
+      213: 1207414958585000730
+    second: 03-cross-front_30
+  - first:
+      213: -7013481725327606496
+    second: 03-cross-front_31
+  - first:
+      213: 3451195763867702107
+    second: 03-cross-front_32
+  - first:
+      213: -7820631839362483823
+    second: 03-cross-front_33
+  - first:
+      213: -6040011350058462792
+    second: 03-cross-front_34
+  - first:
+      213: -2522596010727050495
+    second: 03-cross-front_35
+  - first:
+      213: -1073472367887826513
+    second: 03-cross-front_36
+  - first:
+      213: -3224054236113515712
+    second: 03-cross-front_37
+  - first:
+      213: -8080540830957533197
+    second: 03-cross-front_38
+  - first:
+      213: -8232287938688891050
+    second: 03-cross-front_39
+  - first:
+      213: -5070743530055333754
+    second: 03-cross-front_40
+  - first:
+      213: 8250056290202386493
+    second: 03-cross-front_41
+  - first:
+      213: 599062635622153618
+    second: 03-cross-front_42
+  - first:
+      213: 5097463881467468383
+    second: 03-cross-front_43
+  - first:
+      213: 6647154854763845961
+    second: 03-cross-front_44
+  - first:
+      213: -6907967760563775750
+    second: 03-cross-front_45
+  - first:
+      213: -5480935961020292486
+    second: 03-cross-front_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 03-cross-front_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd4eeeb2cd1abaf70800000000000000
+      internalID: 9199624630836323547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2035f1501ee8a99e0800000000000000
+      internalID: -1613820419354176766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfca1ebeb289b6a00800000000000000
+      internalID: 750861077295770875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9deff499180a05350800000000000000
+      internalID: 6003474781768253145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52c176199b3b9e070800000000000000
+      internalID: 8136231811411287077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74d3b3ae44029e7b0800000000000000
+      internalID: -5194585214835540665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3dc08e2b60d15350800000000000000
+      internalID: 6003808937021852986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 330e645c532144b00800000000000000
+      internalID: 811793854985855027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f885086b3ea1d6c60800000000000000
+      internalID: 7812930493879441551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea90dd7fa14083a90800000000000000
+      internalID: -7334107479298733650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e20301068f503130800000000000000
+      internalID: 3544437935887811299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47136dd79df4b6260800000000000000
+      internalID: 7091849833762664820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 976323d26eaad0870800000000000000
+      internalID: 8650758364826056313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_23
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f9fa28f5233a8a0800000000000000
+      internalID: -6295132468337991851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4619a9651ec33ceb0800000000000000
+      internalID: -4700846647526387356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a5e40db8013a980800000000000000
+      internalID: -8528955076628293058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_26
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e010dffa4374adb0800000000000000
+      internalID: -4781570138404024090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d7771c522f84570800000000000000
+      internalID: 8451270944734280982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88929fb3f5ff67c4388957b8ab2222c2
+      internalID: -1833919470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_01
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd9b49f21d66d04e810d5ef84f4a592
+      internalID: -887172512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_02
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d48bd31e511f1648b27306955c656bf
+      internalID: -1969682121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_03
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9beb5893f78dfad43a5e7adf5b3a1643
+      internalID: 1583956360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8271e5d273fbba248a3e96ee339407c7
+      internalID: -1229153044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_05
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d9171650572534fa82beb08d90f5d8
+      internalID: -1305591863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_06
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1455dc606600f184cb956bffa74a8db4
+      internalID: -804139379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_07
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8631a3fb7e8344c944e200012ef8f6
+      internalID: 2078815614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_08
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca2d229e1e568b64a8c1103d73810903
+      internalID: -2011395424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 03-cross-front_09
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d842f38430ed174398cfc89f2d0da76
+      internalID: 1286785086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 596e1f7a8bba7004b90692283ddf6cdd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      03-cross-front_00: -1833919470
+      03-cross-front_01: -887172512
+      03-cross-front_02: -1969682121
+      03-cross-front_03: 1583956360
+      03-cross-front_04: -1229153044
+      03-cross-front_05: -1305591863
+      03-cross-front_06: -804139379
+      03-cross-front_07: 2078815614
+      03-cross-front_08: -2011395424
+      03-cross-front_09: 1286785086
+      03-cross-front_10: 9199624630836323547
+      03-cross-front_11: -1613820419354176766
+      03-cross-front_12: 750861077295770875
+      03-cross-front_13: 6003474781768253145
+      03-cross-front_14: 8136231811411287077
+      03-cross-front_15: -5194585214835540665
+      03-cross-front_16: 6003808937021852986
+      03-cross-front_17: 811793854985855027
+      03-cross-front_18: 7812930493879441551
+      03-cross-front_19: -7334107479298733650
+      03-cross-front_20: 3544437935887811299
+      03-cross-front_21: 7091849833762664820
+      03-cross-front_22: 8650758364826056313
+      03-cross-front_23: -6295132468337991851
+      03-cross-front_24: -4700846647526387356
+      03-cross-front_25: -8528955076628293058
+      03-cross-front_26: -4781570138404024090
+      03-cross-front_27: 8451270944734280982
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,726 @@
+fileFormatVersion: 2
+guid: 84f6bd7b1b1190b4aab5e0bb83314944
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7753910039629293062
+    second: 01-sweep-front_0
+  - first:
+      213: -8709593467492271878
+    second: 01-sweep-front_1
+  - first:
+      213: -4797927724505012563
+    second: 01-sweep-front_2
+  - first:
+      213: 2294574422060668231
+    second: 01-sweep-front_3
+  - first:
+      213: 1320198830561277927
+    second: 01-sweep-front_4
+  - first:
+      213: -1514533600225665029
+    second: 01-sweep-front_5
+  - first:
+      213: -77072240805689839
+    second: 01-sweep-front_6
+  - first:
+      213: 6397262483896854376
+    second: 01-sweep-front_7
+  - first:
+      213: 8273116816549355852
+    second: 01-sweep-front_8
+  - first:
+      213: -8468686246741027421
+    second: 01-sweep-front_9
+  - first:
+      213: -2236597724903814632
+    second: 01-sweep-front_10
+  - first:
+      213: 6275823548752184826
+    second: 01-sweep-front_11
+  - first:
+      213: -1445246378706428771
+    second: 01-sweep-front_12
+  - first:
+      213: 1055764265299976332
+    second: 01-sweep-front_13
+  - first:
+      213: -3291624489638102986
+    second: 01-sweep-front_14
+  - first:
+      213: 5264789680478133340
+    second: 01-sweep-front_15
+  - first:
+      213: 368117005421011326
+    second: 01-sweep-front_16
+  - first:
+      213: -4343798005981444565
+    second: 01-sweep-front_17
+  - first:
+      213: 7694443798920185102
+    second: 01-sweep-front_18
+  - first:
+      213: -5031644894343754628
+    second: 01-sweep-front_19
+  - first:
+      213: -6222972619762125015
+    second: 01-sweep-front_20
+  - first:
+      213: -3204217027626198480
+    second: 01-sweep-front_21
+  - first:
+      213: 2886924575143264655
+    second: 01-sweep-front_22
+  - first:
+      213: 7498563813524956337
+    second: 01-sweep-front_23
+  - first:
+      213: -4447014863333441838
+    second: 01-sweep-front_24
+  - first:
+      213: -6432920735944360997
+    second: 01-sweep-front_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 01-sweep-front_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81a49ad183206f0e0800000000000000
+      internalID: -2236597724903814632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af5c7605444381750800000000000000
+      internalID: 6275823548752184826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c9848631471fbe0800000000000000
+      internalID: -1445246378706428771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c80a1cf6104d6ae00800000000000000
+      internalID: 1055764265299976332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 638f42967fcc152d0800000000000000
+      internalID: -3291624489638102986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5c9a02025a401940800000000000000
+      internalID: 5264789680478133340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7166ef4770db1500800000000000000
+      internalID: 368117005421011326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b260d6d5abab7b3c0800000000000000
+      internalID: -4343798005981444565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_18
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0548d24ed728ca60800000000000000
+      internalID: 7694443798920185102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7c8bbc90a10c2ab0800000000000000
+      internalID: -5031644894343754628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_20
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 116
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 927b8108f5f83a9a0800000000000000
+      internalID: -6222972619762125015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03a151d07955883d0800000000000000
+      internalID: -3204217027626198480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8182c20b9a601820800000000000000
+      internalID: 2886924575143264655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9251fa2730ec350449cf17a6683ee295
+      internalID: -1871275516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_01
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad671f6393b6b9b4a9384d6c2a178109
+      internalID: -1436557933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_02
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2abd10f81a6c50d4d98236d7e1cc4a3f
+      internalID: 1560059076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_03
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a1b9eb86ac60f4fab7be66d4b5b02c
+      internalID: 1115524137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685a7249359ab4a45a741a32da3599a8
+      internalID: -1915511935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_05
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e79157bd72df34abfef1d668e96342
+      internalID: -2077811438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_06
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 348
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a4e496ffdb5824bafbec4e620a46d1
+      internalID: 1649566528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_07
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2e4606612910a84ca2f457bad57d827
+      internalID: 516813348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_08
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3dcb9da4184ca49adbcd347ca19bcf
+      internalID: 1354872794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01-sweep-front_09
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 232
+        width: 128
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4453125, y: 0.46551725}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe4593e0a8901f408ec31e2e4e653ac
+      internalID: -1920645649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9facffda4acd2444b8560b7d4754a96c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      01-sweep-front_00: -1871275516
+      01-sweep-front_01: -1436557933
+      01-sweep-front_02: 1560059076
+      01-sweep-front_03: 1115524137
+      01-sweep-front_04: -1915511935
+      01-sweep-front_05: -2077811438
+      01-sweep-front_06: 1649566528
+      01-sweep-front_07: 516813348
+      01-sweep-front_08: 1354872794
+      01-sweep-front_09: -1920645649
+      01-sweep-front_10: -2236597724903814632
+      01-sweep-front_11: 6275823548752184826
+      01-sweep-front_12: -1445246378706428771
+      01-sweep-front_13: 1055764265299976332
+      01-sweep-front_14: -3291624489638102986
+      01-sweep-front_15: 5264789680478133340
+      01-sweep-front_16: 368117005421011326
+      01-sweep-front_17: -4343798005981444565
+      01-sweep-front_18: 7694443798920185102
+      01-sweep-front_19: -5031644894343754628
+      01-sweep-front_20: -6222972619762125015
+      01-sweep-front_21: -3204217027626198480
+      01-sweep-front_22: 2886924575143264655
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

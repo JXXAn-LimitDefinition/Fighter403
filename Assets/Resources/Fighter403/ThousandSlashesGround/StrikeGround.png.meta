@@ -1,0 +1,1103 @@
+fileFormatVersion: 2
+guid: b76664cdcf265d84f9a5ff74b5047907
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4518377085230880118
+    second: StrikeGround_0
+  - first:
+      213: -6098593992098360339
+    second: StrikeGround_1
+  - first:
+      213: 3086731682663657597
+    second: StrikeGround_2
+  - first:
+      213: -8674564849000909403
+    second: StrikeGround_3
+  - first:
+      213: 6515984548606626316
+    second: StrikeGround_4
+  - first:
+      213: 2233686188851901289
+    second: StrikeGround_5
+  - first:
+      213: 7204663890251427554
+    second: StrikeGround_6
+  - first:
+      213: 4105792514335366054
+    second: StrikeGround_7
+  - first:
+      213: 5811240682819761376
+    second: StrikeGround_8
+  - first:
+      213: -8894420870579883389
+    second: StrikeGround_9
+  - first:
+      213: -7088721878567214317
+    second: StrikeGround_10
+  - first:
+      213: 7540263137421907323
+    second: StrikeGround_11
+  - first:
+      213: 8796473026084904707
+    second: StrikeGround_12
+  - first:
+      213: -6592991070987074585
+    second: StrikeGround_13
+  - first:
+      213: -3205359923446304688
+    second: StrikeGround_14
+  - first:
+      213: -5751312651824017403
+    second: StrikeGround_15
+  - first:
+      213: -3457789073791795043
+    second: StrikeGround_16
+  - first:
+      213: -6557602244444660065
+    second: StrikeGround_17
+  - first:
+      213: 2040946320288756126
+    second: StrikeGround_18
+  - first:
+      213: -7602310572317911148
+    second: StrikeGround_19
+  - first:
+      213: -4139830302190896685
+    second: StrikeGround_20
+  - first:
+      213: 7382402036924993626
+    second: StrikeGround_21
+  - first:
+      213: -1343919625047551171
+    second: StrikeGround_22
+  - first:
+      213: 6634584361787955846
+    second: StrikeGround_23
+  - first:
+      213: -1567550163847619754
+    second: StrikeGround_24
+  - first:
+      213: -1181830553794368520
+    second: StrikeGround_25
+  - first:
+      213: 4894583480306564633
+    second: StrikeGround_26
+  - first:
+      213: -7191517061710805483
+    second: StrikeGround_27
+  - first:
+      213: -8801238956447869872
+    second: StrikeGround_28
+  - first:
+      213: 2989668455372073583
+    second: StrikeGround_29
+  - first:
+      213: -8934750719264026414
+    second: StrikeGround_30
+  - first:
+      213: 8538455276751806857
+    second: StrikeGround_31
+  - first:
+      213: 7055652341656579088
+    second: StrikeGround_32
+  - first:
+      213: -7847078397035713196
+    second: StrikeGround_33
+  - first:
+      213: 3127421354267842327
+    second: StrikeGround_34
+  - first:
+      213: -2430526299383012792
+    second: StrikeGround_35
+  - first:
+      213: 7502204909678362156
+    second: StrikeGround_36
+  - first:
+      213: 3214355940518280689
+    second: StrikeGround_37
+  - first:
+      213: -6496654652039461114
+    second: StrikeGround_38
+  - first:
+      213: 6112313422337287118
+    second: StrikeGround_39
+  - first:
+      213: -5868679114314766138
+    second: StrikeGround_40
+  - first:
+      213: -1458328251172488818
+    second: StrikeGround_41
+  - first:
+      213: -8600183297525696564
+    second: StrikeGround_42
+  - first:
+      213: 7992789340657012171
+    second: StrikeGround_43
+  - first:
+      213: 7908264047908343905
+    second: StrikeGround_44
+  - first:
+      213: -5067009028577038161
+    second: StrikeGround_45
+  - first:
+      213: 7838985951987893835
+    second: StrikeGround_46
+  - first:
+      213: 4289447806350123687
+    second: StrikeGround_47
+  - first:
+      213: -2858047287412051879
+    second: StrikeGround_48
+  - first:
+      213: 9007174874189623681
+    second: StrikeGround_49
+  - first:
+      213: 1430692790628288362
+    second: StrikeGround_50
+  - first:
+      213: -4564371884912665054
+    second: StrikeGround_51
+  - first:
+      213: -4578806341718991632
+    second: StrikeGround_52
+  - first:
+      213: 7494525411335539815
+    second: StrikeGround_53
+  - first:
+      213: -5907976281672036715
+    second: StrikeGround_54
+  - first:
+      213: -3003521659560160488
+    second: StrikeGround_55
+  - first:
+      213: -9093124055457700984
+    second: StrikeGround_56
+  - first:
+      213: -2528891671562893063
+    second: StrikeGround_57
+  - first:
+      213: 7128350800084755798
+    second: StrikeGround_58
+  - first:
+      213: 1260956452557886385
+    second: StrikeGround_59
+  - first:
+      213: -759449027607783731
+    second: StrikeGround_60
+  - first:
+      213: 3828746792999214690
+    second: StrikeGround_61
+  - first:
+      213: 1077193276684434813
+    second: StrikeGround_62
+  - first:
+      213: 478060885410977785
+    second: StrikeGround_63
+  - first:
+      213: 882326999001509512
+    second: StrikeGround_64
+  - first:
+      213: -8323483739964049475
+    second: StrikeGround_65
+  - first:
+      213: -1490068035159829875
+    second: StrikeGround_66
+  - first:
+      213: -1966557573913249696
+    second: StrikeGround_67
+  - first:
+      213: -7388381472761124575
+    second: StrikeGround_68
+  - first:
+      213: -8870819821151596789
+    second: StrikeGround_69
+  - first:
+      213: 7184661549714387024
+    second: StrikeGround_70
+  - first:
+      213: 423231419805823746
+    second: StrikeGround_71
+  - first:
+      213: -6064597554014368010
+    second: StrikeGround_72
+  - first:
+      213: -9189790599096352567
+    second: StrikeGround_73
+  - first:
+      213: -3468324325369801130
+    second: StrikeGround_74
+  - first:
+      213: -6797476704544420586
+    second: StrikeGround_75
+  - first:
+      213: -3221999883046517730
+    second: StrikeGround_76
+  - first:
+      213: -7331174297157223550
+    second: StrikeGround_77
+  - first:
+      213: -6486459483268760295
+    second: StrikeGround_78
+  - first:
+      213: 6284504431352380011
+    second: StrikeGround_79
+  - first:
+      213: 2001082442078622509
+    second: StrikeGround_80
+  - first:
+      213: -1531776690893917714
+    second: StrikeGround_81
+  - first:
+      213: 6344075892671874253
+    second: StrikeGround_82
+  - first:
+      213: -3340248782112750689
+    second: StrikeGround_83
+  - first:
+      213: 7815733549129937752
+    second: StrikeGround_84
+  - first:
+      213: -8798563863644488958
+    second: StrikeGround_85
+  - first:
+      213: -5882744154996447394
+    second: StrikeGround_86
+  - first:
+      213: -4421018813949000726
+    second: StrikeGround_87
+  - first:
+      213: 8585106478340325346
+    second: StrikeGround_88
+  - first:
+      213: -6117850655960387136
+    second: StrikeGround_89
+  - first:
+      213: 280641900445496085
+    second: StrikeGround_90
+  - first:
+      213: -5460677811609197624
+    second: StrikeGround_91
+  - first:
+      213: -7293975240251808219
+    second: StrikeGround_92
+  - first:
+      213: -6613277178426686711
+    second: StrikeGround_93
+  - first:
+      213: 7273237727994107645
+    second: StrikeGround_94
+  - first:
+      213: 4199310771367467727
+    second: StrikeGround_95
+  - first:
+      213: -1271265151752996335
+    second: StrikeGround_96
+  - first:
+      213: -7762966935255493444
+    second: StrikeGround_97
+  - first:
+      213: 5164150247054962934
+    second: StrikeGround_98
+  - first:
+      213: 7638716629341240248
+    second: StrikeGround_99
+  - first:
+      213: -7592602064821877098
+    second: StrikeGround_100
+  - first:
+      213: -1887502300201328236
+    second: StrikeGround_101
+  - first:
+      213: 730906428396658369
+    second: StrikeGround_102
+  - first:
+      213: -7542873191358997659
+    second: StrikeGround_103
+  - first:
+      213: 6822024535313558665
+    second: StrikeGround_104
+  - first:
+      213: 6961489997320977664
+    second: StrikeGround_105
+  - first:
+      213: -4401148991859414750
+    second: StrikeGround_106
+  - first:
+      213: -1710336714577179779
+    second: StrikeGround_107
+  - first:
+      213: 3409288461149327033
+    second: StrikeGround_108
+  - first:
+      213: -7329402072098432168
+    second: StrikeGround_109
+  - first:
+      213: -7976926221944367633
+    second: StrikeGround_110
+  - first:
+      213: 4344471101997817240
+    second: StrikeGround_111
+  - first:
+      213: -500541167073333975
+    second: StrikeGround_112
+  - first:
+      213: 3738217190603951712
+    second: StrikeGround_113
+  - first:
+      213: -4237238560823651998
+    second: StrikeGround_114
+  - first:
+      213: 6353694396522504216
+    second: StrikeGround_115
+  - first:
+      213: 496843012808740671
+    second: StrikeGround_116
+  - first:
+      213: -5609220285337567056
+    second: StrikeGround_117
+  - first:
+      213: -1078177808226641539
+    second: StrikeGround_118
+  - first:
+      213: 680410498771761804
+    second: StrikeGround_119
+  - first:
+      213: 7872807188745446953
+    second: StrikeGround_120
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 26
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StrikeGround_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3132674520dcf9d90800000000000000
+      internalID: -7088721878567214317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_11
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75510b9f5564a860800000000000000
+      internalID: 7540263137421907323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f981c8c99531a70800000000000000
+      internalID: 8796473026084904707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e34e765d8df084a0800000000000000
+      internalID: -6592991070987074585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_14
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 050b5b1e1264483d0800000000000000
+      internalID: -3205359923446304688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_15
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 500d1db6d9b3f20b0800000000000000
+      internalID: -5751312651824017403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_16
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d90c96458277300d0800000000000000
+      internalID: -3457789073791795043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_17
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 192
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e52999087bef4a0800000000000000
+      internalID: -6557602244444660065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91b37a6dd5e25c10800000000000000
+      internalID: 2040946320288756126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_19
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4975bc030da2f7690800000000000000
+      internalID: -7602310572317911148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_20
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d9738f164e5c86c0800000000000000
+      internalID: -4139830302190896685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_21
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a50d808f98f837660800000000000000
+      internalID: 7382402036924993626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d335d5ea830795de0800000000000000
+      internalID: -1343919625047551171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_23
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 96
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68a9bb45357c21c50800000000000000
+      internalID: 6634584361787955846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65bd1446e61fe3ae0800000000000000
+      internalID: -1567550163847619754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_25
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fb22687f5b499fe0800000000000000
+      internalID: -1181830553794368520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_26
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91efa232ebd0de340800000000000000
+      internalID: 4894583480306564633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf1f80298c2aab4e8682d4355a8951d
+      internalID: -1018025538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_01
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccdd09fa7781d384fa91e147e8cc8a3a
+      internalID: -2144311666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_02
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4e3c73fd4e1f64696ce046d6d4b735
+      internalID: 1769929394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_03
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc9b6cde02204a42b8109f9e817778b
+      internalID: 155907282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_04
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099618213022b704faf403b32d1bb3a3
+      internalID: 1130263530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_05
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12cd0699cbccdcc48847b6ce1ccd4f21
+      internalID: 1985779216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_06
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f321224f378164ba05dc7c2fa08409
+      internalID: 916520338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_07
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26797585c7bc1d84881f38c26cdcce58
+      internalID: 24334408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_08
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811220056960aab41b672f8c010b948f
+      internalID: 1817225899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StrikeGround_09
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 288
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cfe47b02cb5bf46b343ea4386e81e8
+      internalID: 1624959923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bcb114fba1d05f140b6a1912adb2ba92
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      StrikeGround_00: -1018025538
+      StrikeGround_01: -2144311666
+      StrikeGround_02: 1769929394
+      StrikeGround_03: 155907282
+      StrikeGround_04: 1130263530
+      StrikeGround_05: 1985779216
+      StrikeGround_06: 916520338
+      StrikeGround_07: 24334408
+      StrikeGround_08: 1817225899
+      StrikeGround_09: 1624959923
+      StrikeGround_10: -7088721878567214317
+      StrikeGround_11: 7540263137421907323
+      StrikeGround_12: 8796473026084904707
+      StrikeGround_13: -6592991070987074585
+      StrikeGround_14: -3205359923446304688
+      StrikeGround_15: -5751312651824017403
+      StrikeGround_16: -3457789073791795043
+      StrikeGround_17: -6557602244444660065
+      StrikeGround_18: 2040946320288756126
+      StrikeGround_19: -7602310572317911148
+      StrikeGround_20: -4139830302190896685
+      StrikeGround_21: 7382402036924993626
+      StrikeGround_22: -1343919625047551171
+      StrikeGround_23: 6634584361787955846
+      StrikeGround_24: -1567550163847619754
+      StrikeGround_25: -1181830553794368520
+      StrikeGround_26: 4894583480306564633
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

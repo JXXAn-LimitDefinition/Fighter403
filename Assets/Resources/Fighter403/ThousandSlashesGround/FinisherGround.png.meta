@@ -1,0 +1,1262 @@
+fileFormatVersion: 2
+guid: 7470b9e0114635046900a370e6660dfc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5522798780977934026
+    second: FinisherGround_0
+  - first:
+      213: 7063366888678173794
+    second: FinisherGround_1
+  - first:
+      213: 7929189156446830311
+    second: FinisherGround_2
+  - first:
+      213: 6514947817707487148
+    second: FinisherGround_3
+  - first:
+      213: -2320807056911558762
+    second: FinisherGround_4
+  - first:
+      213: -1805016855761529969
+    second: FinisherGround_5
+  - first:
+      213: 2786791316363215571
+    second: FinisherGround_6
+  - first:
+      213: -9123997714142971817
+    second: FinisherGround_7
+  - first:
+      213: -3898361005546734508
+    second: FinisherGround_8
+  - first:
+      213: 351073886576824481
+    second: FinisherGround_9
+  - first:
+      213: 8489010519701970894
+    second: FinisherGround_10
+  - first:
+      213: 8890077191862970604
+    second: FinisherGround_11
+  - first:
+      213: 194509172690719697
+    second: FinisherGround_12
+  - first:
+      213: -4519452472713292601
+    second: FinisherGround_13
+  - first:
+      213: -4012320626830525605
+    second: FinisherGround_14
+  - first:
+      213: 8572303447243131657
+    second: FinisherGround_15
+  - first:
+      213: 5904012330209430021
+    second: FinisherGround_16
+  - first:
+      213: -879502012770443391
+    second: FinisherGround_17
+  - first:
+      213: -1157084678875800921
+    second: FinisherGround_18
+  - first:
+      213: 4326136303563786114
+    second: FinisherGround_19
+  - first:
+      213: -4572542553986092912
+    second: FinisherGround_20
+  - first:
+      213: 2562165981495834403
+    second: FinisherGround_21
+  - first:
+      213: 4990215592699057541
+    second: FinisherGround_22
+  - first:
+      213: 7031871749462316943
+    second: FinisherGround_23
+  - first:
+      213: 2079092624451128405
+    second: FinisherGround_24
+  - first:
+      213: -4916414952923689029
+    second: FinisherGround_25
+  - first:
+      213: -7840715548647445216
+    second: FinisherGround_26
+  - first:
+      213: 5873904175726195680
+    second: FinisherGround_27
+  - first:
+      213: 2407634289454070544
+    second: FinisherGround_28
+  - first:
+      213: 1793631522697729988
+    second: FinisherGround_29
+  - first:
+      213: 5571508983584126055
+    second: FinisherGround_30
+  - first:
+      213: 5596014936099929965
+    second: FinisherGround_31
+  - first:
+      213: 4739635208941640822
+    second: FinisherGround_32
+  - first:
+      213: 2170416019753451946
+    second: FinisherGround_33
+  - first:
+      213: -3885815173208590783
+    second: FinisherGround_34
+  - first:
+      213: 8336657546094022008
+    second: FinisherGround_35
+  - first:
+      213: 8577857941173327894
+    second: FinisherGround_36
+  - first:
+      213: -8647780524036028668
+    second: FinisherGround_37
+  - first:
+      213: -3683560611954473396
+    second: FinisherGround_38
+  - first:
+      213: 4454197331146740990
+    second: FinisherGround_39
+  - first:
+      213: 8358120392483662165
+    second: FinisherGround_40
+  - first:
+      213: -6013686784404589334
+    second: FinisherGround_41
+  - first:
+      213: -2588082933549124967
+    second: FinisherGround_42
+  - first:
+      213: 2251543970807492739
+    second: FinisherGround_43
+  - first:
+      213: 2872032884562828947
+    second: FinisherGround_44
+  - first:
+      213: -3160877797923715391
+    second: FinisherGround_45
+  - first:
+      213: 8091570316190102946
+    second: FinisherGround_46
+  - first:
+      213: 361344724287480808
+    second: FinisherGround_47
+  - first:
+      213: 7582289719608794288
+    second: FinisherGround_48
+  - first:
+      213: -190913671804852108
+    second: FinisherGround_49
+  - first:
+      213: 6260956615349423477
+    second: FinisherGround_50
+  - first:
+      213: 5989035052283381937
+    second: FinisherGround_51
+  - first:
+      213: 2104337551969914421
+    second: FinisherGround_52
+  - first:
+      213: -6386757608367875122
+    second: FinisherGround_53
+  - first:
+      213: -4823059413484504036
+    second: FinisherGround_54
+  - first:
+      213: 1031244437979851026
+    second: FinisherGround_55
+  - first:
+      213: 1980752291644357883
+    second: FinisherGround_56
+  - first:
+      213: 7732633504020200707
+    second: FinisherGround_57
+  - first:
+      213: 7228929937084880306
+    second: FinisherGround_58
+  - first:
+      213: -1396963273650199418
+    second: FinisherGround_59
+  - first:
+      213: -203471498874879784
+    second: FinisherGround_60
+  - first:
+      213: -5706627667684112336
+    second: FinisherGround_61
+  - first:
+      213: -5559041904707022504
+    second: FinisherGround_62
+  - first:
+      213: 5177521573366647810
+    second: FinisherGround_63
+  - first:
+      213: 1144269471350750904
+    second: FinisherGround_64
+  - first:
+      213: 4485958505832651167
+    second: FinisherGround_65
+  - first:
+      213: -2278969412333656328
+    second: FinisherGround_66
+  - first:
+      213: -3064691449761870305
+    second: FinisherGround_67
+  - first:
+      213: -7022145150056983748
+    second: FinisherGround_68
+  - first:
+      213: -180848445634452760
+    second: FinisherGround_69
+  - first:
+      213: 1953608488217122367
+    second: FinisherGround_70
+  - first:
+      213: -2810621573333759196
+    second: FinisherGround_71
+  - first:
+      213: -4116193918544084974
+    second: FinisherGround_72
+  - first:
+      213: 414209548460794089
+    second: FinisherGround_73
+  - first:
+      213: -8310205794801604528
+    second: FinisherGround_74
+  - first:
+      213: 7666686761632645255
+    second: FinisherGround_75
+  - first:
+      213: -4240660832069693128
+    second: FinisherGround_76
+  - first:
+      213: -1651372208671849591
+    second: FinisherGround_77
+  - first:
+      213: -8983705172520403321
+    second: FinisherGround_78
+  - first:
+      213: 5821683792584978497
+    second: FinisherGround_79
+  - first:
+      213: 722770232999782637
+    second: FinisherGround_80
+  - first:
+      213: 6631544195591490426
+    second: FinisherGround_81
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 26
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FinisherGround_10
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 608
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecfd36947160fc570800000000000000
+      internalID: 8489010519701970894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_11
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 608
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce86bc6ba16ef5b70800000000000000
+      internalID: 8890077191862970604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_12
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 608
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d319cfdf0903b200800000000000000
+      internalID: 194509172690719697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_13
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 608
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4d9a0dbeda741c0800000000000000
+      internalID: -4519452472713292601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5b3bc8e5af5158c0800000000000000
+      internalID: -4012320626830525605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_15
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 456
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90b88c73190f6f670800000000000000
+      internalID: 8572303447243131657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_16
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 456
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50ac8abfee34fe150800000000000000
+      internalID: 5904012330209430021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_17
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 456
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f939544916bc3f0800000000000000
+      internalID: -879502012770443391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_18
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 456
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aa9f847d9531ffe0800000000000000
+      internalID: -1157084678875800921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_19
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 456
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28747d71c06890c30800000000000000
+      internalID: 4326136303563786114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_20
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 456
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0903d4506c01b80c0800000000000000
+      internalID: -4572542553986092912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32736ae9264ae8320800000000000000
+      internalID: 2562165981495834403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_22
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 304
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 585517b64aec04540800000000000000
+      internalID: 4990215592699057541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_23
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 304
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f875ec4891a369160800000000000000
+      internalID: 7031871749462316943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_24
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 304
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55c4b87f9bb6adc10800000000000000
+      internalID: 2079092624451128405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_25
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 304
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbf809a06a265cbb0800000000000000
+      internalID: -4916414952923689029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_26
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 304
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02dacf910ce203390800000000000000
+      internalID: -7840715548647445216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_27
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 304
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e3f7def9bc448150800000000000000
+      internalID: 5873904175726195680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 152
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01bb5fb41a2a96120800000000000000
+      internalID: 2407634289454070544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_29
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 152
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c75758ed5244e810800000000000000
+      internalID: 1793631522697729988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_30
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 152
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 764fd65c6e9f15d40800000000000000
+      internalID: 5571508983584126055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_31
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 152
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6f34087fe909ad40800000000000000
+      internalID: 5596014936099929965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_32
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 152
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67c96e16c1196c140800000000000000
+      internalID: 4739635208941640822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_33
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 152
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa1c830eeddde1e10800000000000000
+      internalID: 2170416019753451946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_34
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 152
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 146341a10bfc21ac0800000000000000
+      internalID: -3885815173208590783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87d83016ed1c1b370800000000000000
+      internalID: 8336657546094022008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_36
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 618566d995caa0770800000000000000
+      internalID: 8577857941173327894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_37
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4078a496e69ecf780800000000000000
+      internalID: -8647780524036028668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_38
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 0
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4645d7c32d51ecc0800000000000000
+      internalID: -3683560611954473396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 760
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838d338de3e4fc8488bde84ec2b92180
+      internalID: 1861416642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_01
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 760
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2848a18cfc7dc3a4f8f6bbcf926e7f12
+      internalID: 2099295727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_02
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 760
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a747026f46777d746b53fe13cc5ac67a
+      internalID: 119431172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_03
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 760
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a026582c015b9840948377d3bba5ee2
+      internalID: -964878127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_04
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 760
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f8205fc01a399418cc831c8f67aeda
+      internalID: 1207262014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_05
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 760
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea5dcdb066b810418b32f2a8f540e68
+      internalID: -733812751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_06
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 760
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e62457b5b76a40448bb6c719c696290
+      internalID: -17541392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_07
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 608
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e57192a19212f7d43b55eb554dc71ab0
+      internalID: 1079722500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_08
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 608
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f7f68c5ea49094696cfece09f2db6f
+      internalID: 1422458930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FinisherGround_09
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 608
+        width: 152
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba8708efa7bd044d95e526ef2fd5dbe
+      internalID: -1044875932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d0468a6da724f5a41bf4f348f768b2f6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FinisherGround_00: 1861416642
+      FinisherGround_01: 2099295727
+      FinisherGround_02: 119431172
+      FinisherGround_03: -964878127
+      FinisherGround_04: 1207262014
+      FinisherGround_05: -733812751
+      FinisherGround_06: -17541392
+      FinisherGround_07: 1079722500
+      FinisherGround_08: 1422458930
+      FinisherGround_09: -1044875932
+      FinisherGround_10: 8489010519701970894
+      FinisherGround_11: 8890077191862970604
+      FinisherGround_12: 194509172690719697
+      FinisherGround_13: -4519452472713292601
+      FinisherGround_14: -4012320626830525605
+      FinisherGround_15: 8572303447243131657
+      FinisherGround_16: 5904012330209430021
+      FinisherGround_17: -879502012770443391
+      FinisherGround_18: -1157084678875800921
+      FinisherGround_19: 4326136303563786114
+      FinisherGround_20: -4572542553986092912
+      FinisherGround_21: 2562165981495834403
+      FinisherGround_22: 4990215592699057541
+      FinisherGround_23: 7031871749462316943
+      FinisherGround_24: 2079092624451128405
+      FinisherGround_25: -4916414952923689029
+      FinisherGround_26: -7840715548647445216
+      FinisherGround_27: 5873904175726195680
+      FinisherGround_28: 2407634289454070544
+      FinisherGround_29: 1793631522697729988
+      FinisherGround_30: 5571508983584126055
+      FinisherGround_31: 5596014936099929965
+      FinisherGround_32: 4739635208941640822
+      FinisherGround_33: 2170416019753451946
+      FinisherGround_34: -3885815173208590783
+      FinisherGround_35: 8336657546094022008
+      FinisherGround_36: 8577857941173327894
+      FinisherGround_37: -8647780524036028668
+      FinisherGround_38: -3683560611954473396
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

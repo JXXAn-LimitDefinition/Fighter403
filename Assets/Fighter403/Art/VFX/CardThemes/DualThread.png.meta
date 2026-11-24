@@ -1,0 +1,923 @@
+fileFormatVersion: 2
+guid: f5ccc40bd9f76b146ba4792bb943a1a6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4128516783216427219
+    second: DualThread_0
+  - first:
+      213: 3569000567929486876
+    second: DualThread_1
+  - first:
+      213: 1522652943457746980
+    second: DualThread_2
+  - first:
+      213: 4253260988280895839
+    second: DualThread_3
+  - first:
+      213: 7451072106839672908
+    second: DualThread_4
+  - first:
+      213: 1054281569032337266
+    second: DualThread_5
+  - first:
+      213: -8239421931085577370
+    second: DualThread_6
+  - first:
+      213: 947086841816629679
+    second: DualThread_7
+  - first:
+      213: 3290692769042345311
+    second: DualThread_8
+  - first:
+      213: 6782504025339672688
+    second: DualThread_9
+  - first:
+      213: -3325987290475812246
+    second: DualThread_10
+  - first:
+      213: -7640349213848515311
+    second: DualThread_11
+  - first:
+      213: 796916429701763717
+    second: DualThread_12
+  - first:
+      213: -3051961016613722573
+    second: DualThread_13
+  - first:
+      213: -6566996303448578715
+    second: DualThread_14
+  - first:
+      213: 7887005067377686653
+    second: DualThread_15
+  - first:
+      213: 7358392039870610276
+    second: DualThread_16
+  - first:
+      213: 5804259359724384660
+    second: DualThread_17
+  - first:
+      213: 4086197243323983695
+    second: DualThread_18
+  - first:
+      213: 1140743420962831129
+    second: DualThread_19
+  - first:
+      213: 245197958279021257
+    second: DualThread_20
+  - first:
+      213: 428369926696639740
+    second: DualThread_21
+  - first:
+      213: 5152574328091036872
+    second: DualThread_22
+  - first:
+      213: -6317880233829836140
+    second: DualThread_23
+  - first:
+      213: -2045179227704476192
+    second: DualThread_24
+  - first:
+      213: 2787791915201739527
+    second: DualThread_25
+  - first:
+      213: 1573345800998400267
+    second: DualThread_26
+  - first:
+      213: 866653102751402039
+    second: DualThread_27
+  - first:
+      213: 4259324406108122391
+    second: DualThread_28
+  - first:
+      213: 5671904440302369055
+    second: DualThread_29
+  - first:
+      213: 5059596319606649565
+    second: DualThread_30
+  - first:
+      213: -2672322539206827495
+    second: DualThread_31
+  - first:
+      213: -6777236660560716080
+    second: DualThread_32
+  - first:
+      213: -8260804727161648542
+    second: DualThread_33
+  - first:
+      213: -5341670823181690926
+    second: DualThread_34
+  - first:
+      213: 7955996823976887364
+    second: DualThread_35
+  - first:
+      213: -3400811370778738047
+    second: DualThread_36
+  - first:
+      213: -9101698713908275697
+    second: DualThread_37
+  - first:
+      213: -3843152577337408197
+    second: DualThread_38
+  - first:
+      213: 7836311160842219421
+    second: DualThread_39
+  - first:
+      213: -4033360361868259848
+    second: DualThread_40
+  - first:
+      213: 6008180823565206774
+    second: DualThread_41
+  - first:
+      213: 3614568969869677026
+    second: DualThread_42
+  - first:
+      213: -3375639784751798016
+    second: DualThread_43
+  - first:
+      213: -3425400630109314483
+    second: DualThread_44
+  - first:
+      213: -4868561549917570745
+    second: DualThread_45
+  - first:
+      213: 8835544441394691961
+    second: DualThread_46
+  - first:
+      213: 5030620550074754154
+    second: DualThread_47
+  - first:
+      213: -7500326832226842163
+    second: DualThread_48
+  - first:
+      213: 8141345840211127971
+    second: DualThread_49
+  - first:
+      213: 7460389247513047212
+    second: DualThread_50
+  - first:
+      213: -6488564605715840068
+    second: DualThread_51
+  - first:
+      213: 7309470056399029814
+    second: DualThread_52
+  - first:
+      213: 3109855443637220471
+    second: DualThread_53
+  - first:
+      213: -8257488848024525269
+    second: DualThread_54
+  - first:
+      213: 4591058983152772614
+    second: DualThread_55
+  - first:
+      213: -332201738651009807
+    second: DualThread_56
+  - first:
+      213: -5377489740885081304
+    second: DualThread_57
+  - first:
+      213: 840365310975603441
+    second: DualThread_58
+  - first:
+      213: 9214558996015946416
+    second: DualThread_59
+  - first:
+      213: -939121194049917652
+    second: DualThread_60
+  - first:
+      213: 1655464570289903042
+    second: DualThread_61
+  - first:
+      213: -8752179148640228165
+    second: DualThread_62
+  - first:
+      213: -1544789696201815078
+    second: DualThread_63
+  - first:
+      213: 2500487323882055812
+    second: DualThread_64
+  - first:
+      213: 2526423253484302790
+    second: DualThread_65
+  - first:
+      213: 8315054166750820124
+    second: DualThread_66
+  - first:
+      213: 1915387586772227832
+    second: DualThread_67
+  - first:
+      213: -2988251026383077652
+    second: DualThread_68
+  - first:
+      213: -3043347884164942088
+    second: DualThread_69
+  - first:
+      213: 2152275178636585592
+    second: DualThread_70
+  - first:
+      213: -7135452927332870472
+    second: DualThread_71
+  - first:
+      213: -3650445347453584701
+    second: DualThread_72
+  - first:
+      213: -4578000074393867396
+    second: DualThread_73
+  - first:
+      213: -7415714347465406876
+    second: DualThread_74
+  - first:
+      213: 4027756804267699597
+    second: DualThread_75
+  - first:
+      213: -6812326905469201225
+    second: DualThread_76
+  - first:
+      213: 1203059620785790065
+    second: DualThread_77
+  - first:
+      213: 5957560207174593845
+    second: DualThread_78
+  - first:
+      213: 7782469579849908166
+    second: DualThread_79
+  - first:
+      213: -5297497447587505749
+    second: DualThread_80
+  - first:
+      213: -3740514060824613374
+    second: DualThread_81
+  - first:
+      213: -808454186927389456
+    second: DualThread_82
+  - first:
+      213: -4834824476270777743
+    second: DualThread_83
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 28
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DualThread_00
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207cf15d7a50a25448414949a51ba3fc
+      internalID: -2110636386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_01
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 734d22075e23dcf4c8d1fda30b45f85f
+      internalID: -480534932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_02
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a69add5a779be3469f0fabf381285d6
+      internalID: 74600843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_03
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba7f46683496ef4b9d01783d4bda92d
+      internalID: 436631821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_04
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 448
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 349af596360f5574d9f666585cfff10b
+      internalID: 1429642286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_05
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c80c7b29f29e04349960095c2612cf15
+      internalID: -1141215515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_06
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5966d51010af8204e8e12612b1ab8476
+      internalID: -1371332751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_07
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c34f3de1af0be48b9f8d862083e67d
+      internalID: 1072377593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_08
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330ff9c3b0e2df946acdc7d2fadd9d22
+      internalID: 47504173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_09
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 336
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ed2ec6184691545927b03b1238c593
+      internalID: -1695721248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be16892f7f463054797c66690c05c0a6
+      internalID: -3325987290475812246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_11
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250ad398cf88dc949bb7eb11658d510c
+      internalID: -7640349213848515311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_12
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0c15055d14ee44eb7c9bdb5f74e210
+      internalID: 796916429701763717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_13
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ed2cdc366a47f488fd8f768900a023
+      internalID: -3051961016613722573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 224
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 986d1ab8d97c96c41928764b44910fa8
+      internalID: -6566996303448578715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368db68f28e43af40b171638931b13b4
+      internalID: 7887005067377686653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3930e50b7bba4eb44b0328f3b923b13d
+      internalID: 7358392039870610276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_17
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 999cdc7be88c1e8418e79bd1b8d36561
+      internalID: 5804259359724384660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_18
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a450c1d31eae5a4e979630cfb9bdb8b
+      internalID: 4086197243323983695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_19
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 112
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992ac7b0dc445ef4db28c4ee01746e52
+      internalID: 1140743420962831129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3e9270844cf89044a5bb212159d880d
+      internalID: 245197958279021257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_21
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a67bb9064305946b86662edcaf2e2b
+      internalID: 428369926696639740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_22
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec61b42584f8749489f12282c08283e8
+      internalID: 5152574328091036872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DualThread_23
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 112
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e68a20649de98da448ce5bda1d63d3dd
+      internalID: -6317880233829836140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0665f991bb367ea45bfb6c66c56b7b1a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DualThread_00: -2110636386
+      DualThread_01: -480534932
+      DualThread_02: 74600843
+      DualThread_03: 436631821
+      DualThread_04: 1429642286
+      DualThread_05: -1141215515
+      DualThread_06: -1371332751
+      DualThread_07: 1072377593
+      DualThread_08: 47504173
+      DualThread_09: -1695721248
+      DualThread_10: -3325987290475812246
+      DualThread_11: -7640349213848515311
+      DualThread_12: 796916429701763717
+      DualThread_13: -3051961016613722573
+      DualThread_14: -6566996303448578715
+      DualThread_15: 7887005067377686653
+      DualThread_16: 7358392039870610276
+      DualThread_17: 5804259359724384660
+      DualThread_18: 4086197243323983695
+      DualThread_19: 1140743420962831129
+      DualThread_20: 245197958279021257
+      DualThread_21: 428369926696639740
+      DualThread_22: 5152574328091036872
+      DualThread_23: -6317880233829836140
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

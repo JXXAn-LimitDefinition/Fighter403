@@ -1,0 +1,526 @@
+{
+  "tiles": [
+    {
+      "name": "Floor0",
+      "x": 1,
+      "y": 1,
+      "w": 50,
+      "h": 50
+    },
+    {
+      "name": "Floor1",
+      "x": 53,
+      "y": 1,
+      "w": 50,
+      "h": 50
+    },
+    {
+      "name": "Floor2",
+      "x": 105,
+      "y": 1,
+      "w": 50,
+      "h": 50
+    },
+    {
+      "name": "Floor3",
+      "x": 157,
+      "y": 1,
+      "w": 50,
+      "h": 50
+    },
+    {
+      "name": "Wall0",
+      "x": 210,
+      "y": 2,
+      "w": 48,
+      "h": 48
+    },
+    {
+      "name": "Wall1",
+      "x": 262,
+      "y": 2,
+      "w": 48,
+      "h": 48
+    },
+    {
+      "name": "Corner",
+      "x": 314,
+      "y": 2,
+      "w": 48,
+      "h": 48
+    },
+    {
+      "name": "Open",
+      "x": 2,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Locked",
+      "x": 102,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Concealed",
+      "x": 202,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Breached",
+      "x": 302,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Rail",
+      "x": 2,
+      "y": 106,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Equipment",
+      "x": 102,
+      "y": 106,
+      "w": 96,
+      "h": 64
+    },
+    {
+      "name": "ServiceBay",
+      "x": 202,
+      "y": 106,
+      "w": 192,
+      "h": 96
+    },
+    {
+      "name": "FloorBlock0",
+      "x": 1,
+      "y": 205,
+      "w": 98,
+      "h": 98
+    },
+    {
+      "name": "FloorBlock1",
+      "x": 101,
+      "y": 205,
+      "w": 98,
+      "h": 98
+    },
+    {
+      "name": "FloorBlock2",
+      "x": 201,
+      "y": 205,
+      "w": 98,
+      "h": 98
+    },
+    {
+      "name": "FloorBlock3",
+      "x": 301,
+      "y": 205,
+      "w": 98,
+      "h": 98
+    },
+    {
+      "name": "Junction",
+      "x": 2,
+      "y": 306,
+      "w": 96,
+      "h": 96
+    },
+    {
+      "name": "Arena",
+      "x": 404,
+      "y": 2,
+      "w": 448,
+      "h": 304
+    }
+  ],
+  "roles": [
+    {
+      "name": "Start",
+      "x": 2,
+      "y": 2,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Combat",
+      "x": 150,
+      "y": 2,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Elite",
+      "x": 298,
+      "y": 2,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Vault",
+      "x": 2,
+      "y": 150,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Shop",
+      "x": 150,
+      "y": 150,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Maintenance",
+      "x": 298,
+      "y": 150,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Event",
+      "x": 2,
+      "y": 298,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Hidden",
+      "x": 150,
+      "y": 298,
+      "w": 144,
+      "h": 144
+    },
+    {
+      "name": "Boss",
+      "x": 450,
+      "y": 2,
+      "w": 240,
+      "h": 240
+    }
+  ],
+  "signals": [
+    {
+      "name": "Lock00",
+      "x": 2,
+      "y": 2,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock01",
+      "x": 102,
+      "y": 2,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock02",
+      "x": 202,
+      "y": 2,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock03",
+      "x": 302,
+      "y": 2,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock04",
+      "x": 2,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock05",
+      "x": 102,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock06",
+      "x": 202,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock07",
+      "x": 302,
+      "y": 54,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock08",
+      "x": 2,
+      "y": 106,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock09",
+      "x": 102,
+      "y": 106,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock10",
+      "x": 202,
+      "y": 106,
+      "w": 96,
+      "h": 48
+    },
+    {
+      "name": "Lock11",
+      "x": 302,
+      "y": 106,
+      "w": 96,
+      "h": 48
+    }
+  ],
+  "dressing": [
+    {
+      "pieces": [
+        {
+          "name": "ServiceBay",
+          "x": 48,
+          "y": 42,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": 83,
+          "y": 48,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "ServiceBay",
+          "x": -48,
+          "y": -42,
+          "turn": 2,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": -83,
+          "y": -48,
+          "turn": 2,
+          "audience": "All"
+        },
+        {
+          "name": "Rail",
+          "x": -63,
+          "y": 35,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "Rail",
+          "x": 63,
+          "y": -35,
+          "turn": 2,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": -65,
+          "y": 53,
+          "turn": 0,
+          "audience": "Utility"
+        },
+        {
+          "name": "Junction",
+          "x": -43,
+          "y": 41,
+          "turn": 1,
+          "audience": "Boss"
+        },
+        {
+          "name": "Junction",
+          "x": 43,
+          "y": -41,
+          "turn": 3,
+          "audience": "Boss"
+        }
+      ]
+    },
+    {
+      "pieces": [
+        {
+          "name": "ServiceBay",
+          "x": 51,
+          "y": 34,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "ServiceBay",
+          "x": -51,
+          "y": 34,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "ServiceBay",
+          "x": 51,
+          "y": -34,
+          "turn": 2,
+          "audience": "Battle"
+        },
+        {
+          "name": "ServiceBay",
+          "x": -51,
+          "y": -34,
+          "turn": 2,
+          "audience": "Battle"
+        },
+        {
+          "name": "Equipment",
+          "x": 107,
+          "y": 51,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": -107,
+          "y": 51,
+          "turn": 2,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": 103,
+          "y": -51,
+          "turn": 0,
+          "audience": "Boss"
+        },
+        {
+          "name": "Equipment",
+          "x": -103,
+          "y": -51,
+          "turn": 2,
+          "audience": "Boss"
+        },
+        {
+          "name": "Rail",
+          "x": 82,
+          "y": -48,
+          "turn": 0,
+          "audience": "Utility"
+        },
+        {
+          "name": "Rail",
+          "x": -82,
+          "y": -48,
+          "turn": 2,
+          "audience": "Utility"
+        }
+      ]
+    },
+    {
+      "pieces": [
+        {
+          "name": "Junction",
+          "x": 39,
+          "y": 39,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "Junction",
+          "x": -39,
+          "y": 39,
+          "turn": 1,
+          "audience": "All"
+        },
+        {
+          "name": "Junction",
+          "x": -39,
+          "y": -39,
+          "turn": 2,
+          "audience": "All"
+        },
+        {
+          "name": "Junction",
+          "x": 39,
+          "y": -39,
+          "turn": 3,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": 63,
+          "y": 49,
+          "turn": 1,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": -63,
+          "y": -49,
+          "turn": 3,
+          "audience": "All"
+        },
+        {
+          "name": "Rail",
+          "x": 135,
+          "y": 39,
+          "turn": 0,
+          "audience": "All"
+        },
+        {
+          "name": "Rail",
+          "x": -135,
+          "y": -39,
+          "turn": 2,
+          "audience": "All"
+        },
+        {
+          "name": "Equipment",
+          "x": -63,
+          "y": 49,
+          "turn": 3,
+          "audience": "Battle"
+        },
+        {
+          "name": "Equipment",
+          "x": 63,
+          "y": -49,
+          "turn": 1,
+          "audience": "Battle"
+        },
+        {
+          "name": "ServiceBay",
+          "x": 44,
+          "y": 173,
+          "turn": 1,
+          "audience": "LargeBoss"
+        },
+        {
+          "name": "ServiceBay",
+          "x": -44,
+          "y": -173,
+          "turn": 3,
+          "audience": "LargeBoss"
+        }
+      ]
+    }
+  ]
+}
