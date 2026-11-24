@@ -158,7 +158,7 @@ namespace Fighter403.UI
             CardKind.TriangleRift or CardKind.QuickSlash or CardKind.SlashPreparation or CardKind.Slash => CardHitShape.Arc,
             CardKind.PhaseDash => CardHitShape.Dash,
             CardKind.OrbitSpin or CardKind.LimitedRedBlackHole or CardKind.InfiniteBlueWhiteHole => CardHitShape.Circle,
-            CardKind.MatrixGuard => CardHitShape.None,
+            CardKind.MatrixGuard or CardKind.Counterattack or CardKind.GuardShift => CardHitShape.None,
             CardKind.Starfall or CardKind.ThousandSlashes => CardHitShape.Lock,
             _ => CardHitShape.None
         };
@@ -178,6 +178,8 @@ namespace Fighter403.UI
                 CardKind.PhaseDash => $"点选朝敌人突进，拖放指定落点\n最远 {units}，沿途造成 {damage} 点伤害",
                 CardKind.OrbitSpin when Pulses > 1 => $"半径 {units}，{damage} 伤害 × {Pulses}\n减速 40%，持续 {seconds} 秒",
                 CardKind.OrbitSpin => $"半径 {units}\n伤害 {damage}",
+                CardKind.Counterattack => $"获得 {block} 点格挡\n{seconds} 秒内将所受伤害的 50% 反弹给伤害来源（含格挡吸收）",
+                CardKind.GuardShift => $"获得反击时刻，持续 {seconds} 秒\n伤害额外附加当前格挡值的 50%\n此牌同时计作防御、能力和攻击",
                 CardKind.MatrixGuard when effectSeconds > 0 => $"获得 {block} 格挡\n{seconds} 秒内格挡停止衰减",
                 CardKind.MatrixGuard => $"获得 {block} 格挡\n格挡随时间衰减",
                 CardKind.Starfall when HitShape == CardHitShape.Landing =>

@@ -89,12 +89,12 @@ namespace Fighter403.Player
 
         public bool Hit(int amount) => Hit(amount, 1f);
 
-        internal bool Hit(int amount, float damageMultiplier, bool playBodyImpact = true)
+        internal bool Hit(int amount, float damageMultiplier, bool playBodyImpact = true, int bonusDamage = 0)
         {
             if (!Alive || amount <= 0) return false;
             if (behaviorTime < fractureUntil) amount += fractureBonus;
             fractureUntil = 0d;
-            int damage = MitigateDamage(CombatRules.ScaledPoints(amount, damageMultiplier));
+            int damage = MitigateDamage(CombatRules.ScaledPoints(amount, damageMultiplier) + bonusDamage);
             ResolveDamage(damage, playBodyImpact);
             return true;
         }

@@ -353,7 +353,7 @@ namespace Fighter403.Player
                 {
                     hitDuringAction = true;
                     Vector2 direction = hitVertical ? new Vector2(horizontalSign, 0f) : new Vector2(0f, verticalSign);
-                    Vitals.TakeDamageFrom(ScanDamage, direction, Sfx.BossRainHit);
+                    Vitals.TakeDamageFrom(ScanDamage, direction, Sfx.BossRainHit, this);
                     PlayEffect(Effect.ScanHit, position, .34f, AngleOf(direction));
                 }
             }
@@ -449,7 +449,7 @@ namespace Fighter403.Player
                 float combinedRadius = HurtRadius + Player.CombatRadius;
                 if ((Player.Position - previous - travel * t).sqrMagnitude <= combinedRadius * combinedRadius)
                 {
-                    Vitals.TakeDamageFrom(ChargeDamage, chargeDirection);
+                    Vitals.TakeDamageFrom(ChargeDamage, chargeDirection, source: this);
                     PlayEffect(Effect.ChargeHit, Player.Position, .5f, AngleOf(chargeDirection));
                     hitDuringAction = true;
                 }

@@ -441,6 +441,7 @@ namespace Fighter403.UI
         private void LateUpdate()
         {
             if (batch == null || movement == null || root == null || energyGauge == null) return;
+            combat.ResolveCounterattacks(batch.Vitals);
             playerImpact.Tick();
             UpdateCombatClock();
             timeStopPostProcess.SetSandevistan(movement.transform, combat.SandevistanVisuals,
@@ -1007,7 +1008,7 @@ namespace Fighter403.UI
 
                     castLabel += (i == 0 ? "" : "  +  ") + ClassSymbol(card.Class) + " " + definition.DisplayName;
                     if (i == count - 1 && !paired && card.Kind is not (CardKind.Sandevistan or CardKind.DualThread
-                        or CardKind.InfiniteBlueWhiteHole or CardKind.BigBang))
+                        or CardKind.InfiniteBlueWhiteHole or CardKind.BigBang or CardKind.Counterattack or CardKind.GuardShift))
                         castLabel += "  ×" + multiplier.ToString("0.##");
 
                     int delayFrames = syncFrame - definition.ActiveStartFrame;
@@ -1442,6 +1443,7 @@ namespace Fighter403.UI
                 batch.Vitals.KillSlowMotionUntil = 0d;
                 batch.Vitals.ClearSandevistan();
                 batch.Vitals.ClearDualThread();
+                batch.Vitals.ClearCounterattacks();
                 if (CombatTarget.BattleVitals == batch.Vitals) CombatTarget.BattleVitals = null;
             }
             StopAllCoroutines();

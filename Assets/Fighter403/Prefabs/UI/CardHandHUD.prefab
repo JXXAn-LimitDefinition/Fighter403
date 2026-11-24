@@ -1074,6 +1074,8 @@ MonoBehaviour:
   - {fileID: 5818524168041436474, guid: bd0df6b8cf814ed2932a286312658944, type: 3}
   - {fileID: 5818524168041436474, guid: 510aa094c1e44c0d9dd04426ceb4b7d7, type: 3}
   - {fileID: 6773012729095849048, guid: f989a1360319aad4681b4f9f0d96da28, type: 3}
+  - {fileID: 4685325723083204011, guid: 68bbca178bfd56f40a2a71d99782ec52, type: 3}
+  - {fileID: 7697535783743063877, guid: 45570a39c5d60c043ab1dd8df7feba58, type: 3}
   dummyPrefab: {fileID: 1559693171945088114, guid: 5b3ae6aede1b8ee4eb9cb8d4ce427446, type: 3}
   meleePrefab: {fileID: 3388653782561308894, guid: 0161748a4c2260640afaf208938b740a, type: 3}
   additionalEnemyPrefabs:

@@ -256,6 +256,17 @@ namespace Fighter403.Player
                             if (blockTints++ == 0) savedTint = playerSprite.color;
                             playerSprite.color = card.GuardTint;
                         }
+                        else if (kind == CardKind.Counterattack)
+                        {
+                            GameSfx.Play(Sfx.GuardUp);
+                            vitals.AddBlock(card.Block);
+                            vitals.ActivateCounterattack(card.EffectSeconds);
+                        }
+                        else if (kind == CardKind.GuardShift)
+                        {
+                            GameSfx.Play(Sfx.DualStart);
+                            vitals.ActivateCounterattackMoment(card.EffectSeconds);
+                        }
                         else if (kind == CardKind.Sandevistan)
                         {
                             GameSfx.Play(Sfx.SandevistanStart);
@@ -540,7 +551,7 @@ namespace Fighter403.Player
             }
 
             foreach (var enemy in targets)
-                if (enemy != null && enemy.Hit(damage, 1f, playBodyImpact: false) && !enemy.Alive)
+                if (enemy != null && enemy.Hit(damage, 1f, playBodyImpact: false, bonusDamage: vitals.CounterattackBonus) && !enemy.Alive)
                     EnemyKilled?.Invoke();
             vitals.AddBlock(vitals.MaxBlock);
         }
@@ -927,13 +938,23 @@ namespace Fighter403.Player
         private bool HitTarget(CombatTarget target, int points, CombatVitals vitals, bool playBodyImpact = true)
         {
             float multiplier = vitals.SandevistanActive ? CombatVitals.SandevistanDamageMultiplier : 1f;
-            if (!target.Hit(points, multiplier, playBodyImpact)) return false;
+            if (!target.Hit(points, multiplier, playBodyImpact, vitals.CounterattackBonus)) return false;
             if (!target.Alive) EnemyKilled?.Invoke();
             return true;
         }
 
-        private static int PropDamage(int points, CombatVitals vitals) =>
-            vitals.SandevistanActive ? CombatRules.ScaledPoints(points, CombatVitals.SandevistanDamageMultiplier) : points;
+        internal void ResolveCounterattacks(CombatVitals vitals)
+        {
+            while (vitals.TryTakeCounterattack(out var hit))
+            {
+                if (hit.Source == null || !hit.Source.Hit(hit.Points, 1f, bonusDamage: vitals.CounterattackBonus)) continue;
+                if (!hit.Source.Alive) EnemyKilled?.Invoke();
+            }
+        }
+
+        private static int PropDamage(int points, CombatVitals vitals) => points <= 0 ? 0 :
+            (vitals.SandevistanActive ? CombatRules.ScaledPoints(points, CombatVitals.SandevistanDamageMultiplier) : points) +
+            vitals.CounterattackBonus;
 
         private static bool HitProps(CardAttackArea area, int damage, Vector2 origin, Vector2 direction,
             HashSet<DungeonBreakableProp> hit = null)

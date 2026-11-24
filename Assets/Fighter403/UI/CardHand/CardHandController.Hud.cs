@@ -107,10 +107,24 @@ namespace Fighter403.UI
                 new Color32(117, 205, 193, 255), () => batch.Vitals.SandevistanRemaining);
             foreach (var card in cardPrefabs)
             {
-                if (card.Kind != CardKind.DualThread) continue;
-                AddBuffTile(card.DisplayName, "下次出牌消耗\n前两张同时生效", card.GetComponent<CardHoverVisual>().Icon,
-                    CardHoverVisual.AttributeColor(card.Class), () => batch.Vitals.DualThreadRemaining);
-                break;
+                if (card.Kind is not (CardKind.DualThread or CardKind.Counterattack or CardKind.GuardShift)) continue;
+                var icon = card.GetComponent<CardHoverVisual>().Icon;
+                var tint = CardHoverVisual.AttributeColor(card.Class);
+                switch (card.Kind)
+                {
+                    case CardKind.DualThread:
+                        AddBuffTile(card.DisplayName, "下次出牌消耗\n前两张同时生效", icon, tint,
+                            () => batch.Vitals.DualThreadRemaining);
+                        break;
+                    case CardKind.Counterattack:
+                        AddBuffTile(card.DisplayName, "反弹所受伤害的 50%\n含格挡吸收", icon, tint,
+                            () => batch.Vitals.CounterattackRemaining);
+                        break;
+                    case CardKind.GuardShift:
+                        AddBuffTile("反击时刻", "额外伤害等于\n当前格挡值的 50%", icon, tint,
+                            () => batch.Vitals.CounterattackMomentRemaining);
+                        break;
+                }
             }
             UpdateBuffDisplay();
         }

@@ -31,6 +31,9 @@ namespace Fighter403.EditorTools
             bool dualThread = kindProperty.enumNames[kind] == "DualThread";
             bool whiteHole = kindProperty.enumNames[kind] == "InfiniteBlueWhiteHole";
             bool bigBang = kindProperty.enumNames[kind] == "BigBang";
+            bool counterattack = kindProperty.enumNames[kind] == "Counterattack";
+            bool guardShift = kindProperty.enumNames[kind] == "GuardShift";
+            bool buffOnly = sandevistan || dualThread || counterattack || guardShift;
             var shape = (CardHitShape)serializedObject.FindProperty("hitShape").enumValueIndex;
 
             using (new EditorGUI.DisabledScope(true)) Field("kind", "招式类型");
@@ -45,7 +48,7 @@ namespace Fighter403.EditorTools
             Field("countMinorAttributesForCombo", "小属性参与连击", "每个不同的小属性也视为主属性参与同属性倍率和千击万斩的判定。");
             if (sandevistan) Field("consumeUntilKill", "击杀前消耗");
             Heading("判定与数值");
-            if (!sandevistan && !dualThread && !bigBang)
+            if (!buffOnly && !bigBang)
             {
                 using (new EditorGUI.DisabledScope(flurry || blackHole || whiteHole))
                     Field("hitShape", "判定形状", "Scene View 和实战判定共用此形状。");
@@ -57,7 +60,7 @@ namespace Fighter403.EditorTools
                 CardHitShape.Triangle => "三角判定长度",
                 _ => "判定半径"
             };
-            if (!guard && !sandevistan && !flurry && !dualThread && !bigBang)
+            if (!guard && !buffOnly && !flurry && !bigBang)
                 Field("distance", distanceLabel, "场景单位。瞄准和实战共用此参数。");
             if (whiteHole) Field("pushDistance", "推出距离", "沿远离施法中心的方向推出敌人，单位为场景单位。");
             if (shape is CardHitShape.Arc or CardHitShape.Triangle) Field("sweepDegrees", "判定张角 (°)");
@@ -65,12 +68,12 @@ namespace Fighter403.EditorTools
             if (kind == 0) Field("fractureBonus", "裂痕追加伤害");
             if (kind == 2 || flurry) Field("pulses", "伤害段数");
             if (!dash && !flurry && !whiteHole && !bigBang) Field("effectSeconds", blackHole ? "眩晕时长 (游戏秒)" :
-                sandevistan || dualThread ? "增益时长 (现实秒)" : "附加效果时长 (游戏秒)");
+                buffOnly ? "增益时长 (现实秒)" : "附加效果时长 (游戏秒)");
             if (shape == CardHitShape.Dash) Field("dashHalfWidth", "冲刺判定半宽", "冲刺路径两侧各扩展此距离，首尾为圆角。");
             if (guard) Field("block", "基础格挡");
-            else if (whiteHole) Field("block", "护盾获得量");
+            else if (whiteHole || counterattack) Field("block", "护盾获得量");
             else if (bigBang) Field("damage", "未触发斩杀时的全场伤害");
-            else if (!sandevistan && !dualThread) Field("damage", "基础伤害");
+            else if (!buffOnly) Field("damage", "基础伤害");
             if (flurry) Field("finisherDamage", "终斩伤害");
             if (dash)
                 EditorGUILayout.HelpBox("冲锋沿当前指定方向加速，沿途进行冲刺范围判定；不会锁定目标或瞬移。", MessageType.Info);
@@ -81,7 +84,7 @@ namespace Fighter403.EditorTools
             Field("recoveryFrames", "后摇帧数");
             ShowTimelineSummary(card);
 
-            if (!guard && !sandevistan && !dualThread)
+            if (!guard && !buffOnly)
             {
                 Heading("命中反馈");
                 Field("shakeAmplitude", "镜头震幅", "世界单位；填写 0 关闭震动。");

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Fighter403.Audio;
 
@@ -13,6 +14,8 @@ namespace Fighter403.Player
         private double sandevistanStartedAt;
         private double sandevistanUntil;
         private double dualThreadUntil;
+        private double counterattackUntil, counterattackMomentUntil;
+        private readonly Queue<(CombatTarget Source, int Points)> counterattacks = new();
         public int MaxHealth { get; }
         public int MaxEnergy { get; }
         public int MaxBlock { get; private set; }
@@ -27,10 +30,23 @@ namespace Fighter403.Player
         internal double KillSlowMotionUntil { get; set; }
         internal bool KillSlowMotionActive => Time.unscaledTimeAsDouble < KillSlowMotionUntil;
         public double DualThreadRemaining => Math.Max(0d, dualThreadUntil - Time.unscaledTimeAsDouble);
+        internal double CounterattackRemaining => Math.Max(0d, counterattackUntil - Time.unscaledTimeAsDouble);
+        internal double CounterattackMomentRemaining => Math.Max(0d, counterattackMomentUntil - Time.unscaledTimeAsDouble);
+        internal int CounterattackBonus => CounterattackMomentRemaining > 0d ? (int)Math.Floor(Block * 0.5d + 0.5d) : 0;
         internal event Action<Vector2, bool> Impact;
 
         public void ActivateDualThread(float realSeconds) => dualThreadUntil = Time.unscaledTimeAsDouble + realSeconds;
         public void ClearDualThread() => dualThreadUntil = 0d;
+
+        internal void ActivateCounterattack(float realSeconds) => counterattackUntil = Time.unscaledTimeAsDouble + realSeconds;
+        internal void ActivateCounterattackMoment(float realSeconds) => counterattackMomentUntil = Time.unscaledTimeAsDouble + realSeconds;
+        internal bool TryTakeCounterattack(out (CombatTarget Source, int Points) hit) => counterattacks.TryDequeue(out hit);
+
+        internal void ClearCounterattacks()
+        {
+            counterattackUntil = counterattackMomentUntil = 0d;
+            counterattacks.Clear();
+        }
 
         public void ActivateSandevistan(float realSeconds)
         {
@@ -91,9 +107,13 @@ namespace Fighter403.Player
 
         public void TakeDamage(int amount) => TakeDamageFrom(amount, Vector2.zero);
 
-        internal void TakeDamageFrom(int amount, Vector2 direction, Sfx healthImpact = Sfx.PlayerHurt)
+        internal void TakeDamageFrom(int amount, Vector2 direction, Sfx healthImpact = Sfx.PlayerHurt, CombatTarget source = null)
         {
             if (amount <= 0 || Health == 0) return;
+            // Resolve after the enemy's attack update, which may still be iterating its projectiles or summons.
+            if (source != null && source.Alive && CounterattackRemaining > 0d)
+                counterattacks.Enqueue((source, CombatRules.ScaledPoints(amount, 0.5f)));
+
             double absorbed = Math.Min(amount, Block);
             Block -= absorbed;
             if (absorbed > 0) GameSfx.Play(Block <= 0 ? Sfx.PlayerBlockBreak : Sfx.PlayerBlock);
@@ -110,6 +130,7 @@ namespace Fighter403.Player
         {
             Health = MaxHealth;
             Block = blockDecayPause = 0;
+            ClearCounterattacks();
         }
 
         internal void HealPercent(float fraction)

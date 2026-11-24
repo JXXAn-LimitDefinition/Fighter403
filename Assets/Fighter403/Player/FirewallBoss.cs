@@ -299,7 +299,7 @@ namespace Fighter403.Player
                 bool hit = closestDistanceSquared <= reach * reach;
                 if (hit)
                 {
-                    vitals.TakeDamageFrom(7, packet.Direction, Sfx.BossRainHit);
+                    vitals.TakeDamageFrom(7, packet.Direction, Sfx.BossRainHit, this);
                     float angle = Mathf.Atan2(packet.Direction.y, packet.Direction.x) * Mathf.Rad2Deg;
                     PlayPixels(PixelEffect.PacketHit, "Packet contact spark", from + travel * Mathf.Clamp01(projection),
                         .27f, 1.20f, 6, angle);
@@ -389,7 +389,7 @@ namespace Fighter403.Player
                 if (mark.Warning.enabled)
                 {
                     if (InsideCircle(player.Position, mark.Position, MeteorRadius))
-                        vitals.TakeDamageFrom(16, new Vector2(1.61f, -3.95f));
+                        vitals.TakeDamageFrom(16, new Vector2(1.61f, -3.95f), source: this);
                     impacted = true;
                 }
                 float aftermath = -until / 0.54f;
@@ -497,7 +497,7 @@ namespace Fighter403.Player
             cast.LastRelease = cast.Age;
             Vector2 delta = player.Position - center;
             if (delta.sqrMagnitude <= SealRadius * SealRadius && ClosestGate(delta) != cast.SafeGate)
-                vitals.TakeDamageFrom(20, delta);
+                vitals.TakeDamageFrom(20, delta, source: this);
             for (int gate = 0; gate < 4; gate++)
             {
                 if (gate == cast.SafeGate) continue;
@@ -535,7 +535,7 @@ namespace Fighter403.Player
             cast.LastRelease = cast.Age;
             GameSfx.StopLoop(ref cast.SoundLoop);
             GameSfx.Play(Sfx.BossVortexEnd);
-            if (offset.sqrMagnitude <= CollapseRadius * CollapseRadius) vitals.TakeDamageFrom(18, -offset);
+            if (offset.sqrMagnitude <= CollapseRadius * CollapseRadius) vitals.TakeDamageFrom(18, -offset, source: this);
             Punch(0.43f, 0.40f, VortexColor, 0.40f);
             if (pixelSprites == null) Shock(cast.Center, VortexRadius, VortexColor, 0.36f);
             else PlayPixels(PixelEffect.Collapse, "Code vortex collapse", cast.Center,

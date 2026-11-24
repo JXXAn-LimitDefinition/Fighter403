@@ -359,7 +359,7 @@ namespace Fighter403.Player
             {
                 case Skill.Sector:
                     Vector2 offset = Player.Position - active.Origin;
-                    if (InSector(active, offset)) Vitals.TakeDamageFrom(18, offset);
+                    if (InSector(active, offset)) Vitals.TakeDamageFrom(18, offset, source: this);
                     SectorMark(active.Origin, active.Direction, true);
                     Pixel(PixelCue.Breach, active.Origin, 1.4f, .37f, Body.sortingOrder + 2,
                         Angle(active.Direction));
@@ -446,7 +446,7 @@ namespace Fighter403.Player
                 float across = Mathf.Clamp(Vector2.Dot(offset, normal), -AuditHalfWidth, AuditHalfWidth);
                 Vector2 nearest = along * direction + across * normal;
                 if ((offset - nearest).sqrMagnitude <= Player.CombatRadius * Player.CombatRadius)
-                    Vitals.TakeDamageFrom(14, direction, Sfx.BossRainHit);
+                    Vitals.TakeDamageFrom(14, direction, Sfx.BossRainHit, this);
             }
             Pixel(phase == 2 ? PixelCue.TwinAudit : PixelCue.Audit, active.Origin, 1.43f, .38f,
                 Body.sortingOrder + 3, Angle(active.Direction));
@@ -514,7 +514,7 @@ namespace Fighter403.Player
                 {
                     RemoveTelegraph(child.AttackWarning);
                     child.AttackWarning = null;
-                    if (near) Vitals.TakeDamageFrom(5, delta);
+                    if (near) Vitals.TakeDamageFrom(5, delta, source: target);
                     Pixel(PixelCue.ChildHit, position, 1.08f, .28f, Body.sortingOrder + 1, Angle(delta));
                     GameSfx.Play(Sfx.SwarmAttack, minimumInterval: .13f);
                     if (Vitals.Health <= 0) return;
@@ -543,7 +543,7 @@ namespace Fighter403.Player
                 Vector2 origin = child.Target.transform.position;
                 Vector2 offset = Player.Position - origin;
                 float radius = ChildBlastRadius + Player.CombatRadius;
-                if (offset.sqrMagnitude <= radius * radius) Vitals.TakeDamageFrom(10, offset);
+                if (offset.sqrMagnitude <= radius * radius) Vitals.TakeDamageFrom(10, offset, source: this);
                 RemoveTelegraph(child.AttackWarning);
                 ClearChildKillMark(child);
                 Pixel(PixelCue.Detonation, origin, 1.08f, .51f, Body.sortingOrder + 2);
@@ -612,7 +612,7 @@ namespace Fighter403.Player
                 if (exposure >= 1f)
                 {
                     exposure -= 1f;
-                    Vitals.TakeDamageFrom(8, -offset);
+                    Vitals.TakeDamageFrom(8, -offset, source: this);
                 }
             }
             else

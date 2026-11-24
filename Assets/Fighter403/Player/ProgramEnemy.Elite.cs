@@ -57,7 +57,7 @@ namespace Fighter403.Player
             (resonanceTwo > resonanceTime ? 1 : 0) + (resonanceThree > resonanceTime ? 1 : 0);
 
         private void DealDamage(int amount, Vector2 direction, Sfx healthImpact = Sfx.PlayerHurt) =>
-            vitals.TakeDamageFrom(CombatRules.ScaledPoints(amount, 1f + 0.25f * ResonanceStacks), direction, healthImpact);
+            vitals.TakeDamageFrom(CombatRules.ScaledPoints(amount, 1f + 0.25f * ResonanceStacks), direction, healthImpact, this);
 
         private void ReceiveResonance()
         {
